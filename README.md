@@ -157,7 +157,7 @@ What each row taught, and what was done about it:
    capability limit, not a pipeline defect; a stronger generator or proactive column-value
    sampling would close it further.
 
-The takeaway an interviewer cares about: *a clean 0.80 on a public database overstates real-world
+The takeaway : *a clean 0.80 on a public database overstates real-world
 performance; measuring and then closing the memorization gap is the actual engineering.*
 
 ---
