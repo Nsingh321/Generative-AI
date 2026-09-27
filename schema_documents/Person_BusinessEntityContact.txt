@@ -1,0 +1,7 @@
+Table: Person.BusinessEntityContact
+Description: Cross-reference table mapping stores, vendors, and employees to people
+Columns: BusinessEntityID (int) - (Primary key. Foreign key to BusinessEntity.BusinessEntityID.), PersonID (int) - (Primary key. Foreign key to Person.BusinessEntityID.), ContactTypeID (int) - (Primary key.  Foreign key to ContactType.ContactTypeID.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+BusinessEntityID -> Person.BusinessEntity.BusinessEntityID
+PersonID -> Person.Person.BusinessEntityID
+ContactTypeID -> Person.ContactType.ContactTypeID

@@ -1,0 +1,6 @@
+Table: Production.ProductProductPhoto
+Description: Cross-reference table mapping products and product photos.
+Columns: ProductID (int) - (Product identification number. Foreign key to Product.ProductID.), ProductPhotoID (int) - (Product photo identification number. Foreign key to ProductPhoto.ProductPhotoID.), Primary (Flag) - (0 = Photo is not the principal image. 1 = Photo is the principal image.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ProductID -> Production.Product.ProductID
+ProductPhotoID -> Production.ProductPhoto.ProductPhotoID

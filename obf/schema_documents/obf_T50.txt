@@ -1,0 +1,6 @@
+Table: obf.T50
+Description: Cross-reference table mapping product models and illustrations.
+Columns: col_0225 (int) - (Primary key. Foreign key to ProductModel.ProductModelID.), col_0226 (int) - (Primary key. Foreign key to Illustration.IllustrationID.), col_0227 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0225 -> obf.T47.col_0219
+col_0226 -> obf.T18.col_0158

@@ -1,0 +1,6 @@
+Table: obf.T03
+Description: The **Production.WorkOrderRouting** table records the routing details for each work order, including product and operation sequences, locations, scheduled and actual start/end dates, resource hours, and planned and actual costs for manufacturing operations.
+Columns: col_0289 (int) - (nan), col_0290 (int) - (nan), col_0291 (smallint) - (nan), col_0292 (smallint) - (nan), col_0293 (datetime) - (nan), col_0294 (datetime) - (nan), col_0295 (datetime) - (nan), col_0296 (datetime) - (nan), col_0297 (decimal) - (nan), col_0298 (money) - (nan), col_0299 (money) - (nan), col_0300 (datetime) - (nan)
+Relationships:
+col_0292 -> obf.T20.col_0161
+col_0289 -> obf.T70.col_0279

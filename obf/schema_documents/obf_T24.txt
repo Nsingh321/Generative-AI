@@ -1,0 +1,5 @@
+Table: obf.T24
+Description: Lookup table of customer purchase reasons.
+Columns: col_0433 (int) - (Primary key for SalesReason records.), col_0434 (Name) - (Sales reason description.), col_0435 (Name) - (Category the sales reason belongs to.), col_0436 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T16.col_0417 via col_0433

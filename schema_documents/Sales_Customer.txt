@@ -1,0 +1,8 @@
+Table: Sales.Customer
+Description: Current customer information. Also see the Person and Store tables.
+Columns: CustomerID (int) - (Primary key.), PersonID (int) - (Foreign key to Person.BusinessEntityID), StoreID (int) - (Foreign key to Store.BusinessEntityID), TerritoryID (int) - (ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.), AccountNumber (varchar) - (Unique number identifying the customer assigned by the accounting system.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+TerritoryID -> Sales.SalesTerritory.TerritoryID
+StoreID -> Sales.Store.BusinessEntityID
+PersonID -> Person.Person.BusinessEntityID
+Referenced by Sales.SalesOrderHeader.CustomerID via CustomerID

@@ -1,0 +1,7 @@
+Table: Sales.SalesOrderDetail
+Description: Individual products associated with a specific sales order. See SalesOrderHeader.
+Columns: SalesOrderID (int) - (Primary key. Foreign key to SalesOrderHeader.SalesOrderID.), SalesOrderDetailID (int) - (Primary key. One incremental unique number per product sold.), CarrierTrackingNumber (nvarchar) - (Shipment tracking number supplied by the shipper.), OrderQty (smallint) - (Quantity ordered per product.), ProductID (int) - (Product sold to customer. Foreign key to Product.ProductID.), SpecialOfferID (int) - (Promotional code. Foreign key to SpecialOffer.SpecialOfferID.), UnitPrice (money) - (Selling price of a single product.), UnitPriceDiscount (money) - (Discount amount.), LineTotal (numeric) - (Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+SpecialOfferID -> Sales.SpecialOfferProduct.SpecialOfferID
+ProductID -> Sales.SpecialOfferProduct.ProductID
+SalesOrderID -> Sales.SalesOrderHeader.SalesOrderID

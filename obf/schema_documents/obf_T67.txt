@@ -1,0 +1,5 @@
+Table: obf.T67
+Description: Lookup table containing the types of business entity contacts.
+Columns: col_0088 (int) - (Primary key for ContactType records.), col_0089 (Name) - (Contact type description.), col_0090 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T64.col_0085 via col_0088

@@ -1,0 +1,5 @@
+Table: Sales.SalesPersonQuotaHistory
+Description: Sales performance tracking.
+Columns: BusinessEntityID (int) - (Sales person identification number. Foreign key to SalesPerson.BusinessEntityID.), QuotaDate (datetime) - (Sales quota date.), SalesQuota (money) - (Sales quota amount.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+BusinessEntityID -> Sales.SalesPerson.BusinessEntityID

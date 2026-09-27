@@ -1,0 +1,8 @@
+Table: Sales.SpecialOfferProduct
+Description: Cross-reference table mapping products to special offer discounts.
+Columns: SpecialOfferID (int) - (Primary key for SpecialOfferProduct records.), ProductID (int) - (Product identification number. Foreign key to Product.ProductID.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Sales.SalesOrderDetail.SpecialOfferID via SpecialOfferID
+Referenced by Sales.SalesOrderDetail.ProductID via ProductID
+SpecialOfferID -> Sales.SpecialOffer.SpecialOfferID
+ProductID -> Production.Product.ProductID

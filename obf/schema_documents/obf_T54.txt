@@ -1,0 +1,7 @@
+Table: obf.T54
+Description: Customers (resellers) of Adventure Works products.
+Columns: col_0481 (int) - (Primary key. Foreign key to Customer.BusinessEntityID.), col_0482 (Name) - (Name of the store.), col_0483 (int) - (ID of the sales person assigned to the customer. Foreign key to SalesPerson.BusinessEntityID.), col_0484 (xml) - (Demographic informationg about the store such as the number of employees, annual sales and store type.), col_0485 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0486 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T07.col_0371 via col_0481
+col_0481 -> obf.T59.col_0075
+col_0483 -> obf.T17.col_0419

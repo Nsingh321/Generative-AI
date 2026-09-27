@@ -1,0 +1,6 @@
+Table: obf.T16
+Description: Cross-reference table mapping sales orders to sales reason codes.
+Columns: col_0416 (int) - (Primary key. Foreign key to SalesOrderHeader.SalesOrderID.), col_0417 (int) - (Primary key. Foreign key to SalesReason.SalesReasonID.), col_0418 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0416 -> obf.T13.col_0390
+col_0417 -> obf.T24.col_0433

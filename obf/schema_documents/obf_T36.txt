@@ -1,0 +1,5 @@
+Table: obf.T36
+Description: Changes in the cost of a product over time.
+Columns: col_0195 (int) - (Product identification number. Foreign key to Product.ProductID), col_0196 (datetime) - (Product cost start date.), col_0197 (datetime) - (Product cost end date.), col_0198 (money) - (Standard cost of the product.), col_0199 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0195 -> obf.T30.col_0166

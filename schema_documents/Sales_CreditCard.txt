@@ -1,0 +1,6 @@
+Table: Sales.CreditCard
+Description: Customer credit card information.
+Columns: CreditCardID (int) - (Primary key for CreditCard records.), CardType (nvarchar) - (Credit card name.), CardNumber (nvarchar) - (Credit card number.), ExpMonth (tinyint) - (Credit card expiration month.), ExpYear (smallint) - (Credit card expiration year.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Sales.PersonCreditCard.CreditCardID via CreditCardID
+Referenced by Sales.SalesOrderHeader.CreditCardID via CreditCardID

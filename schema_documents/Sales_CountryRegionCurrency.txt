@@ -1,0 +1,6 @@
+Table: Sales.CountryRegionCurrency
+Description: Cross-reference table mapping ISO currency codes to a country or region.
+Columns: CountryRegionCode (nvarchar) - (ISO code for countries and regions. Foreign key to CountryRegion.CountryRegionCode.), CurrencyCode (nchar) - (ISO standard currency code. Foreign key to Currency.CurrencyCode.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+CountryRegionCode -> Person.CountryRegion.CountryRegionCode
+CurrencyCode -> Sales.Currency.CurrencyCode

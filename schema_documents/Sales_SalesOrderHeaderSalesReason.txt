@@ -1,0 +1,6 @@
+Table: Sales.SalesOrderHeaderSalesReason
+Description: Cross-reference table mapping sales orders to sales reason codes.
+Columns: SalesOrderID (int) - (Primary key. Foreign key to SalesOrderHeader.SalesOrderID.), SalesReasonID (int) - (Primary key. Foreign key to SalesReason.SalesReasonID.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+SalesOrderID -> Sales.SalesOrderHeader.SalesOrderID
+SalesReasonID -> Sales.SalesReason.SalesReasonID

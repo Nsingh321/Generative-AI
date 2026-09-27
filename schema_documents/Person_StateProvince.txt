@@ -1,0 +1,8 @@
+Table: Person.StateProvince
+Description: State and province lookup table.
+Columns: StateProvinceID (int) - (Primary key for StateProvince records.), StateProvinceCode (nchar) - (ISO standard state or province code.), CountryRegionCode (nvarchar) - (ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. ), IsOnlyStateProvinceFlag (Flag) - (0 = StateProvinceCode exists. 1 = StateProvinceCode unavailable, using CountryRegionCode.), Name (Name) - (State or province description.), TerritoryID (int) - (ID of the territory in which the state or province is located. Foreign key to SalesTerritory.SalesTerritoryID.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Person.Address.StateProvinceID via StateProvinceID
+CountryRegionCode -> Person.CountryRegion.CountryRegionCode
+TerritoryID -> Sales.SalesTerritory.TerritoryID
+Referenced by Sales.SalesTaxRate.StateProvinceID via StateProvinceID

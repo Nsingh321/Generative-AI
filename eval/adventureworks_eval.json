@@ -1,0 +1,126 @@
+{
+  "_meta": {
+    "database": "AdventureWorks2025",
+    "dialect": "T-SQL (MS SQL Server)",
+    "description": "Hand-written evaluation set for the NL->SQL pipeline. Each item carries a gold SQL query and the gold table set so retrieval recall and execution accuracy can be measured separately. gold_sql is a reference answer; for aggregate/ordering questions other equivalent formulations may also be correct, so compare on RESULT SET, not string match.",
+    "value_repair_note": "Items with \"tests\": \"value_repair\" use a natural-language term that does NOT match the literal stored in the column (e.g. 'HR' vs 'Human Resources'). They are designed to make a naive generator return 0 rows so the value-grounding repair layer is exercised.",
+    "status": "DRAFT - gold_sql NOT yet validated against a live instance. Run the validator before trusting these."
+  },
+
+  "Basic": {
+    "b1": {
+      "prompt": "List all departments along with the group they belong to.",
+      "gold_sql": "SELECT Name, GroupName FROM HumanResources.Department;",
+      "gold_tables": ["HumanResources.Department"],
+      "tests": "single_table_select"
+    },
+    "b2": {
+      "prompt": "How many products are there in total?",
+      "gold_sql": "SELECT COUNT(*) AS ProductCount FROM Production.Product;",
+      "gold_tables": ["Production.Product"],
+      "tests": "scalar_aggregate"
+    },
+    "b3": {
+      "prompt": "Show the name and list price of the 10 most expensive products.",
+      "gold_sql": "SELECT TOP 10 Name, ListPrice FROM Production.Product ORDER BY ListPrice DESC;",
+      "gold_tables": ["Production.Product"],
+      "tests": "top_n_ordering",
+      "ordered": true
+    },
+    "b4": {
+      "prompt": "List the first name, last name and job title of all employees.",
+      "gold_sql": "SELECT p.FirstName, p.LastName, e.JobTitle FROM HumanResources.Employee e JOIN Person.Person p ON e.BusinessEntityID = p.BusinessEntityID;",
+      "gold_tables": ["HumanResources.Employee", "Person.Person"],
+      "tests": "two_table_join"
+    },
+    "b5": {
+      "prompt": "List all product category names.",
+      "gold_sql": "SELECT Name FROM Production.ProductCategory;",
+      "gold_tables": ["Production.ProductCategory"],
+      "tests": "single_table_select"
+    }
+  },
+
+  "Medium": {
+    "m1": {
+      "prompt": "What is the total sales amount (TotalDue) for each calendar year?",
+      "gold_sql": "SELECT YEAR(OrderDate) AS OrderYear, SUM(TotalDue) AS TotalSales FROM Sales.SalesOrderHeader GROUP BY YEAR(OrderDate) ORDER BY OrderYear;",
+      "gold_tables": ["Sales.SalesOrderHeader"],
+      "tests": "group_by_aggregate"
+    },
+    "m2": {
+      "prompt": "How many employees currently work in each department? (use the current assignment only)",
+      "gold_sql": "SELECT d.Name AS DepartmentName, COUNT(*) AS EmployeeCount FROM HumanResources.Department d JOIN HumanResources.EmployeeDepartmentHistory edh ON d.DepartmentID = edh.DepartmentID WHERE edh.EndDate IS NULL GROUP BY d.Name ORDER BY EmployeeCount DESC;",
+      "gold_tables": ["HumanResources.Department", "HumanResources.EmployeeDepartmentHistory"],
+      "tests": "junction_table_join_with_filter"
+    },
+    "m3": {
+      "prompt": "List all employees who work in the Human Resources department.",
+      "gold_sql": "SELECT p.FirstName, p.LastName, e.JobTitle FROM HumanResources.Employee e JOIN Person.Person p ON e.BusinessEntityID = p.BusinessEntityID JOIN HumanResources.EmployeeDepartmentHistory edh ON e.BusinessEntityID = edh.BusinessEntityID JOIN HumanResources.Department d ON edh.DepartmentID = d.DepartmentID WHERE d.Name = 'Human Resources' AND edh.EndDate IS NULL;",
+      "gold_tables": ["HumanResources.Employee", "Person.Person", "HumanResources.EmployeeDepartmentHistory", "HumanResources.Department"],
+      "tests": "value_repair",
+      "value_repair_hint": "A naive model will likely filter d.Name = 'HR'; the stored value is 'Human Resources'."
+    },
+    "m4": {
+      "prompt": "Show all products in the 'Mountain Bikes' subcategory with their list price.",
+      "gold_sql": "SELECT p.Name, p.ListPrice FROM Production.Product p JOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID WHERE ps.Name = 'Mountain Bikes';",
+      "gold_tables": ["Production.Product", "Production.ProductSubcategory"],
+      "tests": "join_with_text_filter"
+    },
+    "m5": {
+      "prompt": "Count how many customers are assigned to each sales territory.",
+      "gold_sql": "SELECT st.Name AS TerritoryName, COUNT(*) AS CustomerCount FROM Sales.Customer c JOIN Sales.SalesTerritory st ON c.TerritoryID = st.TerritoryID GROUP BY st.Name ORDER BY CustomerCount DESC;",
+      "gold_tables": ["Sales.Customer", "Sales.SalesTerritory"],
+      "tests": "group_by_join"
+    },
+    "m6": {
+      "prompt": "List the names of all female employees.",
+      "gold_sql": "SELECT p.FirstName, p.LastName FROM HumanResources.Employee e JOIN Person.Person p ON e.BusinessEntityID = p.BusinessEntityID WHERE e.Gender = 'F';",
+      "gold_tables": ["HumanResources.Employee", "Person.Person"],
+      "tests": "value_repair",
+      "value_repair_hint": "Gender is stored as a single char 'F'/'M', not 'Female'/'Male'."
+    }
+  },
+
+  "Hard": {
+    "h1": {
+      "prompt": "Who are the top 5 customers by total amount spent across all their orders?",
+      "gold_sql": "SELECT TOP 5 soh.CustomerID, SUM(soh.TotalDue) AS TotalSpent FROM Sales.SalesOrderHeader soh GROUP BY soh.CustomerID ORDER BY TotalSpent DESC;",
+      "gold_tables": ["Sales.SalesOrderHeader"],
+      "tests": "aggregate_top_n",
+      "ordered": true
+    },
+    "h2": {
+      "prompt": "Which product has been sold in the highest total quantity?",
+      "gold_sql": "SELECT TOP 1 p.Name, SUM(sod.OrderQty) AS TotalQty FROM Sales.SalesOrderDetail sod JOIN Production.Product p ON sod.ProductID = p.ProductID GROUP BY p.Name ORDER BY TotalQty DESC;",
+      "gold_tables": ["Sales.SalesOrderDetail", "Production.Product"],
+      "tests": "join_aggregate_top_n",
+      "ordered": true
+    },
+    "h3": {
+      "prompt": "List products that have never been ordered by customers.",
+      "gold_sql": "SELECT p.ProductID, p.Name FROM Production.Product p LEFT JOIN Sales.SalesOrderDetail sod ON p.ProductID = sod.ProductID WHERE sod.ProductID IS NULL;",
+      "gold_tables": ["Production.Product", "Sales.SalesOrderDetail"],
+      "tests": "anti_join"
+    },
+    "h4": {
+      "prompt": "For each sales person, show their first/last name and their total sales (TotalDue) for orders they handled.",
+      "gold_sql": "SELECT p.FirstName, p.LastName, SUM(soh.TotalDue) AS TotalSales FROM Sales.SalesPerson sp JOIN Person.Person p ON sp.BusinessEntityID = p.BusinessEntityID JOIN Sales.SalesOrderHeader soh ON sp.BusinessEntityID = soh.SalesPersonID GROUP BY p.FirstName, p.LastName ORDER BY TotalSales DESC;",
+      "gold_tables": ["Sales.SalesPerson", "Person.Person", "Sales.SalesOrderHeader"],
+      "tests": "three_table_join_aggregate"
+    },
+    "h5": {
+      "prompt": "What is the average order total (TotalDue) per month in 2013?",
+      "gold_sql": "SELECT MONTH(OrderDate) AS OrderMonth, AVG(TotalDue) AS AvgOrderTotal FROM Sales.SalesOrderHeader WHERE YEAR(OrderDate) = 2013 GROUP BY MONTH(OrderDate) ORDER BY OrderMonth;",
+      "gold_tables": ["Sales.SalesOrderHeader"],
+      "tests": "date_filter_group_by"
+    },
+    "h6": {
+      "prompt": "List the top 3 product subcategories by total revenue (LineTotal).",
+      "gold_sql": "SELECT TOP 3 ps.Name AS Subcategory, SUM(sod.LineTotal) AS Revenue FROM Sales.SalesOrderDetail sod JOIN Production.Product p ON sod.ProductID = p.ProductID JOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID GROUP BY ps.Name ORDER BY Revenue DESC;",
+      "gold_tables": ["Sales.SalesOrderDetail", "Production.Product", "Production.ProductSubcategory"],
+      "tests": "multi_join_aggregate_top_n",
+      "ordered": true
+    }
+  }
+}

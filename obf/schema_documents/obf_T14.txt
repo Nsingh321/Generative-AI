@@ -1,0 +1,7 @@
+Table: obf.T14
+Description: Employee department transfers.
+Columns: col_0042 (int) - (Employee identification number. Foreign key to Employee.BusinessEntityID.), col_0043 (smallint) - (Department in which the employee worked including currently. Foreign key to Department.DepartmentID.), col_0044 (tinyint) - (Identifies which 8-hour shift the employee works. Foreign key to Shift.Shift.ID.), col_0045 (date) - (Date the employee started work in the department.), col_0046 (date) - (Date the employee left the department. NULL = Current department.), col_0047 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0042 -> obf.T12.col_0026
+col_0043 -> obf.T08.col_0022
+col_0044 -> obf.T33.col_0057

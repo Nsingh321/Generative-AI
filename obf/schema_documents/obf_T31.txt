@@ -1,0 +1,6 @@
+Table: obf.T31
+Description: Sales representative transfers to other sales territories.
+Columns: col_0454 (int) - (Primary key. The sales rep.  Foreign key to SalesPerson.BusinessEntityID.), col_0455 (int) - (Primary key. Territory identification number. Foreign key to SalesTerritory.SalesTerritoryID.), col_0456 (datetime) - (Primary key. Date the sales representive started work in the territory.), col_0457 (datetime) - (Date the sales representative left work in the territory.), col_0458 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0459 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0454 -> obf.T17.col_0419
+col_0455 -> obf.T28.col_0444

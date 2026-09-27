@@ -1,0 +1,7 @@
+Table: Production.WorkOrder
+Description: The **Production.WorkOrder** table tracks details of manufacturing work orders, including identifiers, product information, quantities ordered and stocked or scrapped, timestamps for start, end, and due dates, scrap reasons, and modification history.
+Columns: WorkOrderID (int) - (nan), ProductID (int) - (nan), OrderQty (int) - (nan), StockedQty (int) - (nan), ScrappedQty (smallint) - (nan), StartDate (datetime) - (nan), EndDate (datetime) - (nan), DueDate (datetime) - (nan), ScrapReasonID (smallint) - (nan), ModifiedDate (datetime) - (nan)
+Relationships:
+ProductID -> Production.Product.ProductID
+ScrapReasonID -> Production.ScrapReason.ScrapReasonID
+Referenced by Production.WorkOrderRouting.WorkOrderID via WorkOrderID

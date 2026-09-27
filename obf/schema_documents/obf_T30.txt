@@ -1,0 +1,22 @@
+Table: obf.T30
+Description: Products sold or used in the manfacturing of sold products.
+Columns: col_0166 (int) - (Primary key for Product records.), col_0167 (Name) - (Name of the product.), col_0168 (nvarchar) - (Unique product identification number.), col_0169 (Flag) - (0 = Product is purchased, 1 = Product is manufactured in-house.), col_0170 (Flag) - (0 = Product is not a salable item. 1 = Product is salable.), col_0171 (nvarchar) - (Product color.), col_0172 (smallint) - (Minimum inventory quantity. ), col_0173 (smallint) - (Inventory level that triggers a purchase order or work order. ), col_0174 (money) - (Standard cost of the product.), col_0175 (money) - (Selling price.), col_0176 (nvarchar) - (Product size.), col_0177 (nchar) - (Unit of measure for Size column.), col_0178 (nchar) - (Unit of measure for Weight column.), col_0179 (decimal) - (Product weight.), col_0180 (int) - (Number of days required to manufacture the product.), col_0181 (nchar) - (R = Road, M = Mountain, T = Touring, S = Standard), col_0182 (nchar) - (H = High, M = Medium, L = Low), col_0183 (nchar) - (W = Womens, M = Mens, U = Universal), col_0184 (int) - (Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID. ), col_0185 (int) - (Product is a member of this product model. Foreign key to ProductModel.ProductModelID.), col_0186 (datetime) - (Date the product was available for sale.), col_0187 (datetime) - (Date the product was no longer available for sale.), col_0188 (datetime) - (Date the product was discontinued.), col_0189 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0190 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T53.col_0134 via col_0166
+Referenced by obf.T53.col_0133 via col_0166
+col_0177 -> obf.T65.col_0276
+col_0178 -> obf.T65.col_0276
+col_0184 -> obf.T61.col_0250
+col_0185 -> obf.T47.col_0219
+Referenced by obf.T36.col_0195 via col_0166
+Referenced by obf.T39.col_0204 via col_0166
+Referenced by obf.T41.col_0207 via col_0166
+Referenced by obf.T44.col_0214 via col_0166
+Referenced by obf.T56.col_0238 via col_0166
+Referenced by obf.T58.col_0243 via col_0166
+Referenced by obf.T57.col_0259 via col_0166
+Referenced by obf.T70.col_0280 via col_0166
+Referenced by obf.T63.col_0301 via col_0166
+Referenced by obf.T71.col_0316 via col_0166
+Referenced by obf.T38.col_0463 via col_0166
+Referenced by obf.T46.col_0478 via col_0166

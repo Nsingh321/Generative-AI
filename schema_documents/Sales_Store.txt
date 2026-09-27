@@ -1,0 +1,7 @@
+Table: Sales.Store
+Description: Customers (resellers) of Adventure Works products.
+Columns: BusinessEntityID (int) - (Primary key. Foreign key to Customer.BusinessEntityID.), Name (Name) - (Name of the store.), SalesPersonID (int) - (ID of the sales person assigned to the customer. Foreign key to SalesPerson.BusinessEntityID.), Demographics (xml) - (Demographic informationg about the store such as the number of employees, annual sales and store type.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Sales.Customer.StoreID via BusinessEntityID
+BusinessEntityID -> Person.BusinessEntity.BusinessEntityID
+SalesPersonID -> Sales.SalesPerson.BusinessEntityID

@@ -1,0 +1,8 @@
+Table: Person.Address
+Description: Street address information for customers, employees, and vendors.
+Columns: AddressID (int) - (Primary key for Address records.), AddressLine1 (nvarchar) - (First street address line.), AddressLine2 (nvarchar) - (Second street address line.), City (nvarchar) - (Name of the city.), StateProvinceID (int) - (Unique identification number for the state or province. Foreign key to StateProvince table.), PostalCode (nvarchar) - (Postal code for the street address.), SpatialLocation (geography) - (Latitude and longitude of this address.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+StateProvinceID -> Person.StateProvince.StateProvinceID
+Referenced by Person.BusinessEntityAddress.AddressID via AddressID
+Referenced by Sales.SalesOrderHeader.ShipToAddressID via AddressID
+Referenced by Sales.SalesOrderHeader.BillToAddressID via AddressID

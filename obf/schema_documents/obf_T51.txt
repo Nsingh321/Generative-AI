@@ -1,0 +1,5 @@
+Table: obf.T51
+Description: Current version number of the AdventureWorks 2025 sample database. 
+Columns: col_0001 (tinyint) - (Primary key for AWBuildVersion records.), col_0002 (nvarchar) - (Version number of the database in 9.yy.mm.dd.00 format.), col_0003 (datetime) - (Date and time the record was last updated.), col_0004 (datetime) - (Date and time the record was last updated.)
+Relationships:
+No explicit foreign key relationships

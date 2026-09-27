@@ -1,0 +1,5 @@
+Table: obf.T38
+Description: Contains online customer orders until the order is submitted or cancelled.
+Columns: col_0460 (int) - (Primary key for ShoppingCartItem records.), col_0461 (nvarchar) - (Shopping cart identification number.), col_0462 (int) - (Product quantity ordered.), col_0463 (int) - (Product ordered. Foreign key to Product.ProductID.), col_0464 (datetime) - (Date the time the record was created.), col_0465 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0463 -> obf.T30.col_0166

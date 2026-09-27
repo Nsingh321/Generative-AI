@@ -1,0 +1,11 @@
+Table: HumanResources.Employee
+Description: Employee information such as salary, department, and title.
+Columns: BusinessEntityID (int) - (Primary key for Employee records.  Foreign key to BusinessEntity.BusinessEntityID.), NationalIDNumber (nvarchar) - (Unique national identification number such as a social security number.), LoginID (nvarchar) - (Network login.), OrganizationNode (hierarchyid) - (Where the employee is located in corporate hierarchy.), OrganizationLevel (smallint) - (The depth of the employee in the corporate hierarchy.), JobTitle (nvarchar) - (Work title such as Buyer or Sales Representative.), BirthDate (date) - (Date of birth.), MaritalStatus (nchar) - (M = Married, S = Single), Gender (nchar) - (M = Male, F = Female), HireDate (date) - (Employee hired on this date.), SalariedFlag (Flag) - (Job classification. 0 = Hourly, not exempt from collective bargaining. 1 = Salaried, exempt from collective bargaining.), VacationHours (smallint) - (Number of available vacation hours.), SickLeaveHours (smallint) - (Number of available sick leave hours.), CurrentFlag (Flag) - (0 = Inactive, 1 = Active), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+BusinessEntityID -> Person.Person.BusinessEntityID
+Referenced by HumanResources.EmployeeDepartmentHistory.BusinessEntityID via BusinessEntityID
+Referenced by HumanResources.EmployeePayHistory.BusinessEntityID via BusinessEntityID
+Referenced by HumanResources.JobCandidate.BusinessEntityID via BusinessEntityID
+Referenced by Production.Document.Owner via BusinessEntityID
+Referenced by Purchasing.PurchaseOrderHeader.EmployeeID via BusinessEntityID
+Referenced by Sales.SalesPerson.BusinessEntityID via BusinessEntityID

@@ -1,0 +1,7 @@
+Table: obf.T53
+Description: Items required to make bicycles and bicycle subassemblies. It identifies the heirarchical relationship between a parent product and its components.
+Columns: col_0132 (int) - (Primary key for BillOfMaterials records.), col_0133 (int) - (Parent product identification number. Foreign key to Product.ProductID.), col_0134 (int) - (Component identification number. Foreign key to Product.ProductID.), col_0135 (datetime) - (Date the component started being used in the assembly item.), col_0136 (datetime) - (Date the component stopped being used in the assembly item.), col_0137 (nchar) - (Standard code identifying the unit of measure for the quantity.), col_0138 (smallint) - (Indicates the depth the component is from its parent (AssemblyID).), col_0139 (decimal) - (Quantity of the component needed to create the assembly.), col_0140 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0134 -> obf.T30.col_0166
+col_0137 -> obf.T65.col_0276
+col_0133 -> obf.T30.col_0166

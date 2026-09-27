@@ -1,0 +1,6 @@
+Table: obf.T01
+Description: Customer credit card information.
+Columns: col_0353 (int) - (Primary key for CreditCard records.), col_0354 (nvarchar) - (Credit card name.), col_0355 (nvarchar) - (Credit card number.), col_0356 (tinyint) - (Credit card expiration month.), col_0357 (smallint) - (Credit card expiration year.), col_0358 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T26.col_0377 via col_0353
+Referenced by obf.T13.col_0406 via col_0353

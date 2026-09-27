@@ -1,0 +1,6 @@
+Table: Production.ProductModelIllustration
+Description: Cross-reference table mapping product models and illustrations.
+Columns: ProductModelID (int) - (Primary key. Foreign key to ProductModel.ProductModelID.), IllustrationID (int) - (Primary key. Foreign key to Illustration.IllustrationID.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ProductModelID -> Production.ProductModel.ProductModelID
+IllustrationID -> Production.Illustration.IllustrationID

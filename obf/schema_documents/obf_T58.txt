@@ -1,0 +1,5 @@
+Table: obf.T58
+Description: Customer reviews of products they have purchased.
+Columns: col_0242 (int) - (Primary key for ProductReview records.), col_0243 (int) - (Product identification number. Foreign key to Product.ProductID.), col_0244 (Name) - (Name of the reviewer.), col_0245 (datetime) - (Date review was submitted.), col_0246 (nvarchar) - (Reviewer's e-mail address.), col_0247 (int) - (Product rating given by the reviewer. Scale is 1 to 5 with 5 as the highest rating.), col_0248 (nvarchar) - (Reviewer's comments), col_0249 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0243 -> obf.T30.col_0166

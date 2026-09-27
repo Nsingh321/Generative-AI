@@ -1,0 +1,5 @@
+Table: obf.T43
+Description: Audit table tracking errors in the the AdventureWorks database that are caught by the CATCH block of a TRY...CATCH construct. Data is inserted by stored procedure dbo.uspLogError when it is executed from inside the CATCH block of a TRY...CATCH construct.
+Columns: col_0013 (int) - (Primary key for ErrorLog records.), col_0014 (datetime) - (The date and time at which the error occurred.), col_0015 (sysname) - (The user who executed the batch in which the error occurred.), col_0016 (int) - (The error number of the error that occurred.), col_0017 (int) - (The severity of the error that occurred.), col_0018 (int) - (The state number of the error that occurred.), col_0019 (nvarchar) - (The name of the stored procedure or trigger where the error occurred.), col_0020 (int) - (The line number at which the error occurred.), col_0021 (nvarchar) - (The message text of the error that occurred.)
+Relationships:
+No explicit foreign key relationships

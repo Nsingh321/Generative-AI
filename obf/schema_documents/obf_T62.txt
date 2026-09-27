@@ -1,0 +1,7 @@
+Table: obf.T62
+Description: Cross-reference table mapping customers, vendors, and employees to their addresses.
+Columns: col_0078 (int) - (Primary key. Foreign key to BusinessEntity.BusinessEntityID.), col_0079 (int) - (Primary key. Foreign key to Address.AddressID.), col_0080 (int) - (Primary key. Foreign key to AddressType.AddressTypeID.), col_0081 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0082 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0078 -> obf.T59.col_0075
+col_0079 -> obf.T45.col_0062
+col_0080 -> obf.T48.col_0071

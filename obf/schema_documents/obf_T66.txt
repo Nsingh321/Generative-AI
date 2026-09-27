@@ -1,0 +1,7 @@
+Table: obf.T66
+Description: Companies from whom Adventure Works Cycles purchases parts or other goods.
+Columns: col_0342 (int) - (Primary key for Vendor records.  Foreign key to BusinessEntity.BusinessEntityID), col_0343 (AccountNumber) - (Vendor account (identification) number.), col_0344 (Name) - (Company name.), col_0345 (tinyint) - (1 = Superior, 2 = Excellent, 3 = Above average, 4 = Average, 5 = Below average), col_0346 (Flag) - (0 = Do not use if another vendor is available. 1 = Preferred over other vendors supplying the same product.), col_0347 (Flag) - (0 = Vendor no longer used. 1 = Vendor is actively used.), col_0348 (nvarchar) - (nan), col_0349 (datetime) - (nan)
+Relationships:
+Referenced by obf.T63.col_0302 via col_0342
+Referenced by obf.T05.col_0327 via col_0342
+col_0342 -> obf.T59.col_0075

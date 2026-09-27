@@ -1,0 +1,6 @@
+Table: Production.WorkOrderRouting
+Description: The **Production.WorkOrderRouting** table records the routing details for each work order, including product and operation sequences, locations, scheduled and actual start/end dates, resource hours, and planned and actual costs for manufacturing operations.
+Columns: WorkOrderID (int) - (nan), ProductID (int) - (nan), OperationSequence (smallint) - (nan), LocationID (smallint) - (nan), ScheduledStartDate (datetime) - (nan), ScheduledEndDate (datetime) - (nan), ActualStartDate (datetime) - (nan), ActualEndDate (datetime) - (nan), ActualResourceHrs (decimal) - (nan), PlannedCost (money) - (nan), ActualCost (money) - (nan), ModifiedDate (datetime) - (nan)
+Relationships:
+LocationID -> Production.Location.LocationID
+WorkOrderID -> Production.WorkOrder.WorkOrderID

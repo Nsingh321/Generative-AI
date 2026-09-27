@@ -1,0 +1,8 @@
+Table: obf.T45
+Description: Street address information for customers, employees, and vendors.
+Columns: col_0062 (int) - (Primary key for Address records.), col_0063 (nvarchar) - (First street address line.), col_0064 (nvarchar) - (Second street address line.), col_0065 (nvarchar) - (Name of the city.), col_0066 (int) - (Unique identification number for the state or province. Foreign key to StateProvince table.), col_0067 (nvarchar) - (Postal code for the street address.), col_0068 (geography) - (Latitude and longitude of this address.), col_0069 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0070 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0066 -> obf.T49.col_0124
+Referenced by obf.T62.col_0079 via col_0062
+Referenced by obf.T13.col_0404 via col_0062
+Referenced by obf.T13.col_0403 via col_0062

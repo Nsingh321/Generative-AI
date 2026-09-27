@@ -1,0 +1,5 @@
+Table: Sales.SpecialOffer
+Description: Sale discounts lookup table.
+Columns: SpecialOfferID (int) - (Primary key for SpecialOffer records.), Description (nvarchar) - (Discount description.), DiscountPct (smallmoney) - (Discount precentage.), Type (nvarchar) - (Discount type category.), Category (nvarchar) - (Group the discount applies to such as Reseller or Customer.), StartDate (datetime) - (Discount start date.), EndDate (datetime) - (Discount end date.), MinQty (int) - (Minimum discount percent allowed.), MaxQty (int) - (Maximum discount percent allowed.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Sales.SpecialOfferProduct.SpecialOfferID via SpecialOfferID

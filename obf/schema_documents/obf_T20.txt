@@ -1,0 +1,6 @@
+Table: obf.T20
+Description: Product inventory and manufacturing locations.
+Columns: col_0161 (smallint) - (Primary key for Location records.), col_0162 (Name) - (Location description.), col_0163 (smallmoney) - (Standard hourly cost of the manufacturing location.), col_0164 (decimal) - (Work capacity (in hours) of the manufacturing location.), col_0165 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T41.col_0208 via col_0161
+Referenced by obf.T03.col_0292 via col_0161

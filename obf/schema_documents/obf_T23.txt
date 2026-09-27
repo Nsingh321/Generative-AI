@@ -1,0 +1,12 @@
+Table: obf.T23
+Description: Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.
+Columns: col_0104 (int) - (Primary key for Person records.), col_0105 (nchar) - (Primary type of person: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact), col_0106 (NameStyle) - (0 = The data in FirstName and LastName are stored in western style (first name, last name) order.  1 = Eastern style (last name, first name) order.), col_0107 (nvarchar) - (A courtesy title. For example, Mr. or Ms.), col_0108 (Name) - (First name of the person.), col_0109 (Name) - (Middle name or middle initial of the person.), col_0110 (Name) - (Last name of the person.), col_0111 (nvarchar) - (Surname suffix. For example, Sr. or Jr.), col_0112 (int) - (0 = Contact does not wish to receive e-mail promotions, 1 = Contact does wish to receive e-mail promotions from AdventureWorks, 2 = Contact does wish to receive e-mail promotions from AdventureWorks and selected partners. ), col_0113 (xml) - (Additional contact information about the person stored in xml format. ), col_0114 (xml) - (Personal information such as hobbies, and income collected from online shoppers. Used for sales analysis.), col_0115 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0116 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T12.col_0026 via col_0104
+Referenced by obf.T64.col_0084 via col_0104
+Referenced by obf.T11.col_0094 via col_0104
+Referenced by obf.T21.col_0099 via col_0104
+col_0104 -> obf.T59.col_0075
+Referenced by obf.T27.col_0117 via col_0104
+Referenced by obf.T07.col_0370 via col_0104
+Referenced by obf.T26.col_0376 via col_0104

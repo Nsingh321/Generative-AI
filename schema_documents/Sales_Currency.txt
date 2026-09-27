@@ -1,0 +1,7 @@
+Table: Sales.Currency
+Description: Lookup table containing standard ISO currencies.
+Columns: CurrencyCode (nchar) - (The ISO code for the Currency.), Name (Name) - (Currency name.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Sales.CountryRegionCurrency.CurrencyCode via CurrencyCode
+Referenced by Sales.CurrencyRate.ToCurrencyCode via CurrencyCode
+Referenced by Sales.CurrencyRate.FromCurrencyCode via CurrencyCode

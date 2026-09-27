@@ -1,0 +1,6 @@
+openai
+ipykernel
+dotenv
+psycopg2
+pandas
+psycopg2-binary

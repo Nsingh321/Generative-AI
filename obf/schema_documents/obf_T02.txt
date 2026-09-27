@@ -1,0 +1,5 @@
+Table: obf.T02
+Description: Lookup table containing the languages in which some AdventureWorks data is stored.
+Columns: col_0141 (nchar) - (Primary key for Culture records.), col_0142 (Name) - (Culture description.), col_0143 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T52.col_0230 via col_0141

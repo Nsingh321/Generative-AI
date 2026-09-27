@@ -1,0 +1,8 @@
+Table: obf.T49
+Description: State and province lookup table.
+Columns: col_0124 (int) - (Primary key for StateProvince records.), col_0125 (nchar) - (ISO standard state or province code.), col_0126 (nvarchar) - (ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. ), col_0127 (Flag) - (0 = StateProvinceCode exists. 1 = StateProvinceCode unavailable, using CountryRegionCode.), col_0128 (Name) - (State or province description.), col_0129 (int) - (ID of the territory in which the state or province is located. Foreign key to SalesTerritory.SalesTerritoryID.), col_0130 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0131 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T45.col_0066 via col_0124
+col_0126 -> obf.T69.col_0091
+col_0129 -> obf.T28.col_0444
+Referenced by obf.T25.col_0438 via col_0124

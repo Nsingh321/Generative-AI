@@ -1,0 +1,5 @@
+Table: HumanResources.JobCandidate
+Description: Résumés submitted to Human Resources by job applicants.
+Columns: JobCandidateID (int) - (Primary key for JobCandidate records.), BusinessEntityID (int) - (Employee identification number if applicant was hired. Foreign key to Employee.BusinessEntityID.), Resume (xml) - (Résumé in XML format.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+BusinessEntityID -> HumanResources.Employee.BusinessEntityID

@@ -1,0 +1,6 @@
+Table: Person.PersonPhone
+Description: Telephone number and type of a person.
+Columns: BusinessEntityID (int) - (Business entity identification number. Foreign key to Person.BusinessEntityID.), PhoneNumber (Phone) - (Telephone number identification number.), PhoneNumberTypeID (int) - (Kind of phone number. Foreign key to PhoneNumberType.PhoneNumberTypeID.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+BusinessEntityID -> Person.Person.BusinessEntityID
+PhoneNumberTypeID -> Person.PhoneNumberType.PhoneNumberTypeID

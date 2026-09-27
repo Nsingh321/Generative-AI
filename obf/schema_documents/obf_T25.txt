@@ -1,0 +1,5 @@
+Table: obf.T25
+Description: Tax rate lookup table.
+Columns: col_0437 (int) - (Primary key for SalesTaxRate records.), col_0438 (int) - (State, province, or country/region the sales tax applies to.), col_0439 (tinyint) - (1 = Tax applied to retail transactions, 2 = Tax applied to wholesale transactions, 3 = Tax applied to all sales (retail and wholesale) transactions.), col_0440 (smallmoney) - (Tax rate amount.), col_0441 (Name) - (Tax rate description.), col_0442 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0443 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0438 -> obf.T49.col_0124

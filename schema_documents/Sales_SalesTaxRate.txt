@@ -1,0 +1,5 @@
+Table: Sales.SalesTaxRate
+Description: Tax rate lookup table.
+Columns: SalesTaxRateID (int) - (Primary key for SalesTaxRate records.), StateProvinceID (int) - (State, province, or country/region the sales tax applies to.), TaxType (tinyint) - (1 = Tax applied to retail transactions, 2 = Tax applied to wholesale transactions, 3 = Tax applied to all sales (retail and wholesale) transactions.), TaxRate (smallmoney) - (Tax rate amount.), Name (Name) - (Tax rate description.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+StateProvinceID -> Person.StateProvince.StateProvinceID

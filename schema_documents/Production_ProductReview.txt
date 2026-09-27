@@ -1,0 +1,5 @@
+Table: Production.ProductReview
+Description: Customer reviews of products they have purchased.
+Columns: ProductReviewID (int) - (Primary key for ProductReview records.), ProductID (int) - (Product identification number. Foreign key to Product.ProductID.), ReviewerName (Name) - (Name of the reviewer.), ReviewDate (datetime) - (Date review was submitted.), EmailAddress (nvarchar) - (Reviewer's e-mail address.), Rating (int) - (Product rating given by the reviewer. Scale is 1 to 5 with 5 as the highest rating.), Comments (nvarchar) - (Reviewer's comments), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ProductID -> Production.Product.ProductID

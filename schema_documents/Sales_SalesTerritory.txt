@@ -1,0 +1,10 @@
+Table: Sales.SalesTerritory
+Description: Sales territory lookup table.
+Columns: TerritoryID (int) - (Primary key for SalesTerritory records.), Name (Name) - (Sales territory description), CountryRegionCode (nvarchar) - (ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. ), Group (nvarchar) - (Geographic area to which the sales territory belong.), SalesYTD (money) - (Sales in the territory year to date.), SalesLastYear (money) - (Sales in the territory the previous year.), CostYTD (money) - (Business costs in the territory year to date.), CostLastYear (money) - (Business costs in the territory the previous year.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Person.StateProvince.TerritoryID via TerritoryID
+Referenced by Sales.Customer.TerritoryID via TerritoryID
+Referenced by Sales.SalesOrderHeader.TerritoryID via TerritoryID
+Referenced by Sales.SalesPerson.TerritoryID via TerritoryID
+CountryRegionCode -> Person.CountryRegion.CountryRegionCode
+Referenced by Sales.SalesTerritoryHistory.TerritoryID via TerritoryID

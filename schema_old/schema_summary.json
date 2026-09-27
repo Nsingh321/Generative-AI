@@ -1,0 +1,34 @@
+{
+"album":
+"album(album_id PK,title,artist_id FK->artist.artist_id)",
+
+"artist":
+"artist(artist_id PK, name)",
+
+"customer":
+"customer(customer_id PK ,first_name  ,last_name ,company ,address ,city ,state ,country ,postal_code ,phone ,fax ,email ,support_rep_id FK->employee.employee_id)",
+
+"employee":
+"employee(employee_id PK,last_name ,first_name ,title ,reports_to FK->employee.employee_id ,birth_date ,hire_date ,address ,city ,state ,country ,postal_code ,phone ,fax ,email )",
+
+"genre":
+"genre(genre_id PK,name)",
+
+"invoice":
+"invoice(invoice_id PK,customer_id FK->customer.customer_id,invoice_date  ,billing_address ,billing_city ,billing_state ,billing_country ,billing_postal_code ,total)",
+
+"invoice_line":
+"invoice_line(invoice_line_id PK,invoice_id FK->invoice.invoice_id,track_id FK->track.track_id,unit_price ,quantity )",
+
+"media_type":
+"media_type( media_type_id PK, name)",
+
+"playlist":
+"playlist(playlist_id PK, name)",
+
+"playlist_track":
+"playlist_track(playlist_id PK FK->playlist.playlist_id,track_id FK->track.track_id)",
+
+"track":
+"track(track_id PK,name ,album_id FK->album.album_id,media_type_id FK->media_type.media_type_id,genre_id FK->genre.genre_id,composer ,milliseconds  ,bytes ,unit_price )"
+}

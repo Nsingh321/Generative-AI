@@ -1,0 +1,9 @@
+Table: Person.BusinessEntity
+Description: Source of the ID that connects vendors, customers, and employees with address and contact information.
+Columns: BusinessEntityID (int) - (Primary key for all customers, vendors, and employees.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Person.BusinessEntityAddress.BusinessEntityID via BusinessEntityID
+Referenced by Person.BusinessEntityContact.BusinessEntityID via BusinessEntityID
+Referenced by Person.Person.BusinessEntityID via BusinessEntityID
+Referenced by Purchasing.Vendor.BusinessEntityID via BusinessEntityID
+Referenced by Sales.Store.BusinessEntityID via BusinessEntityID

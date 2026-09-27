@@ -1,0 +1,7 @@
+Table: obf.T64
+Description: Cross-reference table mapping stores, vendors, and employees to people
+Columns: col_0083 (int) - (Primary key. Foreign key to BusinessEntity.BusinessEntityID.), col_0084 (int) - (Primary key. Foreign key to Person.BusinessEntityID.), col_0085 (int) - (Primary key.  Foreign key to ContactType.ContactTypeID.), col_0086 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0087 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0083 -> obf.T59.col_0075
+col_0084 -> obf.T23.col_0104
+col_0085 -> obf.T67.col_0088

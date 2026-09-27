@@ -1,0 +1,5 @@
+Table: Production.ProductDescription
+Description: Product descriptions in several languages.
+Columns: ProductDescriptionID (int) - (Primary key for ProductDescription records.), Description (nvarchar) - (Description of the product.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Production.ProductModelProductDescriptionCulture.ProductDescriptionID via ProductDescriptionID

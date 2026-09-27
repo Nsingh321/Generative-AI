@@ -1,0 +1,6 @@
+Table: Production.ProductDocument
+Description: Cross-reference table mapping products to related product documents.
+Columns: ProductID (int) - (Product identification number. Foreign key to Product.ProductID.), DocumentNode (hierarchyid) - (Document identification number. Foreign key to Document.DocumentNode.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ProductID -> Production.Product.ProductID
+DocumentNode -> Production.Document.DocumentNode

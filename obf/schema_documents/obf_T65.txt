@@ -1,0 +1,8 @@
+Table: obf.T65
+Description: Unit of measure lookup table.
+Columns: col_0276 (nchar) - (Primary key.), col_0277 (Name) - (Unit of measure description.), col_0278 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T53.col_0137 via col_0276
+Referenced by obf.T30.col_0177 via col_0276
+Referenced by obf.T30.col_0178 via col_0276
+Referenced by obf.T63.col_0310 via col_0276

@@ -1,0 +1,5 @@
+Table: Production.ProductCostHistory
+Description: Changes in the cost of a product over time.
+Columns: ProductID (int) - (Product identification number. Foreign key to Product.ProductID), StartDate (datetime) - (Product cost start date.), EndDate (datetime) - (Product cost end date.), StandardCost (money) - (Standard cost of the product.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ProductID -> Production.Product.ProductID

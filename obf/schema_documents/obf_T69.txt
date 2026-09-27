@@ -1,0 +1,7 @@
+Table: obf.T69
+Description: Lookup table containing the ISO standard codes for countries and regions.
+Columns: col_0091 (nvarchar) - (ISO standard code for countries and regions.), col_0092 (Name) - (Country or region name.), col_0093 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T49.col_0126 via col_0091
+Referenced by obf.T68.col_0350 via col_0091
+Referenced by obf.T28.col_0446 via col_0091

@@ -1,0 +1,5 @@
+Table: obf.T60
+Description: Transactions for previous years.
+Columns: col_0267 (int) - (Primary key for TransactionHistoryArchive records.), col_0268 (int) - (Product identification number. Foreign key to Product.ProductID.), col_0269 (int) - (Purchase order, sales order, or work order identification number.), col_0270 (int) - (Line number associated with the purchase order, sales order, or work order.), col_0271 (datetime) - (Date and time of the transaction.), col_0272 (nchar) - (W = Work Order, S = Sales Order, P = Purchase Order), col_0273 (int) - (Product quantity.), col_0274 (money) - (Product cost.), col_0275 (datetime) - (Date and time the record was last updated.)
+Relationships:
+No explicit foreign key relationships

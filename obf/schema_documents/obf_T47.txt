@@ -1,0 +1,7 @@
+Table: obf.T47
+Description: Product model classification.
+Columns: col_0219 (int) - (Primary key for ProductModel records.), col_0220 (Name) - (Product model description.), col_0221 (xml) - (Detailed product catalog information in xml format.), col_0222 (xml) - (Manufacturing instructions in xml format.), col_0223 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0224 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T30.col_0185 via col_0219
+Referenced by obf.T50.col_0225 via col_0219
+Referenced by obf.T52.col_0228 via col_0219

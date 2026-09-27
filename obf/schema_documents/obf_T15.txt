@@ -1,0 +1,5 @@
+Table: obf.T15
+Description: Employee pay history.
+Columns: col_0048 (int) - (Employee identification number. Foreign key to Employee.BusinessEntityID.), col_0049 (datetime) - (Date the change in pay is effective), col_0050 (money) - (Salary hourly rate.), col_0051 (tinyint) - (1 = Salary received monthly, 2 = Salary received biweekly), col_0052 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0048 -> obf.T12.col_0026

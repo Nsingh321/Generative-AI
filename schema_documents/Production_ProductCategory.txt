@@ -1,0 +1,5 @@
+Table: Production.ProductCategory
+Description: High-level product categorization.
+Columns: ProductCategoryID (int) - (Primary key for ProductCategory records.), Name (Name) - (Category description.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Production.ProductSubcategory.ProductCategoryID via ProductCategoryID

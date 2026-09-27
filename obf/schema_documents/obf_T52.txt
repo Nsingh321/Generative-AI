@@ -1,0 +1,7 @@
+Table: obf.T52
+Description: Cross-reference table mapping product descriptions and the language the description is written in.
+Columns: col_0228 (int) - (Primary key. Foreign key to ProductModel.ProductModelID.), col_0229 (int) - (Primary key. Foreign key to ProductDescription.ProductDescriptionID.), col_0230 (nchar) - (Culture identification number. Foreign key to Culture.CultureID.), col_0231 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0228 -> obf.T47.col_0219
+col_0229 -> obf.T37.col_0200
+col_0230 -> obf.T02.col_0141

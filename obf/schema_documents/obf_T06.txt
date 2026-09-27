@@ -1,0 +1,7 @@
+Table: obf.T06
+Description: Currency exchange rates.
+Columns: col_0362 (int) - (Primary key for CurrencyRate records.), col_0363 (datetime) - (Date and time the exchange rate was obtained.), col_0364 (nchar) - (Exchange rate was converted from this currency code.), col_0365 (nchar) - (Exchange rate was converted to this currency code.), col_0366 (money) - (Average exchange rate for the day.), col_0367 (money) - (Final exchange rate for the day.), col_0368 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0365 -> obf.T04.col_0359
+col_0364 -> obf.T04.col_0359
+Referenced by obf.T13.col_0408 via col_0362

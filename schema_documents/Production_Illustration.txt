@@ -1,0 +1,5 @@
+Table: Production.Illustration
+Description: Bicycle assembly diagrams.
+Columns: IllustrationID (int) - (Primary key for Illustration records.), Diagram (xml) - (Illustrations used in manufacturing instructions. Stored as XML.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Production.ProductModelIllustration.IllustrationID via IllustrationID

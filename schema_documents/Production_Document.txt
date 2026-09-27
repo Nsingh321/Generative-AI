@@ -1,0 +1,6 @@
+Table: Production.Document
+Description: Product maintenance documents.
+Columns: DocumentNode (hierarchyid) - (Primary key for Document records.), DocumentLevel (smallint) - (Depth in the document hierarchy.), Title (nvarchar) - (Title of the document.), Owner (int) - (Employee who controls the document.  Foreign key to Employee.BusinessEntityID), FolderFlag (bit) - (0 = This is a folder, 1 = This is a document.), FileName (nvarchar) - (File name of the document), FileExtension (nvarchar) - (File extension indicating the document type. For example, .doc or .txt.), Revision (nchar) - (Revision number of the document. ), ChangeNumber (int) - (Engineering change approval number.), Status (tinyint) - (1 = Pending approval, 2 = Approved, 3 = Obsolete), DocumentSummary (nvarchar) - (Document abstract.), Document (varbinary) - (Complete document.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Required for FileStream.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Owner -> HumanResources.Employee.BusinessEntityID
+Referenced by Production.ProductDocument.DocumentNode via DocumentNode

@@ -1,0 +1,6 @@
+Table: obf.T09
+Description: Product maintenance documents.
+Columns: col_0144 (hierarchyid) - (Primary key for Document records.), col_0145 (smallint) - (Depth in the document hierarchy.), col_0146 (nvarchar) - (Title of the document.), col_0147 (int) - (Employee who controls the document.  Foreign key to Employee.BusinessEntityID), col_0148 (bit) - (0 = This is a folder, 1 = This is a document.), col_0149 (nvarchar) - (File name of the document), col_0150 (nvarchar) - (File extension indicating the document type. For example, .doc or .txt.), col_0151 (nchar) - (Revision number of the document. ), col_0152 (int) - (Engineering change approval number.), col_0153 (tinyint) - (1 = Pending approval, 2 = Approved, 3 = Obsolete), col_0154 (nvarchar) - (Document abstract.), col_0155 (varbinary) - (Complete document.), col_0156 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Required for FileStream.), col_0157 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0147 -> obf.T12.col_0026
+Referenced by obf.T39.col_0205 via col_0144

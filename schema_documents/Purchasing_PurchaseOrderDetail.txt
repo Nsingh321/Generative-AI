@@ -1,0 +1,6 @@
+Table: Purchasing.PurchaseOrderDetail
+Description: Individual products associated with a specific purchase order. See PurchaseOrderHeader.
+Columns: PurchaseOrderID (int) - (Primary key. Foreign key to PurchaseOrderHeader.PurchaseOrderID.), PurchaseOrderDetailID (int) - (Primary key. One line number per purchased product.), DueDate (datetime) - (Date the product is expected to be received.), OrderQty (smallint) - (Quantity ordered.), ProductID (int) - (Product identification number. Foreign key to Product.ProductID.), UnitPrice (money) - (Vendor's selling price of a single product.), LineTotal (money) - (Per product subtotal. Computed as OrderQty * UnitPrice.), ReceivedQty (decimal) - (Quantity actually received from the vendor.), RejectedQty (decimal) - (Quantity rejected during inspection.), StockedQty (decimal) - (Quantity accepted into inventory. Computed as ReceivedQty - RejectedQty.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+PurchaseOrderID -> Purchasing.PurchaseOrderHeader.PurchaseOrderID
+ProductID -> Production.Product.ProductID

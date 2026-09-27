@@ -1,0 +1,5 @@
+Table: obf.T29
+Description: Type of phone number of a person.
+Columns: col_0121 (int) - (Primary key for telephone number type records.), col_0122 (Name) - (Name of the telephone number type), col_0123 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T27.col_0119 via col_0121

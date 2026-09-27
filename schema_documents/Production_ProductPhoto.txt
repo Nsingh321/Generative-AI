@@ -1,0 +1,5 @@
+Table: Production.ProductPhoto
+Description: Product images.
+Columns: ProductPhotoID (int) - (Primary key for ProductPhoto records.), ThumbNailPhoto (varbinary) - (Small image of the product.), ThumbnailPhotoFileName (nvarchar) - (Small image file name.), LargePhoto (varbinary) - (Large image of the product.), LargePhotoFileName (nvarchar) - (Large image file name.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Production.ProductProductPhoto.ProductPhotoID via ProductPhotoID

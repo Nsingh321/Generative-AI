@@ -1,0 +1,14 @@
+Table: Sales.SalesOrderHeader
+Description: General sales order information.
+Columns: SalesOrderID (int) - (Primary key.), RevisionNumber (tinyint) - (Incremental number to track changes to the sales order over time.), OrderDate (datetime) - (Dates the sales order was created.), DueDate (datetime) - (Date the order is due to the customer.), ShipDate (datetime) - (Date the order was shipped to the customer.), Status (tinyint) - (Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled), OnlineOrderFlag (Flag) - (0 = Order placed by sales person. 1 = Order placed online by customer.), SalesOrderNumber (nvarchar) - (Unique sales order identification number.), PurchaseOrderNumber (OrderNumber) - (Customer purchase order number reference. ), AccountNumber (AccountNumber) - (Financial accounting number reference.), CustomerID (int) - (Customer identification number. Foreign key to Customer.BusinessEntityID.), SalesPersonID (int) - (Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.), TerritoryID (int) - (Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.), BillToAddressID (int) - (Customer billing address. Foreign key to Address.AddressID.), ShipToAddressID (int) - (Customer shipping address. Foreign key to Address.AddressID.), ShipMethodID (int) - (Shipping method. Foreign key to ShipMethod.ShipMethodID.), CreditCardID (int) - (Credit card identification number. Foreign key to CreditCard.CreditCardID.), CreditCardApprovalCode (varchar) - (Approval code provided by the credit card company.), CurrencyRateID (int) - (Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.), SubTotal (money) - (Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.), TaxAmt (money) - (Tax amount.), Freight (money) - (Shipping cost.), TotalDue (money) - (Total due from customer. Computed as Subtotal + TaxAmt + Freight.), Comment (nvarchar) - (Sales representative comments.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Sales.SalesOrderDetail.SalesOrderID via SalesOrderID
+CreditCardID -> Sales.CreditCard.CreditCardID
+ShipMethodID -> Purchasing.ShipMethod.ShipMethodID
+ShipToAddressID -> Person.Address.AddressID
+BillToAddressID -> Person.Address.AddressID
+TerritoryID -> Sales.SalesTerritory.TerritoryID
+SalesPersonID -> Sales.SalesPerson.BusinessEntityID
+CustomerID -> Sales.Customer.CustomerID
+CurrencyRateID -> Sales.CurrencyRate.CurrencyRateID
+Referenced by Sales.SalesOrderHeaderSalesReason.SalesOrderID via SalesOrderID

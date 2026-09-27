@@ -1,0 +1,8 @@
+Table: obf.T05
+Description: General purchase order information. See PurchaseOrderDetail.
+Columns: col_0323 (int) - (Primary key.), col_0324 (tinyint) - (Incremental number to track changes to the purchase order over time.), col_0325 (tinyint) - (Order current status. 1 = Pending; 2 = Approved; 3 = Rejected; 4 = Complete), col_0326 (int) - (Employee who created the purchase order. Foreign key to Employee.BusinessEntityID.), col_0327 (int) - (Vendor with whom the purchase order is placed. Foreign key to Vendor.BusinessEntityID.), col_0328 (int) - (Shipping method. Foreign key to ShipMethod.ShipMethodID.), col_0329 (datetime) - (Purchase order creation date.), col_0330 (datetime) - (Estimated shipment date from the vendor.), col_0331 (money) - (Purchase order subtotal. Computed as SUM(PurchaseOrderDetail.LineTotal)for the appropriate PurchaseOrderID.), col_0332 (money) - (Tax amount.), col_0333 (money) - (Shipping cost.), col_0334 (money) - (Total due to vendor. Computed as Subtotal + TaxAmt + Freight.), col_0335 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T71.col_0312 via col_0323
+col_0328 -> obf.T35.col_0336
+col_0327 -> obf.T66.col_0342
+col_0326 -> obf.T12.col_0026

@@ -1,0 +1,6 @@
+Table: obf.T39
+Description: Cross-reference table mapping products to related product documents.
+Columns: col_0204 (int) - (Product identification number. Foreign key to Product.ProductID.), col_0205 (hierarchyid) - (Document identification number. Foreign key to Document.DocumentNode.), col_0206 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0204 -> obf.T30.col_0166
+col_0205 -> obf.T09.col_0144

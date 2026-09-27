@@ -1,0 +1,5 @@
+Table: Production.Culture
+Description: Lookup table containing the languages in which some AdventureWorks data is stored.
+Columns: CultureID (nchar) - (Primary key for Culture records.), Name (Name) - (Culture description.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Production.ProductModelProductDescriptionCulture.CultureID via CultureID

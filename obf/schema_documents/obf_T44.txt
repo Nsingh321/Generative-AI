@@ -1,0 +1,5 @@
+Table: obf.T44
+Description: Changes in the list price of a product over time.
+Columns: col_0214 (int) - (Product identification number. Foreign key to Product.ProductID), col_0215 (datetime) - (List price start date.), col_0216 (datetime) - (List price end date), col_0217 (money) - (Product list price.), col_0218 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0214 -> obf.T30.col_0166

@@ -1,0 +1,1936 @@
+[
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT Name, GroupName FROM HumanResources.Department;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly selects the department name and its group name from the Department table, fulfilling the user's request exactly. No unnecessary joins or complexity are present.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1489,
+            "completion_tokens": 179,
+            "total_tokens": 1668
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "HumanResources.Department",
+            "HumanResources.EmployeeDepartmentHistory",
+            "Production.WorkOrder",
+            "HumanResources.Employee",
+            "Production.WorkOrderRouting",
+            "HumanResources.JobCandidate",
+            "Purchasing.PurchaseOrderHeader",
+            "Production.Document",
+            "HumanResources.Shift",
+            "Production.ProductDocument",
+            "Purchasing.Vendor",
+            "Purchasing.PurchaseOrderDetail"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "b1",
+        "user_question": "List all departments along with the group they belong to.",
+        "sql_category": "Basic",
+        "tests": "single_table_select",
+        "gold_sql": "SELECT Name, GroupName FROM HumanResources.Department;",
+        "gold_tables": [
+            "HumanResources.Department"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT COUNT(*) FROM Production.Product;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query accurately counts all products in the Production.Product table, directly answering the user's question.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1547,
+            "completion_tokens": 121,
+            "total_tokens": 1668
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Production.Product",
+            "Purchasing.PurchaseOrderDetail",
+            "Purchasing.ProductVendor",
+            "Production.ProductCostHistory",
+            "Production.ProductProductPhoto",
+            "Sales.SalesOrderDetail",
+            "Sales.SpecialOfferProduct",
+            "Production.UnitMeasure",
+            "Production.ProductInventory",
+            "Production.BillOfMaterials",
+            "Production.Location",
+            "Sales.SpecialOffer"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "b2",
+        "user_question": "How many products are there in total?",
+        "sql_category": "Basic",
+        "tests": "scalar_aggregate",
+        "gold_sql": "SELECT COUNT(*) AS ProductCount FROM Production.Product;",
+        "gold_tables": [
+            "Production.Product"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT Name, ListPrice FROM Production.Product ORDER BY ListPrice DESC OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 2: The query accurately returns the names and list prices of the 10 most expensive products by ordering by ListPrice in descending order and fetching the first 10 rows. It is efficient with no unnecessary joins.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1655,
+            "completion_tokens": 375,
+            "total_tokens": 2030
+        },
+        "attempts": 1,
+        "retrieved_tables": [
+            "Production.ProductListPriceHistory",
+            "Production.ProductCostHistory",
+            "Production.Product",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.SalesOrderDetail",
+            "Purchasing.ProductVendor",
+            "Sales.SpecialOfferProduct",
+            "Production.UnitMeasure",
+            "Purchasing.Vendor",
+            "Sales.SpecialOffer",
+            "Production.BillOfMaterials",
+            "Purchasing.PurchaseOrderHeader"
+        ],
+        "tables_discovered": 12,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "syntax_error",
+                "candidate_sql": "SELECT Name, ListPrice FROM Production.Product ORDER BY ListPrice DESC FETCH NEXT 10 ROWS ONLY;",
+                "last_error": "Error, while executing the SELECT query: ('42000', '[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid usage of the option NEXT in the FETCH statement. (153) (SQLExecDirectW)')",
+                "had_repair_context": false,
+                "judge_score": null,
+                "judge_feedback": ""
+            }
+        ],
+        "execution_match": true,
+        "item_id": "b3",
+        "user_question": "Show the name and list price of the 10 most expensive products.",
+        "sql_category": "Basic",
+        "tests": "top_n_ordering",
+        "gold_sql": "SELECT TOP 10 Name, ListPrice FROM Production.Product ORDER BY ListPrice DESC;",
+        "gold_tables": [
+            "Production.Product"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT p.FirstName,\n       p.LastName,\n       e.JobTitle\nFROM   [Person].[Person] AS p\nJOIN   [HumanResources].[Employee] AS e\n       ON p.BusinessEntityID = e.BusinessEntityID; ",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly joins Person and Employee to retrieve first name, last name, and job title for all employees. It uses the necessary tables and join condition with no redundant elements.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1436,
+            "completion_tokens": 171,
+            "total_tokens": 1607
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "HumanResources.Employee",
+            "HumanResources.JobCandidate",
+            "HumanResources.EmployeeDepartmentHistory",
+            "HumanResources.Department",
+            "Person.Person",
+            "HumanResources.EmployeePayHistory",
+            "HumanResources.Shift",
+            "Person.PersonPhone",
+            "Person.BusinessEntityContact",
+            "Person.BusinessEntity",
+            "Person.ContactType",
+            "Person.PhoneNumberType"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "b4",
+        "user_question": "List the first name, last name and job title of all employees.",
+        "sql_category": "Basic",
+        "tests": "two_table_join",
+        "gold_sql": "SELECT p.FirstName, p.LastName, e.JobTitle FROM HumanResources.Employee e JOIN Person.Person p ON e.BusinessEntityID = p.BusinessEntityID;",
+        "gold_tables": [
+            "HumanResources.Employee",
+            "Person.Person"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT [Name] FROM Production.[ProductCategory];",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly selects the Name column from the Production.ProductCategory table, directly fulfilling the request to list all product category names.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1129,
+            "completion_tokens": 133,
+            "total_tokens": 1262
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Production.ProductCategory",
+            "Production.ProductSubcategory",
+            "Production.Product",
+            "Production.ProductListPriceHistory",
+            "Production.ProductDocument",
+            "Production.ProductPhoto",
+            "Production.ProductProductPhoto",
+            "Production.ProductReview",
+            "Production.ProductInventory",
+            "Production.Location"
+        ],
+        "tables_discovered": 10,
+        "history": [],
+        "execution_match": true,
+        "item_id": "b5",
+        "user_question": "List all product category names.",
+        "sql_category": "Basic",
+        "tests": "single_table_select",
+        "gold_sql": "SELECT Name FROM Production.ProductCategory;",
+        "gold_tables": [
+            "Production.ProductCategory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT YEAR(OrderDate) AS SaleYear, SUM(TotalDue) AS TotalSalesAmount\nFROM Sales.SalesOrderHeader\nGROUP BY YEAR(OrderDate)\nORDER BY SaleYear;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly groups TotalDue by calendar year using YEAR(OrderDate) and sums TotalDue, with no unnecessary complexity.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1746,
+            "completion_tokens": 163,
+            "total_tokens": 1909
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Sales.SalesPersonQuotaHistory",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.SalesOrderHeader",
+            "Production.TransactionHistory",
+            "Sales.SalesPerson",
+            "Sales.SalesTaxRate",
+            "Sales.SalesTerritory",
+            "Production.Product",
+            "Sales.SalesOrderDetail",
+            "Sales.SpecialOfferProduct",
+            "Production.ProductCostHistory",
+            "Purchasing.ProductVendor"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "m1",
+        "user_question": "What is the total sales amount (TotalDue) for each calendar year?",
+        "sql_category": "Medium",
+        "tests": "group_by_aggregate",
+        "gold_sql": "SELECT YEAR(OrderDate) AS OrderYear, SUM(TotalDue) AS TotalSales FROM Sales.SalesOrderHeader GROUP BY YEAR(OrderDate) ORDER BY OrderYear;",
+        "gold_tables": [
+            "Sales.SalesOrderHeader"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "acceptable_sql",
+        "generated_sql": "SELECT d.Name AS DepartmentName,\n       COUNT(DISTINCT edh.BusinessEntityID) AS EmployeeCount\nFROM HumanResources.EmployeeDepartmentHistory edh\nJOIN HumanResources.Department d ON edh.DepartmentID = d.DepartmentID\nWHERE edh.EndDate IS NULL OR edh.EndDate > CAST(GETDATE() AS date)\nGROUP BY d.Name;\n",
+        "judge_score": 4,
+        "judge_feedback": "\nAttempt 1: The query correctly counts employees per department using the department history table and joining to department names. However, the condition 'EndDate IS NULL OR EndDate > GETDATE()' is broader than needed; the current assignment in AdventureWorks is defined strictly by EndDate IS NULL. Including future end dates could incorrectly count upcoming assignments as current.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1511,
+            "completion_tokens": 1892,
+            "total_tokens": 3403
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "HumanResources.EmployeeDepartmentHistory",
+            "HumanResources.Department",
+            "HumanResources.Employee",
+            "HumanResources.EmployeePayHistory",
+            "Sales.SalesPerson",
+            "HumanResources.Shift",
+            "HumanResources.JobCandidate",
+            "Sales.SalesTerritoryHistory",
+            "Purchasing.PurchaseOrderHeader",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.SalesTerritory",
+            "Purchasing.Vendor"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "m2",
+        "user_question": "How many employees currently work in each department? (use the current assignment only)",
+        "sql_category": "Medium",
+        "tests": "junction_table_join_with_filter",
+        "gold_sql": "SELECT d.Name AS DepartmentName, COUNT(*) AS EmployeeCount FROM HumanResources.Department d JOIN HumanResources.EmployeeDepartmentHistory edh ON d.DepartmentID = edh.DepartmentID WHERE edh.EndDate IS NULL GROUP BY d.Name ORDER BY EmployeeCount DESC;",
+        "gold_tables": [
+            "HumanResources.Department",
+            "HumanResources.EmployeeDepartmentHistory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT DISTINCT e.BusinessEntityID, p.FirstName, p.LastName\nFROM HumanResources.Employee e\nJOIN Person.Person p ON e.BusinessEntityID = p.BusinessEntityID\nJOIN HumanResources.EmployeeDepartmentHistory edh ON e.BusinessEntityID = edh.BusinessEntityID\nJOIN HumanResources.Department d ON edh.DepartmentID = d.DepartmentID\nWHERE d.Name = 'Human Resources' AND edh.EndDate IS NULL\nORDER BY p.LastName, p.FirstName;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 2: The query does not limit to current employees in Human Resources; it may include past employees who previously worked there because EmployeeDepartmentHistory.EndDate is not filtered. Additionally, multiple history records per employee could cause duplicates.\nAttempt 3: The query correctly identifies current employees in the Human Resources department by joining the necessary tables and filtering on Department.Name = 'Human Resources' and EndDate IS NULL. It returns the requested employee details.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1701,
+            "completion_tokens": 218,
+            "total_tokens": 1919
+        },
+        "attempts": 2,
+        "retrieved_tables": [
+            "HumanResources.Department",
+            "HumanResources.Employee",
+            "HumanResources.EmployeeDepartmentHistory",
+            "HumanResources.JobCandidate",
+            "HumanResources.EmployeePayHistory",
+            "HumanResources.Shift",
+            "Person.Person",
+            "Sales.SalesPerson",
+            "Purchasing.PurchaseOrderHeader",
+            "Person.BusinessEntityContact",
+            "Sales.Store",
+            "Sales.Customer"
+        ],
+        "tables_discovered": 12,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "syntax_error",
+                "candidate_sql": "SELECT e.BusinessEntityID, p.FirstName, p.LastName\nFROM HumanResources.Employee e\nJOIN HumanResources.EmployeeDepartmentHistory edh ON e.BusinessEntityID = edh.BusinessEntityID\nJOIN HumanResources.Department d ON edh.DepartmentID = d.DepartmentID\nWHERE d.Name = 'Human Resources'\nORDER BY p.LastName, p.FirstName;",
+                "last_error": "Error, while executing the SELECT query: ('42000', '[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]The multi-part identifier \"p.FirstName\" could not be bound. (4104) (SQLExecDirectW); [42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]The multi-part identifier \"p.LastName\" could not be bound. (4104); [42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]The multi-part identifier \"p.LastName\" could not be bound. (4104); [42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]The multi-part identifier \"p.FirstName\" could not be bound. (4104)')",
+                "had_repair_context": false,
+                "judge_score": null,
+                "judge_feedback": ""
+            },
+            {
+                "attempt": 1,
+                "status": "judge_reject",
+                "candidate_sql": "SELECT e.BusinessEntityID, p.FirstName, p.LastName\nFROM HumanResources.Employee e\nJOIN Person.Person p ON e.BusinessEntityID = p.BusinessEntityID\nJOIN HumanResources.EmployeeDepartmentHistory edh ON e.BusinessEntityID = edh.BusinessEntityID\nJOIN HumanResources.Department d ON edh.DepartmentID = d.DepartmentID\nWHERE d.Name = 'Human Resources'\nORDER BY p.LastName, p.FirstName;",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 3,
+                "judge_feedback": "\nAttempt 2: The query does not limit to current employees in Human Resources; it may include past employees who previously worked there because EmployeeDepartmentHistory.EndDate is not filtered. Additionally, multiple history records per employee could cause duplicates."
+            }
+        ],
+        "execution_match": false,
+        "item_id": "m3",
+        "user_question": "List all employees who work in the Human Resources department.",
+        "sql_category": "Medium",
+        "tests": "value_repair",
+        "gold_sql": "SELECT p.FirstName, p.LastName, e.JobTitle FROM HumanResources.Employee e JOIN Person.Person p ON e.BusinessEntityID = p.BusinessEntityID JOIN HumanResources.EmployeeDepartmentHistory edh ON e.BusinessEntityID = edh.BusinessEntityID JOIN HumanResources.Department d ON edh.DepartmentID = d.DepartmentID WHERE d.Name = 'Human Resources' AND edh.EndDate IS NULL;",
+        "gold_tables": [
+            "HumanResources.Employee",
+            "Person.Person",
+            "HumanResources.EmployeeDepartmentHistory",
+            "HumanResources.Department"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT p.Name, p.ListPrice\nFROM Production.Product AS p\nJOIN Production.ProductSubcategory AS sc ON p.ProductSubcategoryID = sc.ProductSubcategoryID\nWHERE sc.Name = 'Mountain Bikes';",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: Correctly joins Product with ProductSubcategory and filters by subcategory name 'Mountain Bikes', returning the requested list prices.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1642,
+            "completion_tokens": 168,
+            "total_tokens": 1810
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Production.ProductListPriceHistory",
+            "Purchasing.Vendor",
+            "Purchasing.ProductVendor",
+            "Production.ProductCostHistory",
+            "Production.BillOfMaterials",
+            "Sales.SpecialOfferProduct",
+            "Production.Product",
+            "Production.UnitMeasure",
+            "Sales.SalesOrderDetail",
+            "Purchasing.PurchaseOrderDetail",
+            "Production.ProductSubcategory",
+            "Production.ProductDocument"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "m4",
+        "user_question": "Show all products in the 'Mountain Bikes' subcategory with their list price.",
+        "sql_category": "Medium",
+        "tests": "join_with_text_filter",
+        "gold_sql": "SELECT p.Name, p.ListPrice FROM Production.Product p JOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID WHERE ps.Name = 'Mountain Bikes';",
+        "gold_tables": [
+            "Production.Product",
+            "Production.ProductSubcategory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT st.Name AS TerritoryName,\n       COUNT(c.CustomerID) AS CustomerCount\nFROM Sales.SalesTerritory st\nLEFT JOIN Sales.Customer c ON c.TerritoryID = st.TerritoryID\nGROUP BY st.Name;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query uses an inner join, so sales territories with zero assigned customers are omitted from the results. To count customers for each territory, use a LEFT JOIN from Sales.SalesTerritory to Sales.Customer, and COUNT(c.CustomerID) to include territories with no customers (count 0).\nAttempt 2: The query correctly counts customers per sales territory using an appropriate LEFT JOIN and GROUP BY, including territories with no customers. It is accurate and optimized.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1553,
+            "completion_tokens": 170,
+            "total_tokens": 1723
+        },
+        "attempts": 1,
+        "retrieved_tables": [
+            "Sales.Customer",
+            "Sales.SalesTerritory",
+            "Sales.SalesTerritoryHistory",
+            "Sales.SalesPerson",
+            "Sales.Store",
+            "Sales.SalesOrderHeader",
+            "Sales.SalesPersonQuotaHistory",
+            "Person.StateProvince",
+            "Sales.SalesOrderDetail",
+            "Sales.SalesTaxRate",
+            "Person.Address",
+            "Person.CountryRegion"
+        ],
+        "tables_discovered": 12,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "judge_reject",
+                "candidate_sql": "SELECT st.Name AS TerritoryName,\n       COUNT(c.CustomerID) AS CustomerCount\nFROM Sales.Customer c\nJOIN Sales.SalesTerritory st ON c.TerritoryID = st.TerritoryID\nGROUP BY st.Name;\n",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 3,
+                "judge_feedback": "\nAttempt 1: The query uses an inner join, so sales territories with zero assigned customers are omitted from the results. To count customers for each territory, use a LEFT JOIN from Sales.SalesTerritory to Sales.Customer, and COUNT(c.CustomerID) to include territories with no customers (count 0)."
+            }
+        ],
+        "execution_match": true,
+        "item_id": "m5",
+        "user_question": "Count how many customers are assigned to each sales territory.",
+        "sql_category": "Medium",
+        "tests": "group_by_join",
+        "gold_sql": "SELECT st.Name AS TerritoryName, COUNT(*) AS CustomerCount FROM Sales.Customer c JOIN Sales.SalesTerritory st ON c.TerritoryID = st.TerritoryID GROUP BY st.Name ORDER BY CustomerCount DESC;",
+        "gold_tables": [
+            "Sales.Customer",
+            "Sales.SalesTerritory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT p.FirstName, p.LastName\nFROM [Person].[Person] AS p\nJOIN [HumanResources].[Employee] AS e ON p.BusinessEntityID = e.BusinessEntityID\nWHERE e.Gender = 'F';",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly joins Person and Employee tables to retrieve names of female employees, filtering by Gender='F'. No redundant joins or missing filters.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1426,
+            "completion_tokens": 139,
+            "total_tokens": 1565
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "HumanResources.Employee",
+            "HumanResources.EmployeeDepartmentHistory",
+            "HumanResources.JobCandidate",
+            "HumanResources.Department",
+            "HumanResources.EmployeePayHistory",
+            "Person.Person",
+            "HumanResources.Shift",
+            "Person.BusinessEntityContact",
+            "Person.PersonPhone",
+            "Person.ContactType",
+            "Person.BusinessEntity",
+            "Person.PhoneNumberType"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "m6",
+        "user_question": "List the names of all female employees.",
+        "sql_category": "Medium",
+        "tests": "value_repair",
+        "gold_sql": "SELECT p.FirstName, p.LastName FROM HumanResources.Employee e JOIN Person.Person p ON e.BusinessEntityID = p.BusinessEntityID WHERE e.Gender = 'F';",
+        "gold_tables": [
+            "HumanResources.Employee",
+            "Person.Person"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT pc.[Name] AS CategoryName,\n       COUNT(p.ProductID) AS ProductCount\nFROM Production.ProductCategory pc\nLEFT JOIN Production.ProductSubcategory ps ON ps.ProductCategoryID = pc.ProductCategoryID\nLEFT JOIN Production.Product p ON p.ProductSubcategoryID = ps.ProductSubcategoryID\nGROUP BY pc.[Name];",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query counts products per category but uses INNER JOIN, which omits categories with no products. To truly list each product category, a LEFT JOIN from ProductCategory is needed to include categories with zero products.\nAttempt 2: The query correctly counts products per category by joining through the subcategory table, and uses LEFT JOIN to include categories with no products.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1542,
+            "completion_tokens": 401,
+            "total_tokens": 1943
+        },
+        "attempts": 1,
+        "retrieved_tables": [
+            "Production.ProductCategory",
+            "Production.ProductSubcategory",
+            "Production.Product",
+            "Production.ProductInventory",
+            "Purchasing.PurchaseOrderDetail",
+            "Purchasing.ProductVendor",
+            "Production.UnitMeasure",
+            "Production.ProductCostHistory",
+            "Sales.ShoppingCartItem",
+            "Production.BillOfMaterials"
+        ],
+        "tables_discovered": 10,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "judge_reject",
+                "candidate_sql": "SELECT pc.[Name] AS CategoryName,\n       COUNT(p.ProductID) AS ProductCount\nFROM Production.Product p\nJOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID\nJOIN Production.ProductCategory pc ON ps.ProductCategoryID = pc.ProductCategoryID\nGROUP BY pc.[Name];",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 3,
+                "judge_feedback": "\nAttempt 1: The query counts products per category but uses INNER JOIN, which omits categories with no products. To truly list each product category, a LEFT JOIN from ProductCategory is needed to include categories with zero products."
+            }
+        ],
+        "execution_match": true,
+        "item_id": "m7",
+        "user_question": "How many products are there in each product category?",
+        "sql_category": "Medium",
+        "tests": "three_table_group_by",
+        "gold_sql": "SELECT pc.Name AS Category, COUNT(*) AS ProductCount FROM Production.Product p JOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID JOIN Production.ProductCategory pc ON ps.ProductCategoryID = pc.ProductCategoryID GROUP BY pc.Name;",
+        "gold_tables": [
+            "Production.Product",
+            "Production.ProductSubcategory",
+            "Production.ProductCategory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT d.Name AS DepartmentName,\n       COUNT(DISTINCT edh.BusinessEntityID) AS EmployeeCount\nFROM HumanResources.EmployeeDepartmentHistory edh\nJOIN HumanResources.Department d ON edh.DepartmentID = d.DepartmentID\nGROUP BY d.Name\nHAVING COUNT(DISTINCT edh.BusinessEntityID) > 5;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly joins EmployeeDepartmentHistory with Department, counts distinct employees per department, and filters groups with count > 5 using HAVING. It is optimized and aligns exactly with the user request.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1555,
+            "completion_tokens": 454,
+            "total_tokens": 2009
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "HumanResources.EmployeeDepartmentHistory",
+            "HumanResources.Department",
+            "HumanResources.Employee",
+            "HumanResources.EmployeePayHistory",
+            "HumanResources.JobCandidate",
+            "Sales.SalesPerson",
+            "Purchasing.PurchaseOrderHeader",
+            "Production.Document",
+            "Person.Person",
+            "Sales.Customer",
+            "Purchasing.PurchaseOrderDetail",
+            "Purchasing.Vendor"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": false,
+        "item_id": "m8",
+        "user_question": "Show each department name and its employee count where the count > 5.",
+        "sql_category": "Medium",
+        "tests": "group_by_having",
+        "gold_sql": "SELECT d.Name, COUNT(*) AS EmployeeCount FROM HumanResources.Department d JOIN HumanResources.EmployeeDepartmentHistory edh ON d.DepartmentID = edh.DepartmentID WHERE edh.EndDate IS NULL GROUP BY d.Name HAVING COUNT(*) > 5;",
+        "gold_tables": [
+            "HumanResources.Department",
+            "HumanResources.EmployeeDepartmentHistory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT COUNT(*)\nFROM Sales.SalesOrderHeader\nWHERE OrderDate >= '2013-01-01' AND OrderDate < '2014-01-01';",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly counts sales orders placed in 2013 by filtering OrderDate within the year boundaries. It is accurate and efficient with no unnecessary joins.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1599,
+            "completion_tokens": 118,
+            "total_tokens": 1717
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Sales.SalesOrderHeader",
+            "Sales.SalesOrderHeaderSalesReason",
+            "Sales.SalesOrderDetail",
+            "Sales.SalesPersonQuotaHistory",
+            "Purchasing.PurchaseOrderHeader",
+            "Sales.ShoppingCartItem",
+            "Sales.SalesPerson",
+            "Purchasing.ShipMethod",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.SalesTerritoryHistory",
+            "Sales.Store",
+            "Sales.SalesTerritory"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "m9",
+        "user_question": "How many sales orders were placed in 2013?",
+        "sql_category": "Medium",
+        "tests": "scalar_date_filter",
+        "gold_sql": "SELECT COUNT(*) AS OrderCount FROM Sales.SalesOrderHeader WHERE YEAR(OrderDate) = 2013;",
+        "gold_tables": [
+            "Sales.SalesOrderHeader"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT TOP 10 Name, StandardCost FROM Production.Product ORDER BY StandardCost DESC;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly returns the name and standard cost of the top 10 products with the highest standard cost, ordered descending and limited to 10. No unnecessary complexity or missing elements.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1646,
+            "completion_tokens": 182,
+            "total_tokens": 1828
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Production.ProductCostHistory",
+            "Production.Product",
+            "Production.ProductListPriceHistory",
+            "Purchasing.ProductVendor",
+            "Purchasing.Vendor",
+            "Purchasing.PurchaseOrderDetail",
+            "Production.UnitMeasure",
+            "Purchasing.PurchaseOrderHeader",
+            "Sales.SpecialOfferProduct",
+            "Sales.SalesOrderDetail",
+            "Production.BillOfMaterials",
+            "Sales.SpecialOffer"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "m10",
+        "user_question": "Show the name and standard cost of the 10 products with the highest standard cost.",
+        "sql_category": "Medium",
+        "tests": "top_n_ordering",
+        "gold_sql": "SELECT TOP 10 Name, StandardCost FROM Production.Product ORDER BY StandardCost DESC;",
+        "gold_tables": [
+            "Production.Product"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT YEAR([HireDate]) AS HireYear, COUNT(*) AS EmployeeCount\nFROM [HumanResources].[Employee]\nGROUP BY YEAR([HireDate]);",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly groups by year of HireDate and counts employees per year, directly answering the user's request. It uses the appropriate table and no unnecessary complexity.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1418,
+            "completion_tokens": 122,
+            "total_tokens": 1540
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "HumanResources.Employee",
+            "HumanResources.EmployeePayHistory",
+            "HumanResources.EmployeeDepartmentHistory",
+            "HumanResources.JobCandidate",
+            "Sales.SalesPerson",
+            "HumanResources.Department",
+            "Sales.Store",
+            "Sales.SalesTerritoryHistory",
+            "Purchasing.PurchaseOrderHeader",
+            "Sales.Customer",
+            "Purchasing.PurchaseOrderDetail",
+            "Person.BusinessEntity"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "m11",
+        "user_question": "How many employees were hired in each year?",
+        "sql_category": "Medium",
+        "tests": "group_by_date",
+        "gold_sql": "SELECT YEAR(HireDate) AS HireYear, COUNT(*) AS NumHired FROM HumanResources.Employee GROUP BY YEAR(HireDate) ORDER BY HireYear;",
+        "gold_tables": [
+            "HumanResources.Employee"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT Name FROM Production.Product WHERE Color = 'Grey';",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query accurately selects product names where the color is 'Grey', directly fulfilling the user's request.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1585,
+            "completion_tokens": 245,
+            "total_tokens": 1830
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Production.Product",
+            "Purchasing.Vendor",
+            "Production.ProductProductPhoto",
+            "Production.ProductCategory",
+            "Purchasing.PurchaseOrderDetail",
+            "Production.ProductPhoto",
+            "Production.ProductSubcategory",
+            "Purchasing.ProductVendor",
+            "Purchasing.PurchaseOrderHeader",
+            "Production.UnitMeasure",
+            "Purchasing.ShipMethod",
+            "HumanResources.Employee"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "m12",
+        "user_question": "List the names of all products that are grey in colour.",
+        "sql_category": "Medium",
+        "tests": "value_repair",
+        "gold_sql": "SELECT Name FROM Production.Product WHERE Color = 'Grey';",
+        "gold_tables": [
+            "Production.Product"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT TerritoryID, Name FROM Sales.SalesTerritory WHERE [Group] = 'Europe';",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly filters the SalesTerritory table for the 'Europe' group and returns the relevant territory identifiers and names. It is accurate and efficient with no unnecessary joins.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1461,
+            "completion_tokens": 177,
+            "total_tokens": 1638
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Sales.SalesTerritory",
+            "Sales.SalesTerritoryHistory",
+            "Sales.CountryRegionCurrency",
+            "Sales.SalesPerson",
+            "Person.CountryRegion",
+            "Sales.SalesOrderHeader",
+            "Sales.Customer",
+            "Person.StateProvince",
+            "Sales.Store",
+            "Sales.SalesTaxRate",
+            "Person.Person",
+            "Person.Address"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "m13",
+        "user_question": "Which sales territories belong to the 'Europe' group?",
+        "sql_category": "Medium",
+        "tests": "reserved_word_column_filter",
+        "gold_sql": "SELECT Name FROM Sales.SalesTerritory WHERE [Group] = 'Europe';",
+        "gold_tables": [
+            "Sales.SalesTerritory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT TOP 5 s.CustomerID,\n       SUM(s.TotalDue) AS TotalSpent\nFROM Sales.SalesOrderHeader AS s\nGROUP BY s.CustomerID\nORDER BY TotalSpent DESC;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly identifies the top 5 customers by summing TotalDue grouped by CustomerID and sorting by the total descending. It uses the appropriate table and is optimized with no redundant joins.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1741,
+            "completion_tokens": 979,
+            "total_tokens": 2720
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Purchasing.Vendor",
+            "Purchasing.ProductVendor",
+            "Sales.Customer",
+            "Purchasing.PurchaseOrderHeader",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.ShoppingCartItem",
+            "Production.Product",
+            "Sales.Store",
+            "Sales.SalesOrderHeader",
+            "Sales.SalesPerson",
+            "Purchasing.ShipMethod",
+            "Person.BusinessEntity"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "h1",
+        "user_question": "Who are the top 5 customers by total amount spent across all their orders?",
+        "sql_category": "Hard",
+        "tests": "aggregate_top_n",
+        "gold_sql": "SELECT TOP 5 soh.CustomerID, SUM(soh.TotalDue) AS TotalSpent FROM Sales.SalesOrderHeader soh GROUP BY soh.CustomerID ORDER BY TotalSpent DESC;",
+        "gold_tables": [
+            "Sales.SalesOrderHeader"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT TOP (1) p.ProductID, p.Name\nFROM Sales.SalesOrderDetail sod\nJOIN Production.Product p ON sod.ProductID = p.ProductID\nGROUP BY p.ProductID, p.Name\nORDER BY SUM(sod.OrderQty) DESC;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly identifies the product with the highest total quantity sold by summing OrderQty and ordering descending with TOP 1. It uses appropriate joins and grouping, and returns the product name and ID as expected.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1692,
+            "completion_tokens": 284,
+            "total_tokens": 1976
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Sales.SalesOrderDetail",
+            "Production.Product",
+            "Purchasing.ProductVendor",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.ShoppingCartItem",
+            "Production.ProductListPriceHistory",
+            "Sales.SpecialOfferProduct",
+            "Production.UnitMeasure",
+            "Production.TransactionHistory",
+            "Production.BillOfMaterials",
+            "Sales.SpecialOffer"
+        ],
+        "tables_discovered": 11,
+        "history": [],
+        "execution_match": false,
+        "item_id": "h2",
+        "user_question": "Which product has been sold in the highest total quantity?",
+        "sql_category": "Hard",
+        "tests": "join_aggregate_top_n",
+        "gold_sql": "SELECT TOP 1 p.Name, SUM(sod.OrderQty) AS TotalQty FROM Sales.SalesOrderDetail sod JOIN Production.Product p ON sod.ProductID = p.ProductID GROUP BY p.Name ORDER BY TotalQty DESC;",
+        "gold_tables": [
+            "Sales.SalesOrderDetail",
+            "Production.Product"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT p.ProductID, p.Name\nFROM Production.Product AS p\nWHERE NOT EXISTS (\n    SELECT 1 FROM Sales.SalesOrderDetail AS sod WHERE sod.ProductID = p.ProductID\n);\n",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly identifies products that have never been ordered by using NOT EXISTS on SalesOrderDetail, filtering out any product with a matching order. It uses the appropriate tables and is optimized with no redundant joins.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1794,
+            "completion_tokens": 246,
+            "total_tokens": 2040
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Sales.ShoppingCartItem",
+            "Purchasing.PurchaseOrderDetail",
+            "Production.Product",
+            "Production.WorkOrder",
+            "Sales.SalesOrderDetail",
+            "Purchasing.Vendor",
+            "Purchasing.PurchaseOrderHeader",
+            "Purchasing.ProductVendor",
+            "Sales.SpecialOfferProduct",
+            "Purchasing.ShipMethod",
+            "Sales.SpecialOffer",
+            "Production.UnitMeasure"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "h3",
+        "user_question": "List products that have never been ordered by customers.",
+        "sql_category": "Hard",
+        "tests": "anti_join",
+        "gold_sql": "SELECT p.ProductID, p.Name FROM Production.Product p LEFT JOIN Sales.SalesOrderDetail sod ON p.ProductID = sod.ProductID WHERE sod.ProductID IS NULL;",
+        "gold_tables": [
+            "Production.Product",
+            "Sales.SalesOrderDetail"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "acceptable_sql",
+        "generated_sql": "SELECT p.FirstName,\n       p.LastName,\n       SUM(so.TotalDue) AS TotalSales\nFROM   Sales.SalesPerson sp\nJOIN   Person.Person p        ON sp.BusinessEntityID = p.BusinessEntityID\nJOIN   Sales.SalesOrderHeader so ON so.SalesPersonID = sp.BusinessEntityID\nGROUP BY p.FirstName, p.LastName;",
+        "judge_score": 3,
+        "judge_feedback": "\nAttempt 2: - The query correctly joins required tables and sums TotalDue, but uses INNER JOIN which excludes salespersons with no orders. - Grouping by first and last name alone may merge distinct salespersons who share the same name; grouping by BusinessEntityID would be safer.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 2154,
+            "completion_tokens": 985,
+            "total_tokens": 3139
+        },
+        "attempts": 1,
+        "retrieved_tables": [
+            "Sales.SalesPersonQuotaHistory",
+            "Sales.SalesPerson",
+            "Sales.SalesOrderHeader",
+            "Production.TransactionHistory",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.SalesOrderDetail",
+            "Sales.SalesTerritory",
+            "Production.Product",
+            "Sales.SalesOrderHeaderSalesReason",
+            "Sales.SalesTerritoryHistory",
+            "Purchasing.ProductVendor",
+            "Sales.Customer",
+            "Person.Person"
+        ],
+        "tables_discovered": 13,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "out_of_context_table",
+                "candidate_sql": "SELECT p.FirstName,\n       p.LastName,\n       SUM(so.TotalDue) AS TotalSales\nFROM   Sales.SalesPerson sp\nJOIN   Sales.Customer c      ON sp.BusinessEntityID = c.PersonID\nJOIN   Person.Person p        ON c.PersonID = p.BusinessEntityID\nJOIN   Sales.SalesOrderHeader so ON so.SalesPersonID = sp.BusinessEntityID\nGROUP BY p.FirstName, p.LastName;",
+                "last_error": null,
+                "had_repair_context": false,
+                "judge_score": null,
+                "judge_feedback": ""
+            }
+        ],
+        "execution_match": true,
+        "item_id": "h4",
+        "user_question": "For each sales person, show their first/last name and their total sales (TotalDue) for orders they handled.",
+        "sql_category": "Hard",
+        "tests": "three_table_join_aggregate",
+        "gold_sql": "SELECT p.FirstName, p.LastName, SUM(soh.TotalDue) AS TotalSales FROM Sales.SalesPerson sp JOIN Person.Person p ON sp.BusinessEntityID = p.BusinessEntityID JOIN Sales.SalesOrderHeader soh ON sp.BusinessEntityID = soh.SalesPersonID GROUP BY p.FirstName, p.LastName ORDER BY TotalSales DESC;",
+        "gold_tables": [
+            "Sales.SalesPerson",
+            "Person.Person",
+            "Sales.SalesOrderHeader"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT DATEPART(month, OrderDate) AS Month, AVG(TotalDue) AS AvgTotalDue\nFROM Sales.SalesOrderHeader\nWHERE OrderDate >= '2013-01-01' AND OrderDate < '2014-01-01'\nGROUP BY DATEPART(month, OrderDate)\nORDER BY Month;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly filters for 2013 and groups by month to compute the average TotalDue per month, accurately fulfilling the user's request.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1832,
+            "completion_tokens": 172,
+            "total_tokens": 2004
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Purchasing.ProductVendor",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.SalesOrderHeader",
+            "Purchasing.PurchaseOrderHeader",
+            "Sales.ShoppingCartItem",
+            "Production.ProductCostHistory",
+            "Production.Product",
+            "Purchasing.ShipMethod",
+            "Purchasing.Vendor",
+            "Production.TransactionHistory",
+            "Production.WorkOrder",
+            "Production.ProductListPriceHistory"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "h5",
+        "user_question": "What is the average order total (TotalDue) per month in 2013?",
+        "sql_category": "Hard",
+        "tests": "date_filter_group_by",
+        "gold_sql": "SELECT MONTH(OrderDate) AS OrderMonth, AVG(TotalDue) AS AvgOrderTotal FROM Sales.SalesOrderHeader WHERE YEAR(OrderDate) = 2013 GROUP BY MONTH(OrderDate) ORDER BY OrderMonth;",
+        "gold_tables": [
+            "Sales.SalesOrderHeader"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT TOP (3) psc.[Name] AS SubcategoryName,\n       SUM(sod.LineTotal) AS TotalRevenue\nFROM Sales.SalesOrderDetail sod\nJOIN Production.Product p      ON sod.ProductID = p.ProductID\nJOIN Production.ProductSubcategory psc ON p.ProductSubcategoryID = psc.ProductSubcategoryID\nGROUP BY psc.[Name]\nORDER BY TotalRevenue DESC;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query groups by ProductCategory.Name instead of ProductSubcategory.Name, so it returns top categories, not subcategories. Remove the ProductCategory join and group by psc.Name.\nAttempt 2: The query correctly joins SalesOrderDetail to Product and ProductSubcategory, sums LineTotal grouped by subcategory, and returns the top 3 by total revenue. It is accurate and efficient.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1859,
+            "completion_tokens": 275,
+            "total_tokens": 2134
+        },
+        "attempts": 1,
+        "retrieved_tables": [
+            "Production.ProductCostHistory",
+            "Production.ProductListPriceHistory",
+            "Production.TransactionHistory",
+            "Production.ProductSubcategory",
+            "Production.ProductCategory",
+            "Sales.SalesOrderDetail",
+            "Production.Product",
+            "Sales.SalesOrderHeader",
+            "Sales.SpecialOfferProduct",
+            "Purchasing.PurchaseOrderDetail",
+            "Purchasing.ProductVendor",
+            "Production.ProductDocument"
+        ],
+        "tables_discovered": 12,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "judge_reject",
+                "candidate_sql": "SELECT TOP (3) pc.[Name] AS SubcategoryName,\n       SUM(sod.LineTotal) AS TotalRevenue\nFROM Sales.SalesOrderDetail sod\nJOIN Production.Product p      ON sod.ProductID = p.ProductID\nJOIN Production.ProductSubcategory psc ON p.ProductSubcategoryID = psc.ProductSubcategoryID\nJOIN Production.ProductCategory pc   ON psc.ProductCategoryID = pc.ProductCategoryID\nGROUP BY pc.[Name]\nORDER BY TotalRevenue DESC;",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 2,
+                "judge_feedback": "\nAttempt 1: The query groups by ProductCategory.Name instead of ProductSubcategory.Name, so it returns top categories, not subcategories. Remove the ProductCategory join and group by psc.Name."
+            }
+        ],
+        "execution_match": true,
+        "item_id": "h6",
+        "user_question": "List the top 3 product subcategories by total revenue (LineTotal).",
+        "sql_category": "Hard",
+        "tests": "multi_join_aggregate_top_n",
+        "gold_sql": "SELECT TOP 3 ps.Name AS Subcategory, SUM(sod.LineTotal) AS Revenue FROM Sales.SalesOrderDetail sod JOIN Production.Product p ON sod.ProductID = p.ProductID JOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID GROUP BY ps.Name ORDER BY Revenue DESC;",
+        "gold_tables": [
+            "Sales.SalesOrderDetail",
+            "Production.Product",
+            "Production.ProductSubcategory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT c.CustomerID, c.AccountNumber, COUNT(soh.SalesOrderID) AS OrderCount\nFROM Sales.Customer c\nJOIN Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID\nGROUP BY c.CustomerID, c.AccountNumber\nHAVING COUNT(soh.SalesOrderID) > 5;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query accurately returns each customer with their order count, filtered to only those with more than 5 orders. It uses appropriate joins and grouping with a valid HAVING clause.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1905,
+            "completion_tokens": 357,
+            "total_tokens": 2262
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Sales.SalesOrderHeader",
+            "Sales.ShoppingCartItem",
+            "Sales.Customer",
+            "Purchasing.PurchaseOrderHeader",
+            "Purchasing.PurchaseOrderDetail",
+            "Purchasing.Vendor",
+            "Production.Product",
+            "Purchasing.ShipMethod",
+            "Sales.SalesTerritory",
+            "Production.WorkOrder",
+            "Production.ProductReview",
+            "Production.TransactionHistory"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "h7",
+        "user_question": "Show each customer and their count where order count > 5 ?",
+        "sql_category": "Hard",
+        "tests": "group_by_having",
+        "gold_sql": "SELECT soh.CustomerID, COUNT(*) AS OrderCount FROM Sales.SalesOrderHeader soh GROUP BY soh.CustomerID HAVING COUNT(*) > 5 ORDER BY OrderCount DESC;",
+        "gold_tables": [
+            "Sales.SalesOrderHeader"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT Name\nFROM Production.Product\nWHERE ListPrice > (SELECT AVG(ListPrice) FROM Production.Product);",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly lists product names with list price above the overall average list price using a subquery. It is accurate and efficient, with no redundant joins.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1742,
+            "completion_tokens": 215,
+            "total_tokens": 1957
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Production.ProductListPriceHistory",
+            "Purchasing.Vendor",
+            "Purchasing.ProductVendor",
+            "Production.Product",
+            "Production.ProductCostHistory",
+            "Sales.SpecialOfferProduct",
+            "Production.UnitMeasure",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.SalesOrderDetail",
+            "Production.BillOfMaterials",
+            "Purchasing.PurchaseOrderHeader",
+            "Sales.SalesOrderHeader"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": false,
+        "item_id": "h8",
+        "user_question": "List product names whose list price is above the average list price of all products.",
+        "sql_category": "Hard",
+        "tests": "scalar_subquery",
+        "gold_sql": "SELECT Name, ListPrice FROM Production.Product WHERE ListPrice > (SELECT AVG(ListPrice) FROM Production.Product);",
+        "gold_tables": [
+            "Production.Product"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT cat.[Name] AS CategoryName,\n       SUM(sod.LineTotal) AS TotalSalesRevenue\nFROM Sales.SalesOrderDetail sod\nJOIN Production.Product p ON sod.ProductID = p.ProductID\nJOIN Production.ProductSubcategory subcat ON p.ProductSubcategoryID = subcat.ProductSubcategoryID\nJOIN Production.ProductCategory cat ON subcat.ProductCategoryID = cat.ProductCategoryID\nGROUP BY cat.[Name];",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: - The query groups by ProductSubcategoryID, which is subcategory level, not product category as requested. - To answer the user's question accurately, the query needs to join to ProductSubcategory and ProductCategory tables to group by category.\nAttempt 4: The query accurately calculates total sales revenue per product category by joining the necessary tables and grouping by category name. No unnecessary complexity or missing filters.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 2073,
+            "completion_tokens": 140,
+            "total_tokens": 2213
+        },
+        "attempts": 3,
+        "retrieved_tables": [
+            "Production.ProductCostHistory",
+            "Sales.SalesOrderDetail",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.SalesPerson",
+            "Purchasing.ProductVendor",
+            "Production.TransactionHistory",
+            "Production.Product",
+            "Sales.SalesOrderHeader",
+            "Sales.SalesPersonQuotaHistory",
+            "Production.ProductListPriceHistory",
+            "Sales.SalesTerritory",
+            "Sales.ShoppingCartItem",
+            "Production.ProductCategory",
+            "Production.ProductSubcategory"
+        ],
+        "tables_discovered": 14,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "judge_reject",
+                "candidate_sql": "SELECT p.ProductSubcategoryID,\n       SUM(sod.LineTotal) AS TotalSalesRevenue\nFROM Sales.SalesOrderDetail sod\nJOIN Production.Product p ON sod.ProductID = p.ProductID\nGROUP BY p.ProductSubcategoryID;",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 2,
+                "judge_feedback": "\nAttempt 1: - The query groups by ProductSubcategoryID, which is subcategory level, not product category as requested. - To answer the user's question accurately, the query needs to join to ProductSubcategory and ProductCategory tables to group by category."
+            },
+            {
+                "attempt": 1,
+                "status": "out_of_context_table",
+                "candidate_sql": "SELECT pc.[Name] AS CategoryName,\n       SUM(sod.LineTotal) AS TotalSalesRevenue\nFROM Sales.SalesOrderDetail sod\nJOIN Production.Product p ON sod.ProductID = p.ProductID\nJOIN Production.ProductSubcategory subcat ON p.ProductSubcategoryID = subcat.ProductSubcategoryID\nJOIN Production.ProductCategory cat ON subcat.ParentProductCategoryID = cat.ProductCategoryID\nGROUP BY pc.[Name];",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 2,
+                "judge_feedback": "\nAttempt 1: - The query groups by ProductSubcategoryID, which is subcategory level, not product category as requested. - To answer the user's question accurately, the query needs to join to ProductSubcategory and ProductCategory tables to group by category."
+            },
+            {
+                "attempt": 2,
+                "status": "syntax_error",
+                "candidate_sql": "SELECT pc.[Name] AS CategoryName,\n       SUM(sod.LineTotal) AS TotalSalesRevenue\nFROM Sales.SalesOrderDetail sod\nJOIN Production.Product p ON sod.ProductID = p.ProductID\nJOIN Production.ProductSubcategory subcat ON p.ProductSubcategoryID = subcat.ProductSubcategoryID\nJOIN Production.ProductCategory cat ON subcat.ParentProductCategoryID = cat.ProductCategoryID\nGROUP BY pc.[Name];",
+                "last_error": "Error, while executing the SELECT query: ('42S22', '[42S22] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid column name \\'ParentProductCategoryID\\'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]The multi-part identifier \"pc.Name\" could not be bound. (4104); [42S22] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]The multi-part identifier \"pc.Name\" could not be bound. (4104)')",
+                "had_repair_context": false,
+                "judge_score": 2,
+                "judge_feedback": "\nAttempt 1: - The query groups by ProductSubcategoryID, which is subcategory level, not product category as requested. - To answer the user's question accurately, the query needs to join to ProductSubcategory and ProductCategory tables to group by category."
+            }
+        ],
+        "execution_match": true,
+        "item_id": "h9",
+        "user_question": "What is the total sales revenue (LineTotal) for each product category?",
+        "sql_category": "Hard",
+        "tests": "four_table_join_aggregate",
+        "gold_sql": "SELECT pc.Name AS Category, SUM(sod.LineTotal) AS Revenue FROM Sales.SalesOrderDetail sod JOIN Production.Product p ON sod.ProductID = p.ProductID JOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID JOIN Production.ProductCategory pc ON ps.ProductCategoryID = pc.ProductCategoryID GROUP BY pc.Name ORDER BY Revenue DESC;",
+        "gold_tables": [
+            "Sales.SalesOrderDetail",
+            "Production.Product",
+            "Production.ProductSubcategory",
+            "Production.ProductCategory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT p.FirstName,\n       p.LastName,\n       sp.SalesQuota\nFROM   Sales.SalesPerson AS sp\nJOIN   Person.Person AS p\n       ON sp.BusinessEntityID = p.BusinessEntityID; ",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 3: The query correctly joins Sales.SalesPerson with Person.Person to retrieve the first and last name along with the sales quota for each salesperson. No redundant operations or unnecessary complexity.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1640,
+            "completion_tokens": 216,
+            "total_tokens": 1856
+        },
+        "attempts": 2,
+        "retrieved_tables": [
+            "Sales.SalesPerson",
+            "Sales.SalesPersonQuotaHistory",
+            "Sales.SalesTerritoryHistory",
+            "Sales.Store",
+            "Sales.SalesOrderHeader",
+            "Sales.Customer",
+            "Sales.SalesTerritory",
+            "Sales.SalesOrderDetail",
+            "Sales.SalesOrderHeaderSalesReason",
+            "Sales.SalesReason",
+            "Person.StateProvince",
+            "Sales.SpecialOfferProduct",
+            "Person.Person"
+        ],
+        "tables_discovered": 13,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "out_of_context_table",
+                "candidate_sql": "SELECT p.FirstName,\n       p.LastName,\n       sp.SalesQuota\nFROM   Sales.SalesPerson AS sp\nJOIN   Person.Person AS p\n       ON sp.BusinessEntityID = p.BusinessEntityID;",
+                "last_error": null,
+                "had_repair_context": false,
+                "judge_score": null,
+                "judge_feedback": ""
+            },
+            {
+                "attempt": 1,
+                "status": "syntax_error",
+                "candidate_sql": "SELECT FirstName,\n       LastName,\n       SalesQuota\nFROM   Sales.SalesPerson;",
+                "last_error": "Error, while executing the SELECT query: ('42S22', \"[42S22] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid column name 'FirstName'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid column name 'LastName'. (207)\")",
+                "had_repair_context": false,
+                "judge_score": null,
+                "judge_feedback": ""
+            }
+        ],
+        "execution_match": true,
+        "item_id": "h10",
+        "user_question": "List the first and last name of every sales person along with their sales quota.",
+        "sql_category": "Hard",
+        "tests": "join_names",
+        "gold_sql": "SELECT p.FirstName, p.LastName, sp.SalesQuota FROM Sales.SalesPerson sp JOIN Person.Person p ON sp.BusinessEntityID = p.BusinessEntityID;",
+        "gold_tables": [
+            "Sales.SalesPerson",
+            "Person.Person"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT p.ProductID, p.Name\nFROM Production.Product p\nWHERE EXISTS (SELECT 1 FROM Production.WorkOrder w WHERE w.ProductID = p.ProductID)\n  AND NOT EXISTS (\n    SELECT 1 FROM Production.TransactionHistory th\n    WHERE th.ProductID = p.ProductID\n      AND th.TransactionType = 'S'\n  );",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly identifies products with work orders and no sales transactions (TransactionType='S').",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1930,
+            "completion_tokens": 277,
+            "total_tokens": 2207
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Production.WorkOrder",
+            "Production.Product",
+            "Production.TransactionHistory",
+            "Production.TransactionHistoryArchive",
+            "Production.BillOfMaterials",
+            "Sales.ShoppingCartItem",
+            "Production.UnitMeasure",
+            "Production.ProductInventory",
+            "Purchasing.PurchaseOrderDetail",
+            "Production.Location",
+            "Purchasing.ProductVendor",
+            "Purchasing.PurchaseOrderHeader"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": false,
+        "item_id": "h11",
+        "user_question": "Which products have been manufactured (appear in work orders) but never sold?",
+        "sql_category": "Hard",
+        "tests": "anti_join_with_join",
+        "gold_sql": "SELECT DISTINCT p.ProductID, p.Name FROM Production.Product p JOIN Production.WorkOrder wo ON p.ProductID = wo.ProductID WHERE NOT EXISTS (SELECT 1 FROM Sales.SalesOrderDetail sod WHERE sod.ProductID = p.ProductID);",
+        "gold_tables": [
+            "Production.Product",
+            "Production.WorkOrder",
+            "Sales.SalesOrderDetail"
+        ],
+        "retrieval_recall": 0.667,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT st.Name AS TerritoryName, AVG(soh.TotalDue) AS AvgOrderTotal\nFROM Sales.SalesTerritory st\nJOIN Sales.SalesOrderHeader soh ON st.TerritoryID = soh.TerritoryID\nGROUP BY st.Name;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly calculates the average order total per territory by joining SalesOrderHeader with SalesTerritory and grouping by territory name. It fulfills the user's request accurately and efficiently.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1978,
+            "completion_tokens": 205,
+            "total_tokens": 2183
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Sales.SalesTerritory",
+            "Production.WorkOrderRouting",
+            "Sales.SalesPerson",
+            "Sales.SalesTerritoryHistory",
+            "Production.WorkOrder",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.SalesOrderHeader",
+            "Production.Product",
+            "Person.StateProvince",
+            "Person.Address",
+            "Purchasing.ProductVendor",
+            "Sales.Customer"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "h12",
+        "user_question": "Show the territory name and its average order total.",
+        "sql_category": "Hard",
+        "tests": "group_by_join",
+        "gold_sql": "SELECT st.Name AS Territory, AVG(soh.TotalDue) AS AvgOrderTotal FROM Sales.SalesOrderHeader soh JOIN Sales.SalesTerritory st ON soh.TerritoryID = st.TerritoryID GROUP BY st.Name ORDER BY AvgOrderTotal DESC;",
+        "gold_tables": [
+            "Sales.SalesOrderHeader",
+            "Sales.SalesTerritory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "WITH CustomerSpend AS (\n    SELECT c.CustomerID,\n           SUM(so.TotalDue) AS TotalSpent\n    FROM Sales.Customer c\n    JOIN Sales.SalesOrderHeader so ON c.CustomerID = so.CustomerID\n    GROUP BY c.CustomerID\n), AvgSpend AS (\n    SELECT AVG(TotalSpent) AS AvgTotalSpent FROM CustomerSpend\n)\nSELECT cs.CustomerID, cs.TotalSpent\nFROM CustomerSpend cs, AvgSpend a\nWHERE cs.TotalSpent > a.AvgTotalSpent;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 2: The query incorrectly uses Purchasing.PurchaseOrderHeader (vendor purchase orders) instead of customer sales orders, joining via EmployeeID, so it does not represent customer spending. It would need to join Sales.Customer to a sales order table on CustomerID to compute the correct total spend per customer.\nAttempt 4: The query correctly calculates total spend per customer, computes the average of those totals, and filters customers exceeding it. No unnecessary complexity.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1961,
+            "completion_tokens": 181,
+            "total_tokens": 2142
+        },
+        "attempts": 3,
+        "retrieved_tables": [
+            "Purchasing.Vendor",
+            "Sales.Store",
+            "Sales.Customer",
+            "Purchasing.ProductVendor",
+            "Production.ProductCostHistory",
+            "Purchasing.PurchaseOrderDetail",
+            "Production.Product",
+            "Purchasing.PurchaseOrderHeader",
+            "Person.BusinessEntity",
+            "Person.BusinessEntityContact",
+            "Person.Person",
+            "Person.BusinessEntityAddress",
+            "Sales.SalesOrderHeader"
+        ],
+        "tables_discovered": 13,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "syntax_error",
+                "candidate_sql": "WITH CustomerSpend AS (\n    SELECT c.CustomerID,\n           SUM(poh.TotalDue) AS TotalSpent\n    FROM Sales.Customer c\n    JOIN Purchasing.PurchaseOrderHeader poh ON c.BusinessEntityID = poh.EmployeeID\n    GROUP BY c.CustomerID\n), AvgSpend AS (\n    SELECT AVG(TotalSpent) AS AvgTotalSpent FROM CustomerSpend\n)\nSELECT cs.CustomerID, cs.TotalSpent\nFROM CustomerSpend cs, AvgSpend a\nWHERE cs.TotalSpent > a.AvgTotalSpent;",
+                "last_error": "Error, while executing the SELECT query: ('42S22', \"[42S22] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid column name 'BusinessEntityID'. (207) (SQLExecDirectW)\")",
+                "had_repair_context": false,
+                "judge_score": null,
+                "judge_feedback": ""
+            },
+            {
+                "attempt": 1,
+                "status": "judge_reject",
+                "candidate_sql": "WITH CustomerSpend AS (\n    SELECT c.CustomerID,\n           SUM(poh.TotalDue) AS TotalSpent\n    FROM Sales.Customer c\n    JOIN Person.BusinessEntity be ON c.PersonID = be.BusinessEntityID\n    JOIN Purchasing.PurchaseOrderHeader poh ON be.BusinessEntityID = poh.EmployeeID\n    GROUP BY c.CustomerID\n), AvgSpend AS (\n    SELECT AVG(TotalSpent) AS AvgTotalSpent FROM CustomerSpend\n)\nSELECT cs.CustomerID, cs.TotalSpent\nFROM CustomerSpend cs, AvgSpend a\nWHERE cs.TotalSpent > a.AvgTotalSpent;",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 1,
+                "judge_feedback": "\nAttempt 2: The query incorrectly uses Purchasing.PurchaseOrderHeader (vendor purchase orders) instead of customer sales orders, joining via EmployeeID, so it does not represent customer spending. It would need to join Sales.Customer to a sales order table on CustomerID to compute the correct total spend per customer."
+            },
+            {
+                "attempt": 2,
+                "status": "out_of_context_table",
+                "candidate_sql": "WITH CustomerSpend AS (\n    SELECT c.CustomerID,\n           SUM(so.TotalDue) AS TotalSpent\n    FROM Sales.Customer c\n    JOIN Sales.SalesOrderHeader so ON c.CustomerID = so.CustomerID\n    GROUP BY c.CustomerID\n), AvgSpend AS (\n    SELECT AVG(TotalSpent) AS AvgTotalSpent FROM CustomerSpend\n)\nSELECT cs.CustomerID, cs.TotalSpent\nFROM CustomerSpend cs, AvgSpend a\nWHERE cs.TotalSpent > a.AvgTotalSpent;",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 1,
+                "judge_feedback": "\nAttempt 2: The query incorrectly uses Purchasing.PurchaseOrderHeader (vendor purchase orders) instead of customer sales orders, joining via EmployeeID, so it does not represent customer spending. It would need to join Sales.Customer to a sales order table on CustomerID to compute the correct total spend per customer."
+            }
+        ],
+        "execution_match": true,
+        "item_id": "h13",
+        "user_question": "Which customers spent more than the average total spend across all customers?",
+        "sql_category": "Hard",
+        "tests": "nested_aggregate_subquery",
+        "gold_sql": "SELECT CustomerID, SUM(TotalDue) AS TotalSpent FROM Sales.SalesOrderHeader GROUP BY CustomerID HAVING SUM(TotalDue) > (SELECT AVG(cust_total) FROM (SELECT SUM(TotalDue) AS cust_total FROM Sales.SalesOrderHeader GROUP BY CustomerID) t);",
+        "gold_tables": [
+            "Sales.SalesOrderHeader"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "poor_sql",
+        "generated_sql": "SELECT p.Name AS ProductName,\n       COUNT(DISTINCT so.CustomerID) AS DistinctCustomerCount\nFROM Production.Product p\nJOIN Purchasing.PurchaseOrderDetail pod ON p.ProductID = pod.ProductID\nJOIN Sales.SalesOrderHeader soh ON pod.PurchaseOrderID = soh.SalesOrderID\nJOIN Sales.SalesOrderDetail sod ON soh.SalesOrderID = sod.SalesOrderID\nGROUP BY p.Name;",
+        "judge_score": 1,
+        "judge_feedback": "\nAttempt 2: The query incorrectly joins Purchasing.PurchaseOrderDetail to Sales.Customer on PurchaseOrderID = CustomerID, which are unrelated identifiers. This produces meaningless results and does not accurately count distinct customers per product.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1593,
+            "completion_tokens": 668,
+            "total_tokens": 2261
+        },
+        "attempts": 3,
+        "retrieved_tables": [
+            "Production.Product",
+            "Production.ProductReview",
+            "Sales.Customer",
+            "Production.ProductCategory",
+            "Purchasing.PurchaseOrderDetail",
+            "Production.ProductInventory",
+            "Production.ProductSubcategory",
+            "Production.ProductListPriceHistory",
+            "Production.ProductModel",
+            "Production.ProductModelIllustration",
+            "Production.ProductModelProductDescriptionCulture",
+            "Sales.SalesOrderHeader",
+            "Sales.SalesOrderDetail"
+        ],
+        "tables_discovered": 13,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "syntax_error",
+                "candidate_sql": "SELECT p.Name AS ProductName,\n       COUNT(DISTINCT po.OrderCustomerID) AS DistinctCustomerCount\nFROM Production.Product p\nJOIN Purchasing.PurchaseOrderDetail pod ON p.ProductID = pod.ProductID\nLEFT JOIN (SELECT PurchaseOrderID, CustomerID FROM Sales.Customer) po ON pod.PurchaseOrderID = po.PurchaseOrderID\nGROUP BY p.Name;",
+                "last_error": "Error, while executing the SELECT query: ('42S22', \"[42S22] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid column name 'PurchaseOrderID'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid column name 'OrderCustomerID'. (207)\")",
+                "had_repair_context": false,
+                "judge_score": null,
+                "judge_feedback": ""
+            },
+            {
+                "attempt": 1,
+                "status": "judge_reject",
+                "candidate_sql": "SELECT p.Name AS ProductName,\n       COUNT(DISTINCT c.CustomerID) AS DistinctCustomerCount\nFROM Production.Product p\nJOIN Purchasing.PurchaseOrderDetail pod ON p.ProductID = pod.ProductID\nJOIN Sales.Customer c ON pod.PurchaseOrderID = c.CustomerID\nGROUP BY p.Name;",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 1,
+                "judge_feedback": "\nAttempt 2: The query incorrectly joins Purchasing.PurchaseOrderDetail to Sales.Customer on PurchaseOrderID = CustomerID, which are unrelated identifiers. This produces meaningless results and does not accurately count distinct customers per product."
+            },
+            {
+                "attempt": 2,
+                "status": "out_of_context_table",
+                "candidate_sql": "SELECT p.Name AS ProductName,\n       COUNT(DISTINCT c.CustomerID) AS DistinctCustomerCount\nFROM Production.Product p\nJOIN Purchasing.PurchaseOrderDetail pod ON p.ProductID = pod.ProductID\nJOIN Sales.CustomerOrder co ON pod.PurchaseOrderID = co.PurchaseOrderID\nJOIN Sales.Customer c ON co.CustomerID = c.CustomerID\nGROUP BY p.Name;",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 1,
+                "judge_feedback": "\nAttempt 2: The query incorrectly joins Purchasing.PurchaseOrderDetail to Sales.Customer on PurchaseOrderID = CustomerID, which are unrelated identifiers. This produces meaningless results and does not accurately count distinct customers per product."
+            }
+        ],
+        "execution_match": false,
+        "item_id": "h14",
+        "user_question": "Show the product name and its distinct-customer count.",
+        "sql_category": "Hard",
+        "tests": "count_distinct_multi_join",
+        "gold_sql": "SELECT p.Name, COUNT(DISTINCT soh.CustomerID) AS DistinctCustomers FROM Production.Product p JOIN Sales.SalesOrderDetail sod ON p.ProductID = sod.ProductID JOIN Sales.SalesOrderHeader soh ON sod.SalesOrderID = soh.SalesOrderID GROUP BY p.Name ORDER BY DistinctCustomers DESC;",
+        "gold_tables": [
+            "Production.Product",
+            "Sales.SalesOrderDetail",
+            "Sales.SalesOrderHeader"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT\n    pcs.Name AS SubCategory,\n    p.Name AS ProductName,\n    p.ListPrice,\n    RANK() OVER (PARTITION BY p.ProductSubcategoryID ORDER BY p.ListPrice DESC) AS RankByListPrice\nFROM Production.Product p\nJOIN Production.ProductSubcategory pcs ON p.ProductSubcategoryID = pcs.ProductSubcategoryID\nORDER BY pcs.Name, RankByListPrice;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query incorrectly displays ProductCategory.Name as 'SubCategory' instead of using ProductSubcategory.Name. The ranking logic itself is correct, but the output does not show the actual subcategory names as requested.\nAttempt 2: The query correctly ranks products within each subcategory by list price in descending order, returning the requested columns (subcategory, product name, list price, rank) via an appropriate window function and join.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1720,
+            "completion_tokens": 280,
+            "total_tokens": 2000
+        },
+        "attempts": 1,
+        "retrieved_tables": [
+            "Production.ProductListPriceHistory",
+            "Production.ProductSubcategory",
+            "Production.ProductCategory",
+            "Purchasing.PurchaseOrderDetail",
+            "Production.ProductReview",
+            "Sales.SalesOrderDetail",
+            "Production.Product",
+            "Sales.SpecialOfferProduct",
+            "Purchasing.PurchaseOrderHeader",
+            "Purchasing.ProductVendor",
+            "Purchasing.Vendor",
+            "Production.ProductCostHistory"
+        ],
+        "tables_discovered": 12,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "judge_reject",
+                "candidate_sql": "SELECT\n    pc.Name AS SubCategory,\n    p.Name AS ProductName,\n    p.ListPrice,\n    RANK() OVER (PARTITION BY p.ProductSubcategoryID ORDER BY p.ListPrice DESC) AS RankByListPrice\nFROM Production.Product p\nJOIN Production.ProductSubcategory pcs ON p.ProductSubcategoryID = pcs.ProductSubcategoryID\nJOIN Production.ProductCategory pc ON pcs.ProductCategoryID = pc.ProductCategoryID\nORDER BY pc.Name, RankByListPrice;",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 2,
+                "judge_feedback": "\nAttempt 1: The query incorrectly displays ProductCategory.Name as 'SubCategory' instead of using ProductSubcategory.Name. The ranking logic itself is correct, but the output does not show the actual subcategory names as requested."
+            }
+        ],
+        "execution_match": true,
+        "item_id": "e1",
+        "user_question": "Rank the products within each subcategory by list price (highest first), showing subcategory, product name, list price and the rank",
+        "sql_category": "Expert",
+        "tests": "window_rank_partition",
+        "gold_sql": "SELECT ps.Name AS Subcategory, p.Name AS Product, p.ListPrice, RANK() OVER (PARTITION BY ps.ProductSubcategoryID ORDER BY p.ListPrice DESC) AS PriceRank FROM Production.Product p JOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID;",
+        "gold_tables": [
+            "Production.Product",
+            "Production.ProductSubcategory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT sp.BusinessEntityID,\n       COALESCE(SUM(soh.TotalDue), 0) AS TotalSales,\n       RANK() OVER (ORDER BY COALESCE(SUM(soh.TotalDue), 0) DESC) AS SalesRank\nFROM Sales.SalesPerson sp\nLEFT JOIN Sales.SalesOrderHeader soh ON soh.SalesPersonID = sp.BusinessEntityID\nGROUP BY sp.BusinessEntityID\nORDER BY TotalSales DESC;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: - The query uses INNER JOIN, so salespersons with no orders are excluded, violating 'each sales person'. - It should use LEFT JOIN from SalesPerson and treat NULL total as 0 to include all salespersons.\nAttempt 2: The query correctly computes total sales per sales person by summing TotalDue from orders, includes sales persons with no orders via LEFT JOIN and COALESCE, and ranks them correctly using RANK(). No redundant joins or unnecessary complexity.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1723,
+            "completion_tokens": 379,
+            "total_tokens": 2102
+        },
+        "attempts": 1,
+        "retrieved_tables": [
+            "Sales.SalesPersonQuotaHistory",
+            "Sales.SalesPerson",
+            "Sales.SalesOrderHeader",
+            "Sales.SalesOrderHeaderSalesReason",
+            "Sales.SalesOrderDetail",
+            "Sales.Store",
+            "Sales.Customer",
+            "Sales.SalesTerritory",
+            "Sales.SalesTerritoryHistory",
+            "Person.Person",
+            "Person.StateProvince",
+            "Person.CountryRegion"
+        ],
+        "tables_discovered": 12,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "judge_reject",
+                "candidate_sql": "SELECT sp.BusinessEntityID,\n       SUM(soh.TotalDue) AS TotalSales,\n       RANK() OVER (ORDER BY SUM(soh.TotalDue) DESC) AS SalesRank\nFROM Sales.SalesOrderHeader soh\nJOIN Sales.SalesPerson sp ON soh.SalesPersonID = sp.BusinessEntityID\nGROUP BY sp.BusinessEntityID\nORDER BY TotalSales DESC;",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 3,
+                "judge_feedback": "\nAttempt 1: - The query uses INNER JOIN, so salespersons with no orders are excluded, violating 'each sales person'. - It should use LEFT JOIN from SalesPerson and treat NULL total as 0 to include all salespersons."
+            }
+        ],
+        "execution_match": true,
+        "item_id": "e2",
+        "user_question": "For each sales person, show their total sales (TotalDue) and their rank among all sales persons by total sales.",
+        "sql_category": "Expert",
+        "tests": "window_rank_over_aggregate",
+        "gold_sql": "SELECT sp.BusinessEntityID, SUM(soh.TotalDue) AS TotalSales, RANK() OVER (ORDER BY SUM(soh.TotalDue) DESC) AS SalesRank FROM Sales.SalesPerson sp JOIN Sales.SalesOrderHeader soh ON sp.BusinessEntityID = soh.SalesPersonID GROUP BY sp.BusinessEntityID;",
+        "gold_tables": [
+            "Sales.SalesPerson",
+            "Sales.SalesOrderHeader"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "WITH RankedProducts AS (\n    SELECT \n        p.ProductID,\n        p.Name AS ProductName,\n        pc.Name AS CategoryName,\n        p.ListPrice,\n        ROW_NUMBER() OVER (PARTITION BY pc.ProductCategoryID ORDER BY p.ListPrice DESC) AS rn\n    FROM Production.Product p\n    JOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID\n    JOIN Production.ProductCategory pc ON ps.ProductCategoryID = pc.ProductCategoryID\n)\nSELECT ProductID, ProductName, CategoryName, ListPrice\nFROM RankedProducts\nWHERE rn <= 3;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 2: The query accurately ranks products by ListPrice within each product category using ROW_NUMBER and selects the top 3 per category. The joins are necessary and no redundant operations are present.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1608,
+            "completion_tokens": 503,
+            "total_tokens": 2111
+        },
+        "attempts": 1,
+        "retrieved_tables": [
+            "Production.ProductCostHistory",
+            "Production.ProductListPriceHistory",
+            "Production.Product",
+            "Purchasing.PurchaseOrderDetail",
+            "Production.ProductCategory",
+            "Purchasing.ProductVendor",
+            "Production.ProductSubcategory",
+            "Production.UnitMeasure",
+            "Production.ProductReview",
+            "Production.BillOfMaterials"
+        ],
+        "tables_discovered": 10,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "syntax_error",
+                "candidate_sql": "SELECT TOP (3) PER CATEGORY\n    p.ProductID,\n    p.Name AS ProductName,\n    pc.Name AS CategoryName,\n    p.ListPrice\nFROM Production.Product p\nJOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID\nJOIN Production.ProductCategory pc ON ps.ProductCategoryID = pc.ProductCategoryID\nORDER BY pc.Name, p.ListPrice DESC;\n\n-- Alternatively, using ROW_NUMBER() for a more explicit partitioned ranking:\nWITH RankedProducts AS (\n    SELECT \n        p.ProductID,\n        p.Name,\n        pc.Name AS CategoryName,\n        p.ListPrice,\n        ROW_NUMBER() OVER (PARTITION BY pc.ProductCategoryID ORDER BY p.ListPrice DESC) AS rn\n    FROM Production.Product p\n    JOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID\n    JOIN Production.ProductCategory pc ON ps.ProductCategoryID = pc.ProductCategoryID\n)\nSELECT ProductID, Name, CategoryName, ListPrice\nFROM RankedProducts\nWHERE rn <= 3;\n",
+                "last_error": "Error, while executing the SELECT query: ('42000', \"[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Incorrect syntax near 'p'. (102) (SQLExecDirectW)\")",
+                "had_repair_context": false,
+                "judge_score": null,
+                "judge_feedback": ""
+            }
+        ],
+        "execution_match": true,
+        "item_id": "e3",
+        "user_question": "Show the 3 most expensive products in each product category, considering all products.",
+        "sql_category": "Expert",
+        "tests": "window_topn_per_group",
+        "gold_sql": "SELECT Category, Product, ListPrice FROM (SELECT pc.Name AS Category, p.Name AS Product, p.ListPrice, ROW_NUMBER() OVER (PARTITION BY pc.ProductCategoryID ORDER BY p.ListPrice DESC) AS rn FROM Production.Product p JOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID JOIN Production.ProductCategory pc ON ps.ProductCategoryID = pc.ProductCategoryID) t WHERE rn <= 3;",
+        "gold_tables": [
+            "Production.Product",
+            "Production.ProductSubcategory",
+            "Production.ProductCategory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT p1.Name AS ProductName1, p2.Name AS ProductName2\nFROM Production.Product p1\nJOIN Production.Product p2 ON p1.ListPrice = p2.ListPrice AND p1.ProductID < p2.ProductID\nWHERE p1.ListPrice <> 0;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly identifies pairs of products with the same non-zero list price, ensuring each pair appears once via ProductID < ProductID. It is accurate and efficiently implemented.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1628,
+            "completion_tokens": 304,
+            "total_tokens": 1932
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Production.ProductListPriceHistory",
+            "Sales.SpecialOfferProduct",
+            "Purchasing.ProductVendor",
+            "Production.ProductCostHistory",
+            "Purchasing.PurchaseOrderDetail",
+            "Sales.SalesOrderDetail",
+            "Production.Product",
+            "Purchasing.Vendor",
+            "Sales.SpecialOffer",
+            "Production.ProductProductPhoto",
+            "Production.ProductSubcategory",
+            "Production.ProductReview"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": false,
+        "item_id": "e4",
+        "user_question": "Show pairs of products with their name that share the same list price (list each pair once, ignore products with price 0).",
+        "sql_category": "Expert",
+        "tests": "self_join",
+        "gold_sql": "SELECT p1.Name AS ProductA, p2.Name AS ProductB, p1.ListPrice FROM Production.Product p1 JOIN Production.Product p2 ON p1.ListPrice = p2.ListPrice AND p1.ProductID < p2.ProductID WHERE p1.ListPrice > 0;",
+        "gold_tables": [
+            "Production.Product"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT\n    YEAR(OrderDate) AS SaleYear,\n    SUM(TotalDue) AS TotalSales,\n    SUM(TotalDue) - LAG(SUM(TotalDue)) OVER (ORDER BY YEAR(OrderDate)) AS YoYChange\nFROM Sales.SalesOrderHeader\nGROUP BY YEAR(OrderDate)\nORDER BY YEAR(OrderDate);",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly computes total sales per year using SUM(TotalDue) grouped by YEAR(OrderDate) and calculates the year-over-year change with LAG. It is efficient, uses the appropriate table, and fully satisfies the user's request.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1714,
+            "completion_tokens": 199,
+            "total_tokens": 1913
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Production.ProductCostHistory",
+            "Production.ProductListPriceHistory",
+            "Production.TransactionHistory",
+            "Sales.SalesPerson",
+            "Sales.SalesTerritoryHistory",
+            "Production.TransactionHistoryArchive",
+            "Production.Product",
+            "Sales.SalesTerritory",
+            "Sales.SalesOrderHeader",
+            "Sales.Customer",
+            "Sales.SalesOrderHeaderSalesReason",
+            "Sales.SalesOrderDetail"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "e5",
+        "user_question": "Show total sales per year and the year-over-year change in total sales.",
+        "sql_category": "Expert",
+        "tests": "cte_window_lag",
+        "gold_sql": "WITH yearly AS (SELECT YEAR(OrderDate) AS yr, SUM(TotalDue) AS total FROM Sales.SalesOrderHeader GROUP BY YEAR(OrderDate)) SELECT yr, total, total - LAG(total) OVER (ORDER BY yr) AS YoYChange FROM yearly ORDER BY yr;",
+        "gold_tables": [
+            "Sales.SalesOrderHeader"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT DISTINCT p.Name\nFROM Production.Product p\nJOIN Sales.SalesOrderDetail sod ON p.ProductID = sod.ProductID\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM Sales.SpecialOfferProduct sop\n    JOIN Sales.SpecialOffer so ON sop.SpecialOfferID = so.SpecialOfferID\n    WHERE sop.ProductID = p.ProductID\n      AND so.Description <> 'No Discount'\n);\n",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The SQL query logic is flawed: it includes a product if it has *any* SpecialOfferProduct row that is either NULL or the 'No Discount' offer, so products that also have a promotional offer will be incorrectly returned. The query should exclude products that have any promotional special offer (i.e., use NOT EXISTS with a filter for Description != 'No Discount').\nAttempt 2: The query correctly returns sold products that have no promotional special offer, excluding the default 'No Discount' offer. It uses NOT EXISTS to filter out products with any non-default offer.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 2056,
+            "completion_tokens": 1797,
+            "total_tokens": 3853
+        },
+        "attempts": 1,
+        "retrieved_tables": [
+            "Sales.SpecialOfferProduct",
+            "Sales.SpecialOffer",
+            "Sales.SalesOrderDetail",
+            "Production.Product",
+            "Purchasing.PurchaseOrderDetail",
+            "Purchasing.Vendor",
+            "Purchasing.PurchaseOrderHeader",
+            "Purchasing.ProductVendor",
+            "Sales.SalesOrderHeader",
+            "Purchasing.ShipMethod",
+            "Sales.SalesPerson",
+            "Sales.SalesOrderHeaderSalesReason"
+        ],
+        "tables_discovered": 12,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "judge_reject",
+                "candidate_sql": "SELECT p.Name\nFROM Production.Product p\nJOIN Sales.SalesOrderDetail sod ON p.ProductID = sod.ProductID\nLEFT JOIN Sales.SpecialOfferProduct sop ON p.ProductID = sop.ProductID\nWHERE sop.SpecialOfferID IS NULL OR sop.SpecialOfferID IN (\n    SELECT SpecialOfferID FROM Sales.SpecialOffer WHERE Description = 'No Discount'\n)\nGROUP BY p.Name;",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 2,
+                "judge_feedback": "\nAttempt 1: The SQL query logic is flawed: it includes a product if it has *any* SpecialOfferProduct row that is either NULL or the 'No Discount' offer, so products that also have a promotional offer will be incorrectly returned. The query should exclude products that have any promotional special offer (i.e., use NOT EXISTS with a filter for Description != 'No Discount')."
+            }
+        ],
+        "execution_match": false,
+        "item_id": "e6",
+        "user_question": "Show the name of products that have been sold but are not part of any promotional special offer (excluding the default 'No Discount' offer).",
+        "sql_category": "Expert",
+        "tests": "not_in_subquery",
+        "gold_sql": "SELECT DISTINCT p.ProductID, p.Name FROM Production.Product p JOIN Sales.SalesOrderDetail sod ON p.ProductID = sod.ProductID WHERE p.ProductID NOT IN (SELECT ProductID FROM Sales.SpecialOfferProduct WHERE SpecialOfferID <> 1);",
+        "gold_tables": [
+            "Production.Product",
+            "Sales.SalesOrderDetail",
+            "Sales.SpecialOfferProduct"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT st.Name,\n       ROUND(100.0 * COALESCE(SUM(so.TotalDue), 0) / (SELECT SUM(TotalDue) FROM Sales.SalesOrderHeader), 2) AS PercentageOfTotalRevenue\nFROM Sales.SalesTerritory AS st\nLEFT JOIN Sales.SalesOrderHeader AS so ON st.TerritoryID = so.TerritoryID\nGROUP BY st.Name;",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query uses an INNER JOIN, which excludes territories without any sales orders, so it does not return 'all' sales territories as requested. Use a LEFT JOIN and handle NULL sums as 0 to include every territory.\nAttempt 2: The query correctly lists all territories with their percentage of total company sales revenue using a LEFT JOIN to include territories with no sales and a subquery to compute the total. No redundant tables or logic are present.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1715,
+            "completion_tokens": 1332,
+            "total_tokens": 3047
+        },
+        "attempts": 1,
+        "retrieved_tables": [
+            "Sales.SalesPerson",
+            "Sales.SalesTerritory",
+            "Sales.SalesTerritoryHistory",
+            "Sales.SalesTaxRate",
+            "Sales.SalesOrderHeader",
+            "Sales.SalesPersonQuotaHistory",
+            "Sales.Customer",
+            "Person.StateProvince",
+            "Sales.Store",
+            "Person.Person",
+            "Person.CountryRegion",
+            "Person.Address"
+        ],
+        "tables_discovered": 12,
+        "history": [
+            {
+                "attempt": 0,
+                "status": "judge_reject",
+                "candidate_sql": "SELECT st.Name,\n       ROUND(100.0 * SUM(so.TotalDue) / (SELECT SUM(TotalDue) FROM Sales.SalesOrderHeader), 2) AS PercentageOfTotalRevenue\nFROM Sales.SalesTerritory AS st\nJOIN Sales.SalesOrderHeader AS so ON st.TerritoryID = so.TerritoryID\nGROUP BY st.Name;\n",
+                "last_error": "SQL query has no errors.",
+                "had_repair_context": false,
+                "judge_score": 3,
+                "judge_feedback": "\nAttempt 1: The query uses an INNER JOIN, which excludes territories without any sales orders, so it does not return 'all' sales territories as requested. Use a LEFT JOIN and handle NULL sums as 0 to include every territory."
+            }
+        ],
+        "execution_match": false,
+        "item_id": "e7",
+        "user_question": "Show all sales territory with thier name and the percentage of total company sales revenue comes from them.",
+        "sql_category": "Expert",
+        "tests": "window_percent_of_total",
+        "gold_sql": "SELECT st.Name AS Territory, SUM(soh.TotalDue) AS Revenue, 100.0 * SUM(soh.TotalDue) / SUM(SUM(soh.TotalDue)) OVER () AS PctOfTotal FROM Sales.SalesOrderHeader soh JOIN Sales.SalesTerritory st ON soh.TerritoryID = st.TerritoryID GROUP BY st.Name ORDER BY Revenue DESC;",
+        "gold_tables": [
+            "Sales.SalesOrderHeader",
+            "Sales.SalesTerritory"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT\n    MONTH(OrderDate) AS Month,\n    SUM(TotalDue) AS MonthlySalesTotal,\n    SUM(SUM(TotalDue)) OVER (ORDER BY MONTH(OrderDate)) AS RunningCumulativeSalesTotal\nFROM Sales.SalesOrderHeader\nWHERE YEAR(OrderDate) = 2013\nGROUP BY MONTH(OrderDate)\nORDER BY MONTH(OrderDate);",
+        "judge_score": 5,
+        "judge_feedback": "\nAttempt 1: The query correctly groups sales by month for 2013, calculates monthly totals, and computes a running cumulative total using a window function. It accurately fulfills the user's request with proper filtering and aggregation.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 1763,
+            "completion_tokens": 585,
+            "total_tokens": 2348
+        },
+        "attempts": 0,
+        "retrieved_tables": [
+            "Sales.SalesOrderHeader",
+            "Sales.SalesPerson",
+            "Production.TransactionHistory",
+            "Production.ProductCostHistory",
+            "Sales.SalesPersonQuotaHistory",
+            "Sales.SalesOrderDetail",
+            "Sales.SalesTerritory",
+            "Production.Product",
+            "Sales.SalesTerritoryHistory",
+            "Purchasing.PurchaseOrderDetail",
+            "Production.ProductListPriceHistory",
+            "Sales.ShoppingCartItem"
+        ],
+        "tables_discovered": 12,
+        "history": [],
+        "execution_match": true,
+        "item_id": "e8",
+        "user_question": "For each month of 2013, show the monthly sales total and the running cumulative sales total through the year.",
+        "sql_category": "Expert",
+        "tests": "window_running_total",
+        "gold_sql": "SELECT MONTH(OrderDate) AS OrderMonth, SUM(TotalDue) AS MonthlyTotal, SUM(SUM(TotalDue)) OVER (ORDER BY MONTH(OrderDate)) AS RunningTotal FROM Sales.SalesOrderHeader WHERE YEAR(OrderDate) = 2013 GROUP BY MONTH(OrderDate) ORDER BY OrderMonth;",
+        "gold_tables": [
+            "Sales.SalesOrderHeader"
+        ],
+        "retrieval_recall": 1.0,
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:8b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n \nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    }
+]

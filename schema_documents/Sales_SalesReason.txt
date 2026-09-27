@@ -1,0 +1,5 @@
+Table: Sales.SalesReason
+Description: Lookup table of customer purchase reasons.
+Columns: SalesReasonID (int) - (Primary key for SalesReason records.), Name (Name) - (Sales reason description.), ReasonType (Name) - (Category the sales reason belongs to.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Sales.SalesOrderHeaderSalesReason.SalesReasonID via SalesReasonID

@@ -1,0 +1,7 @@
+Table: obf.T10
+Description: Individual products associated with a specific sales order. See SalesOrderHeader.
+Columns: col_0379 (int) - (Primary key. Foreign key to SalesOrderHeader.SalesOrderID.), col_0380 (int) - (Primary key. One incremental unique number per product sold.), col_0381 (nvarchar) - (Shipment tracking number supplied by the shipper.), col_0382 (smallint) - (Quantity ordered per product.), col_0383 (int) - (Product sold to customer. Foreign key to Product.ProductID.), col_0384 (int) - (Promotional code. Foreign key to SpecialOffer.SpecialOfferID.), col_0385 (money) - (Selling price of a single product.), col_0386 (money) - (Discount amount.), col_0387 (numeric) - (Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.), col_0388 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0389 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0384 -> obf.T46.col_0477
+col_0383 -> obf.T46.col_0478
+col_0379 -> obf.T13.col_0390

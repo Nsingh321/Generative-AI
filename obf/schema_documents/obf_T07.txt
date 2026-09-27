@@ -1,0 +1,8 @@
+Table: obf.T07
+Description: Current customer information. Also see the Person and Store tables.
+Columns: col_0369 (int) - (Primary key.), col_0370 (int) - (Foreign key to Person.BusinessEntityID), col_0371 (int) - (Foreign key to Store.BusinessEntityID), col_0372 (int) - (ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.), col_0373 (varchar) - (Unique number identifying the customer assigned by the accounting system.), col_0374 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0375 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0372 -> obf.T28.col_0444
+col_0371 -> obf.T54.col_0481
+col_0370 -> obf.T23.col_0104
+Referenced by obf.T13.col_0400 via col_0369

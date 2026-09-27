@@ -1,0 +1,5 @@
+Table: obf.T55
+Description: Product images.
+Columns: col_0232 (int) - (Primary key for ProductPhoto records.), col_0233 (varbinary) - (Small image of the product.), col_0234 (nvarchar) - (Small image file name.), col_0235 (varbinary) - (Large image of the product.), col_0236 (nvarchar) - (Large image file name.), col_0237 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T56.col_0239 via col_0232

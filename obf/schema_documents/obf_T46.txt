@@ -1,0 +1,8 @@
+Table: obf.T46
+Description: Cross-reference table mapping products to special offer discounts.
+Columns: col_0477 (int) - (Primary key for SpecialOfferProduct records.), col_0478 (int) - (Product identification number. Foreign key to Product.ProductID.), col_0479 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0480 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T10.col_0384 via col_0477
+Referenced by obf.T10.col_0383 via col_0478
+col_0477 -> obf.T42.col_0466
+col_0478 -> obf.T30.col_0166

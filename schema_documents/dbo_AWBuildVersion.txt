@@ -1,0 +1,5 @@
+Table: dbo.AWBuildVersion
+Description: Current version number of the AdventureWorks 2025 sample database. 
+Columns: SystemInformationID (tinyint) - (Primary key for AWBuildVersion records.), Database Version (nvarchar) - (Version number of the database in 9.yy.mm.dd.00 format.), VersionDate (datetime) - (Date and time the record was last updated.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+No explicit foreign key relationships

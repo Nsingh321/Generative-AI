@@ -1,0 +1,5 @@
+Table: obf.T19
+Description: Résumés submitted to Human Resources by job applicants.
+Columns: col_0053 (int) - (Primary key for JobCandidate records.), col_0054 (int) - (Employee identification number if applicant was hired. Foreign key to Employee.BusinessEntityID.), col_0055 (xml) - (Résumé in XML format.), col_0056 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0054 -> obf.T12.col_0026

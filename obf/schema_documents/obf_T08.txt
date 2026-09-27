@@ -1,0 +1,5 @@
+Table: obf.T08
+Description: Lookup table containing the departments within the Adventure Works Cycles company.
+Columns: col_0022 (smallint) - (Primary key for Department records.), col_0023 (Name) - (Name of the department.), col_0024 (Name) - (Name of the group to which the department belongs.), col_0025 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T14.col_0043 via col_0022

@@ -1,0 +1,5 @@
+Table: obf.T48
+Description: Types of addresses stored in the Address table. 
+Columns: col_0071 (int) - (Primary key for AddressType records.), col_0072 (Name) - (Address type description. For example, Billing, Home, or Shipping.), col_0073 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0074 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T62.col_0080 via col_0071

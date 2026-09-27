@@ -1,0 +1,72 @@
+{
+"Basic": {
+
+    "q_1":{"prompt":"Show me all the tracks.",
+            "tables_needed":["track"]},
+    "q_2":{"prompt":"List the names of all artists.",
+            "tables_needed":["artist"]},
+    "q_3":{"prompt":"Who are the customers from Brazil?",
+            "tables_needed":["customer"]},
+    "q_4":{"prompt":"Find the total number of albums.",
+            "tables_needed":["album"]},
+    "q_5":{"prompt":"List all tracks along with their album titles.",
+            "tables_needed":["track" , "album"]},
+    "q_6":{"prompt":"Show all customers with their invoice totals",
+            "tables_needed":["customer" , "invoice"]},
+    "q_7":{"prompt":"Find the top 5 most expensive tracks.",
+            "tables_needed":["track"]},
+    "q_8":{"prompt":"Find top 3 customers by total spending.",
+            "tables_needed":["invoice"]},
+    "q_9":{"prompt":"Total sales per year",
+            "tables_needed":["invoice"]}
+   
+},
+
+"Medium": {
+
+    "q_1":{"prompt":"List all employees and their managers.",
+            "tables_needed":["employee"]},
+    "q_2":{"prompt": "Count number of tracks per genre.",
+            "tables_needed":["track" ,"genre"]},
+    "q_3":{"prompt":"Which country has the most customers?",
+            "tables_needed":["customer"]},
+    "q_4": {"prompt": "List track name, album title, and artist name.",
+            "tables_needed": ["track", "album", "artist"]},
+    "q_5":{"prompt":"Find all invoices with customer name and total.",
+            "tables_needed":["invoice" ,"customer"]},
+    "q_6":{"prompt":"Find the most popular genre (by number of tracks sold).",
+            "tables_needed":["invoice_line","track" ,"genre"]},
+    "q_7":{"prompt":"Find total sales per year.",
+            "tables_needed":["invoice"]},
+    "q_8":{"prompt":"Find total sales per country where sales > 100.",
+            "tables_needed":["invoice" ,"customer"]},
+    "q_9":{"prompt":"List employees who do not report to anyone.",
+            "tables_needed":["employee"]},
+    "q_10":{"prompt":"Find customers who never made a purchase",
+            "tables_needed":["customer"]}
+},
+
+"Hard" : {
+
+    "q_1":{"prompt":"Find customers who spent more than average.",
+            "tables_needed":["customer","invoice"]},
+    "q_2":{"prompt":"Find customers who purchased tracks from more than 3 different genres.",
+            "tables_needed":["customer","invoice" , "invoice_line" , "track"," genre"]},
+    "q_3":{"prompt":"Find the second highest spending customer.",
+            "tables_needed":["customer" ,"invoice"]},
+    "q_4":{"prompt":"List artists whose tracks have never been purchased.",
+            "tables_needed":["artist","album","track","invoice_line"]},
+    "q_5":{"prompt":"Find the most popular artist (by number of tracks sold)",
+           "tables_needed":["artist", "album", "track", "invoice_line"]},
+    "q_6":{"prompt":"Find top 5 albums with highest sales.",
+           "tables_needed":["album", "track", "invoice_line"]},
+    "q_7":{"prompt":"Find the genre with highest revenue.",
+            "tables_needed":["genre", "track", "invoice_line"]},
+    "q_8":{"prompt":"Rank customers by total spending.",
+           "tables_needed":["customer", "invoice"]},
+    "q_9":{"prompt":"List all playlists with number of tracks.",
+            "tables_needed":["playlist", "playlist_track"]},
+    "q_10":{"prompt":"Find customers who purchased tracks from more than 3 different genres.",
+            "tables_needed":["customer", "invoice", "invoice_line", "track", "genre"]}
+            }
+}

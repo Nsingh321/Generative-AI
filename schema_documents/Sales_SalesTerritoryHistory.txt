@@ -1,0 +1,6 @@
+Table: Sales.SalesTerritoryHistory
+Description: Sales representative transfers to other sales territories.
+Columns: BusinessEntityID (int) - (Primary key. The sales rep.  Foreign key to SalesPerson.BusinessEntityID.), TerritoryID (int) - (Primary key. Territory identification number. Foreign key to SalesTerritory.SalesTerritoryID.), StartDate (datetime) - (Primary key. Date the sales representive started work in the territory.), EndDate (datetime) - (Date the sales representative left work in the territory.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+BusinessEntityID -> Sales.SalesPerson.BusinessEntityID
+TerritoryID -> Sales.SalesTerritory.TerritoryID

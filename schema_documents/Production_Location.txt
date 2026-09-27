@@ -1,0 +1,6 @@
+Table: Production.Location
+Description: Product inventory and manufacturing locations.
+Columns: LocationID (smallint) - (Primary key for Location records.), Name (Name) - (Location description.), CostRate (smallmoney) - (Standard hourly cost of the manufacturing location.), Availability (decimal) - (Work capacity (in hours) of the manufacturing location.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Production.ProductInventory.LocationID via LocationID
+Referenced by Production.WorkOrderRouting.LocationID via LocationID

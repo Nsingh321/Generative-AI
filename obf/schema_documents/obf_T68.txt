@@ -1,0 +1,6 @@
+Table: obf.T68
+Description: Cross-reference table mapping ISO currency codes to a country or region.
+Columns: col_0350 (nvarchar) - (ISO code for countries and regions. Foreign key to CountryRegion.CountryRegionCode.), col_0351 (nchar) - (ISO standard currency code. Foreign key to Currency.CurrencyCode.), col_0352 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0350 -> obf.T69.col_0091
+col_0351 -> obf.T04.col_0359

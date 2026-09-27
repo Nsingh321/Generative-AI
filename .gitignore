@@ -1,0 +1,18 @@
+# secrets
+.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.python-version
+
+# local tool config (not project content)
+.claude/settings.local.json
+
+# regeneratable vector-store binaries (rebuild via build_index.py / build_obf_assets.py)
+adventure_works_vector_db/
+obf/vector_db/
+
+# jupyter checkpoints
+.ipynb_checkpoints/

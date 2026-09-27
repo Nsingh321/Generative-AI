@@ -1,0 +1,1171 @@
+{
+    "obf.T08": {
+        "description": "Lookup table containing the departments within the Adventure Works Cycles company.",
+        "columns": [
+            "col_0022 (smallint) - (Primary key for Department records.)",
+            "col_0023 (Name) - (Name of the department.)",
+            "col_0024 (Name) - (Name of the group to which the department belongs.)",
+            "col_0025 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T14.col_0043 via col_0022"
+        ]
+    },
+    "obf.T12": {
+        "description": "Employee information such as salary, department, and title.",
+        "columns": [
+            "col_0026 (int) - (Primary key for Employee records.  Foreign key to BusinessEntity.BusinessEntityID.)",
+            "col_0027 (nvarchar) - (Unique national identification number such as a social security number.)",
+            "col_0028 (nvarchar) - (Network login.)",
+            "col_0029 (hierarchyid) - (Where the employee is located in corporate hierarchy.)",
+            "col_0030 (smallint) - (The depth of the employee in the corporate hierarchy.)",
+            "col_0031 (nvarchar) - (Work title such as Buyer or Sales Representative.)",
+            "col_0032 (date) - (Date of birth.)",
+            "col_0033 (nchar) - (M = Married, S = Single)",
+            "col_0034 (nchar) - (M = Male, F = Female)",
+            "col_0035 (date) - (Employee hired on this date.)",
+            "col_0036 (Flag) - (Job classification. 0 = Hourly, not exempt from collective bargaining. 1 = Salaried, exempt from collective bargaining.)",
+            "col_0037 (smallint) - (Number of available vacation hours.)",
+            "col_0038 (smallint) - (Number of available sick leave hours.)",
+            "col_0039 (Flag) - (0 = Inactive, 1 = Active)",
+            "col_0040 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0041 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0026 -> obf.T23.col_0104",
+            "Referenced by obf.T14.col_0042 via col_0026",
+            "Referenced by obf.T15.col_0048 via col_0026",
+            "Referenced by obf.T19.col_0054 via col_0026",
+            "Referenced by obf.T09.col_0147 via col_0026",
+            "Referenced by obf.T05.col_0326 via col_0026",
+            "Referenced by obf.T17.col_0419 via col_0026"
+        ]
+    },
+    "obf.T14": {
+        "description": "Employee department transfers.",
+        "columns": [
+            "col_0042 (int) - (Employee identification number. Foreign key to Employee.BusinessEntityID.)",
+            "col_0043 (smallint) - (Department in which the employee worked including currently. Foreign key to Department.DepartmentID.)",
+            "col_0044 (tinyint) - (Identifies which 8-hour shift the employee works. Foreign key to Shift.Shift.ID.)",
+            "col_0045 (date) - (Date the employee started work in the department.)",
+            "col_0046 (date) - (Date the employee left the department. NULL = Current department.)",
+            "col_0047 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0042 -> obf.T12.col_0026",
+            "col_0043 -> obf.T08.col_0022",
+            "col_0044 -> obf.T33.col_0057"
+        ]
+    },
+    "obf.T15": {
+        "description": "Employee pay history.",
+        "columns": [
+            "col_0048 (int) - (Employee identification number. Foreign key to Employee.BusinessEntityID.)",
+            "col_0049 (datetime) - (Date the change in pay is effective)",
+            "col_0050 (money) - (Salary hourly rate.)",
+            "col_0051 (tinyint) - (1 = Salary received monthly, 2 = Salary received biweekly)",
+            "col_0052 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0048 -> obf.T12.col_0026"
+        ]
+    },
+    "obf.T19": {
+        "description": "R\u00e9sum\u00e9s submitted to Human Resources by job applicants.",
+        "columns": [
+            "col_0053 (int) - (Primary key for JobCandidate records.)",
+            "col_0054 (int) - (Employee identification number if applicant was hired. Foreign key to Employee.BusinessEntityID.)",
+            "col_0055 (xml) - (R\u00e9sum\u00e9 in XML format.)",
+            "col_0056 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0054 -> obf.T12.col_0026"
+        ]
+    },
+    "obf.T33": {
+        "description": "Work shift lookup table.",
+        "columns": [
+            "col_0057 (tinyint) - (Primary key for Shift records.)",
+            "col_0058 (Name) - (Shift description.)",
+            "col_0059 (time) - (Shift start time.)",
+            "col_0060 (time) - (Shift end time.)",
+            "col_0061 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T14.col_0044 via col_0057"
+        ]
+    },
+    "obf.T45": {
+        "description": "Street address information for customers, employees, and vendors.",
+        "columns": [
+            "col_0062 (int) - (Primary key for Address records.)",
+            "col_0063 (nvarchar) - (First street address line.)",
+            "col_0064 (nvarchar) - (Second street address line.)",
+            "col_0065 (nvarchar) - (Name of the city.)",
+            "col_0066 (int) - (Unique identification number for the state or province. Foreign key to StateProvince table.)",
+            "col_0067 (nvarchar) - (Postal code for the street address.)",
+            "col_0068 (geography) - (Latitude and longitude of this address.)",
+            "col_0069 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0070 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0066 -> obf.T49.col_0124",
+            "Referenced by obf.T62.col_0079 via col_0062",
+            "Referenced by obf.T13.col_0404 via col_0062",
+            "Referenced by obf.T13.col_0403 via col_0062"
+        ]
+    },
+    "obf.T48": {
+        "description": "Types of addresses stored in the Address table. ",
+        "columns": [
+            "col_0071 (int) - (Primary key for AddressType records.)",
+            "col_0072 (Name) - (Address type description. For example, Billing, Home, or Shipping.)",
+            "col_0073 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0074 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T62.col_0080 via col_0071"
+        ]
+    },
+    "obf.T59": {
+        "description": "Source of the ID that connects vendors, customers, and employees with address and contact information.",
+        "columns": [
+            "col_0075 (int) - (Primary key for all customers, vendors, and employees.)",
+            "col_0076 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0077 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T62.col_0078 via col_0075",
+            "Referenced by obf.T64.col_0083 via col_0075",
+            "Referenced by obf.T23.col_0104 via col_0075",
+            "Referenced by obf.T66.col_0342 via col_0075",
+            "Referenced by obf.T54.col_0481 via col_0075"
+        ]
+    },
+    "obf.T62": {
+        "description": "Cross-reference table mapping customers, vendors, and employees to their addresses.",
+        "columns": [
+            "col_0078 (int) - (Primary key. Foreign key to BusinessEntity.BusinessEntityID.)",
+            "col_0079 (int) - (Primary key. Foreign key to Address.AddressID.)",
+            "col_0080 (int) - (Primary key. Foreign key to AddressType.AddressTypeID.)",
+            "col_0081 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0082 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0078 -> obf.T59.col_0075",
+            "col_0079 -> obf.T45.col_0062",
+            "col_0080 -> obf.T48.col_0071"
+        ]
+    },
+    "obf.T64": {
+        "description": "Cross-reference table mapping stores, vendors, and employees to people",
+        "columns": [
+            "col_0083 (int) - (Primary key. Foreign key to BusinessEntity.BusinessEntityID.)",
+            "col_0084 (int) - (Primary key. Foreign key to Person.BusinessEntityID.)",
+            "col_0085 (int) - (Primary key.  Foreign key to ContactType.ContactTypeID.)",
+            "col_0086 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0087 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0083 -> obf.T59.col_0075",
+            "col_0084 -> obf.T23.col_0104",
+            "col_0085 -> obf.T67.col_0088"
+        ]
+    },
+    "obf.T67": {
+        "description": "Lookup table containing the types of business entity contacts.",
+        "columns": [
+            "col_0088 (int) - (Primary key for ContactType records.)",
+            "col_0089 (Name) - (Contact type description.)",
+            "col_0090 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T64.col_0085 via col_0088"
+        ]
+    },
+    "obf.T69": {
+        "description": "Lookup table containing the ISO standard codes for countries and regions.",
+        "columns": [
+            "col_0091 (nvarchar) - (ISO standard code for countries and regions.)",
+            "col_0092 (Name) - (Country or region name.)",
+            "col_0093 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T49.col_0126 via col_0091",
+            "Referenced by obf.T68.col_0350 via col_0091",
+            "Referenced by obf.T28.col_0446 via col_0091"
+        ]
+    },
+    "obf.T11": {
+        "description": "Where to send a person email.",
+        "columns": [
+            "col_0094 (int) - (Primary key. Person associated with this email address.  Foreign key to Person.BusinessEntityID)",
+            "col_0095 (int) - (Primary key. ID of this email address.)",
+            "col_0096 (nvarchar) - (E-mail address for the person.)",
+            "col_0097 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0098 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0094 -> obf.T23.col_0104"
+        ]
+    },
+    "obf.T21": {
+        "description": "One way hashed authentication information",
+        "columns": [
+            "col_0099 (int) - (nan)",
+            "col_0100 (varchar) - (Password for the e-mail account.)",
+            "col_0101 (varchar) - (Random value concatenated with the password string before the password is hashed.)",
+            "col_0102 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0103 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0099 -> obf.T23.col_0104"
+        ]
+    },
+    "obf.T23": {
+        "description": "Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.",
+        "columns": [
+            "col_0104 (int) - (Primary key for Person records.)",
+            "col_0105 (nchar) - (Primary type of person: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact)",
+            "col_0106 (NameStyle) - (0 = The data in FirstName and LastName are stored in western style (first name, last name) order.  1 = Eastern style (last name, first name) order.)",
+            "col_0107 (nvarchar) - (A courtesy title. For example, Mr. or Ms.)",
+            "col_0108 (Name) - (First name of the person.)",
+            "col_0109 (Name) - (Middle name or middle initial of the person.)",
+            "col_0110 (Name) - (Last name of the person.)",
+            "col_0111 (nvarchar) - (Surname suffix. For example, Sr. or Jr.)",
+            "col_0112 (int) - (0 = Contact does not wish to receive e-mail promotions, 1 = Contact does wish to receive e-mail promotions from AdventureWorks, 2 = Contact does wish to receive e-mail promotions from AdventureWorks and selected partners. )",
+            "col_0113 (xml) - (Additional contact information about the person stored in xml format. )",
+            "col_0114 (xml) - (Personal information such as hobbies, and income collected from online shoppers. Used for sales analysis.)",
+            "col_0115 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0116 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T12.col_0026 via col_0104",
+            "Referenced by obf.T64.col_0084 via col_0104",
+            "Referenced by obf.T11.col_0094 via col_0104",
+            "Referenced by obf.T21.col_0099 via col_0104",
+            "col_0104 -> obf.T59.col_0075",
+            "Referenced by obf.T27.col_0117 via col_0104",
+            "Referenced by obf.T07.col_0370 via col_0104",
+            "Referenced by obf.T26.col_0376 via col_0104"
+        ]
+    },
+    "obf.T27": {
+        "description": "Telephone number and type of a person.",
+        "columns": [
+            "col_0117 (int) - (Business entity identification number. Foreign key to Person.BusinessEntityID.)",
+            "col_0118 (Phone) - (Telephone number identification number.)",
+            "col_0119 (int) - (Kind of phone number. Foreign key to PhoneNumberType.PhoneNumberTypeID.)",
+            "col_0120 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0117 -> obf.T23.col_0104",
+            "col_0119 -> obf.T29.col_0121"
+        ]
+    },
+    "obf.T29": {
+        "description": "Type of phone number of a person.",
+        "columns": [
+            "col_0121 (int) - (Primary key for telephone number type records.)",
+            "col_0122 (Name) - (Name of the telephone number type)",
+            "col_0123 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T27.col_0119 via col_0121"
+        ]
+    },
+    "obf.T49": {
+        "description": "State and province lookup table.",
+        "columns": [
+            "col_0124 (int) - (Primary key for StateProvince records.)",
+            "col_0125 (nchar) - (ISO standard state or province code.)",
+            "col_0126 (nvarchar) - (ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. )",
+            "col_0127 (Flag) - (0 = StateProvinceCode exists. 1 = StateProvinceCode unavailable, using CountryRegionCode.)",
+            "col_0128 (Name) - (State or province description.)",
+            "col_0129 (int) - (ID of the territory in which the state or province is located. Foreign key to SalesTerritory.SalesTerritoryID.)",
+            "col_0130 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0131 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T45.col_0066 via col_0124",
+            "col_0126 -> obf.T69.col_0091",
+            "col_0129 -> obf.T28.col_0444",
+            "Referenced by obf.T25.col_0438 via col_0124"
+        ]
+    },
+    "obf.T53": {
+        "description": "Items required to make bicycles and bicycle subassemblies. It identifies the heirarchical relationship between a parent product and its components.",
+        "columns": [
+            "col_0132 (int) - (Primary key for BillOfMaterials records.)",
+            "col_0133 (int) - (Parent product identification number. Foreign key to Product.ProductID.)",
+            "col_0134 (int) - (Component identification number. Foreign key to Product.ProductID.)",
+            "col_0135 (datetime) - (Date the component started being used in the assembly item.)",
+            "col_0136 (datetime) - (Date the component stopped being used in the assembly item.)",
+            "col_0137 (nchar) - (Standard code identifying the unit of measure for the quantity.)",
+            "col_0138 (smallint) - (Indicates the depth the component is from its parent (AssemblyID).)",
+            "col_0139 (decimal) - (Quantity of the component needed to create the assembly.)",
+            "col_0140 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0134 -> obf.T30.col_0166",
+            "col_0137 -> obf.T65.col_0276",
+            "col_0133 -> obf.T30.col_0166"
+        ]
+    },
+    "obf.T02": {
+        "description": "Lookup table containing the languages in which some AdventureWorks data is stored.",
+        "columns": [
+            "col_0141 (nchar) - (Primary key for Culture records.)",
+            "col_0142 (Name) - (Culture description.)",
+            "col_0143 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T52.col_0230 via col_0141"
+        ]
+    },
+    "obf.T09": {
+        "description": "Product maintenance documents.",
+        "columns": [
+            "col_0144 (hierarchyid) - (Primary key for Document records.)",
+            "col_0145 (smallint) - (Depth in the document hierarchy.)",
+            "col_0146 (nvarchar) - (Title of the document.)",
+            "col_0147 (int) - (Employee who controls the document.  Foreign key to Employee.BusinessEntityID)",
+            "col_0148 (bit) - (0 = This is a folder, 1 = This is a document.)",
+            "col_0149 (nvarchar) - (File name of the document)",
+            "col_0150 (nvarchar) - (File extension indicating the document type. For example, .doc or .txt.)",
+            "col_0151 (nchar) - (Revision number of the document. )",
+            "col_0152 (int) - (Engineering change approval number.)",
+            "col_0153 (tinyint) - (1 = Pending approval, 2 = Approved, 3 = Obsolete)",
+            "col_0154 (nvarchar) - (Document abstract.)",
+            "col_0155 (varbinary) - (Complete document.)",
+            "col_0156 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Required for FileStream.)",
+            "col_0157 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0147 -> obf.T12.col_0026",
+            "Referenced by obf.T39.col_0205 via col_0144"
+        ]
+    },
+    "obf.T18": {
+        "description": "Bicycle assembly diagrams.",
+        "columns": [
+            "col_0158 (int) - (Primary key for Illustration records.)",
+            "col_0159 (xml) - (Illustrations used in manufacturing instructions. Stored as XML.)",
+            "col_0160 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T50.col_0226 via col_0158"
+        ]
+    },
+    "obf.T20": {
+        "description": "Product inventory and manufacturing locations.",
+        "columns": [
+            "col_0161 (smallint) - (Primary key for Location records.)",
+            "col_0162 (Name) - (Location description.)",
+            "col_0163 (smallmoney) - (Standard hourly cost of the manufacturing location.)",
+            "col_0164 (decimal) - (Work capacity (in hours) of the manufacturing location.)",
+            "col_0165 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T41.col_0208 via col_0161",
+            "Referenced by obf.T03.col_0292 via col_0161"
+        ]
+    },
+    "obf.T30": {
+        "description": "Products sold or used in the manfacturing of sold products.",
+        "columns": [
+            "col_0166 (int) - (Primary key for Product records.)",
+            "col_0167 (Name) - (Name of the product.)",
+            "col_0168 (nvarchar) - (Unique product identification number.)",
+            "col_0169 (Flag) - (0 = Product is purchased, 1 = Product is manufactured in-house.)",
+            "col_0170 (Flag) - (0 = Product is not a salable item. 1 = Product is salable.)",
+            "col_0171 (nvarchar) - (Product color.)",
+            "col_0172 (smallint) - (Minimum inventory quantity. )",
+            "col_0173 (smallint) - (Inventory level that triggers a purchase order or work order. )",
+            "col_0174 (money) - (Standard cost of the product.)",
+            "col_0175 (money) - (Selling price.)",
+            "col_0176 (nvarchar) - (Product size.)",
+            "col_0177 (nchar) - (Unit of measure for Size column.)",
+            "col_0178 (nchar) - (Unit of measure for Weight column.)",
+            "col_0179 (decimal) - (Product weight.)",
+            "col_0180 (int) - (Number of days required to manufacture the product.)",
+            "col_0181 (nchar) - (R = Road, M = Mountain, T = Touring, S = Standard)",
+            "col_0182 (nchar) - (H = High, M = Medium, L = Low)",
+            "col_0183 (nchar) - (W = Womens, M = Mens, U = Universal)",
+            "col_0184 (int) - (Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID. )",
+            "col_0185 (int) - (Product is a member of this product model. Foreign key to ProductModel.ProductModelID.)",
+            "col_0186 (datetime) - (Date the product was available for sale.)",
+            "col_0187 (datetime) - (Date the product was no longer available for sale.)",
+            "col_0188 (datetime) - (Date the product was discontinued.)",
+            "col_0189 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0190 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T53.col_0134 via col_0166",
+            "Referenced by obf.T53.col_0133 via col_0166",
+            "col_0177 -> obf.T65.col_0276",
+            "col_0178 -> obf.T65.col_0276",
+            "col_0184 -> obf.T61.col_0250",
+            "col_0185 -> obf.T47.col_0219",
+            "Referenced by obf.T36.col_0195 via col_0166",
+            "Referenced by obf.T39.col_0204 via col_0166",
+            "Referenced by obf.T41.col_0207 via col_0166",
+            "Referenced by obf.T44.col_0214 via col_0166",
+            "Referenced by obf.T56.col_0238 via col_0166",
+            "Referenced by obf.T58.col_0243 via col_0166",
+            "Referenced by obf.T57.col_0259 via col_0166",
+            "Referenced by obf.T70.col_0280 via col_0166",
+            "Referenced by obf.T63.col_0301 via col_0166",
+            "Referenced by obf.T71.col_0316 via col_0166",
+            "Referenced by obf.T38.col_0463 via col_0166",
+            "Referenced by obf.T46.col_0478 via col_0166"
+        ]
+    },
+    "obf.T34": {
+        "description": "High-level product categorization.",
+        "columns": [
+            "col_0191 (int) - (Primary key for ProductCategory records.)",
+            "col_0192 (Name) - (Category description.)",
+            "col_0193 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0194 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T61.col_0251 via col_0191"
+        ]
+    },
+    "obf.T36": {
+        "description": "Changes in the cost of a product over time.",
+        "columns": [
+            "col_0195 (int) - (Product identification number. Foreign key to Product.ProductID)",
+            "col_0196 (datetime) - (Product cost start date.)",
+            "col_0197 (datetime) - (Product cost end date.)",
+            "col_0198 (money) - (Standard cost of the product.)",
+            "col_0199 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0195 -> obf.T30.col_0166"
+        ]
+    },
+    "obf.T37": {
+        "description": "Product descriptions in several languages.",
+        "columns": [
+            "col_0200 (int) - (Primary key for ProductDescription records.)",
+            "col_0201 (nvarchar) - (Description of the product.)",
+            "col_0202 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0203 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T52.col_0229 via col_0200"
+        ]
+    },
+    "obf.T39": {
+        "description": "Cross-reference table mapping products to related product documents.",
+        "columns": [
+            "col_0204 (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "col_0205 (hierarchyid) - (Document identification number. Foreign key to Document.DocumentNode.)",
+            "col_0206 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0204 -> obf.T30.col_0166",
+            "col_0205 -> obf.T09.col_0144"
+        ]
+    },
+    "obf.T41": {
+        "description": "Product inventory information.",
+        "columns": [
+            "col_0207 (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "col_0208 (smallint) - (Inventory location identification number. Foreign key to Location.LocationID. )",
+            "col_0209 (nvarchar) - (Storage compartment within an inventory location.)",
+            "col_0210 (tinyint) - (Storage container on a shelf in an inventory location.)",
+            "col_0211 (smallint) - (Quantity of products in the inventory location.)",
+            "col_0212 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0213 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0207 -> obf.T30.col_0166",
+            "col_0208 -> obf.T20.col_0161"
+        ]
+    },
+    "obf.T44": {
+        "description": "Changes in the list price of a product over time.",
+        "columns": [
+            "col_0214 (int) - (Product identification number. Foreign key to Product.ProductID)",
+            "col_0215 (datetime) - (List price start date.)",
+            "col_0216 (datetime) - (List price end date)",
+            "col_0217 (money) - (Product list price.)",
+            "col_0218 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0214 -> obf.T30.col_0166"
+        ]
+    },
+    "obf.T47": {
+        "description": "Product model classification.",
+        "columns": [
+            "col_0219 (int) - (Primary key for ProductModel records.)",
+            "col_0220 (Name) - (Product model description.)",
+            "col_0221 (xml) - (Detailed product catalog information in xml format.)",
+            "col_0222 (xml) - (Manufacturing instructions in xml format.)",
+            "col_0223 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0224 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T30.col_0185 via col_0219",
+            "Referenced by obf.T50.col_0225 via col_0219",
+            "Referenced by obf.T52.col_0228 via col_0219"
+        ]
+    },
+    "obf.T50": {
+        "description": "Cross-reference table mapping product models and illustrations.",
+        "columns": [
+            "col_0225 (int) - (Primary key. Foreign key to ProductModel.ProductModelID.)",
+            "col_0226 (int) - (Primary key. Foreign key to Illustration.IllustrationID.)",
+            "col_0227 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0225 -> obf.T47.col_0219",
+            "col_0226 -> obf.T18.col_0158"
+        ]
+    },
+    "obf.T52": {
+        "description": "Cross-reference table mapping product descriptions and the language the description is written in.",
+        "columns": [
+            "col_0228 (int) - (Primary key. Foreign key to ProductModel.ProductModelID.)",
+            "col_0229 (int) - (Primary key. Foreign key to ProductDescription.ProductDescriptionID.)",
+            "col_0230 (nchar) - (Culture identification number. Foreign key to Culture.CultureID.)",
+            "col_0231 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0228 -> obf.T47.col_0219",
+            "col_0229 -> obf.T37.col_0200",
+            "col_0230 -> obf.T02.col_0141"
+        ]
+    },
+    "obf.T55": {
+        "description": "Product images.",
+        "columns": [
+            "col_0232 (int) - (Primary key for ProductPhoto records.)",
+            "col_0233 (varbinary) - (Small image of the product.)",
+            "col_0234 (nvarchar) - (Small image file name.)",
+            "col_0235 (varbinary) - (Large image of the product.)",
+            "col_0236 (nvarchar) - (Large image file name.)",
+            "col_0237 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T56.col_0239 via col_0232"
+        ]
+    },
+    "obf.T56": {
+        "description": "Cross-reference table mapping products and product photos.",
+        "columns": [
+            "col_0238 (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "col_0239 (int) - (Product photo identification number. Foreign key to ProductPhoto.ProductPhotoID.)",
+            "col_0240 (Flag) - (0 = Photo is not the principal image. 1 = Photo is the principal image.)",
+            "col_0241 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0238 -> obf.T30.col_0166",
+            "col_0239 -> obf.T55.col_0232"
+        ]
+    },
+    "obf.T58": {
+        "description": "Customer reviews of products they have purchased.",
+        "columns": [
+            "col_0242 (int) - (Primary key for ProductReview records.)",
+            "col_0243 (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "col_0244 (Name) - (Name of the reviewer.)",
+            "col_0245 (datetime) - (Date review was submitted.)",
+            "col_0246 (nvarchar) - (Reviewer's e-mail address.)",
+            "col_0247 (int) - (Product rating given by the reviewer. Scale is 1 to 5 with 5 as the highest rating.)",
+            "col_0248 (nvarchar) - (Reviewer's comments)",
+            "col_0249 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0243 -> obf.T30.col_0166"
+        ]
+    },
+    "obf.T61": {
+        "description": "Product subcategories. See ProductCategory table.",
+        "columns": [
+            "col_0250 (int) - (Primary key for ProductSubcategory records.)",
+            "col_0251 (int) - (Product category identification number. Foreign key to ProductCategory.ProductCategoryID.)",
+            "col_0252 (Name) - (Subcategory description.)",
+            "col_0253 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0254 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T30.col_0184 via col_0250",
+            "col_0251 -> obf.T34.col_0191"
+        ]
+    },
+    "obf.T32": {
+        "description": "Manufacturing failure reasons lookup table.",
+        "columns": [
+            "col_0255 (smallint) - (Primary key for ScrapReason records.)",
+            "col_0256 (Name) - (Failure description.)",
+            "col_0257 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T70.col_0287 via col_0255"
+        ]
+    },
+    "obf.T57": {
+        "description": "Record of each purchase order, sales order, or work order transaction year to date.",
+        "columns": [
+            "col_0258 (int) - (Primary key for TransactionHistory records.)",
+            "col_0259 (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "col_0260 (int) - (Purchase order, sales order, or work order identification number.)",
+            "col_0261 (int) - (Line number associated with the purchase order, sales order, or work order.)",
+            "col_0262 (datetime) - (Date and time of the transaction.)",
+            "col_0263 (nchar) - (W = WorkOrder, S = SalesOrder, P = PurchaseOrder)",
+            "col_0264 (int) - (Product quantity.)",
+            "col_0265 (money) - (Product cost.)",
+            "col_0266 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0259 -> obf.T30.col_0166"
+        ]
+    },
+    "obf.T60": {
+        "description": "Transactions for previous years.",
+        "columns": [
+            "col_0267 (int) - (Primary key for TransactionHistoryArchive records.)",
+            "col_0268 (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "col_0269 (int) - (Purchase order, sales order, or work order identification number.)",
+            "col_0270 (int) - (Line number associated with the purchase order, sales order, or work order.)",
+            "col_0271 (datetime) - (Date and time of the transaction.)",
+            "col_0272 (nchar) - (W = Work Order, S = Sales Order, P = Purchase Order)",
+            "col_0273 (int) - (Product quantity.)",
+            "col_0274 (money) - (Product cost.)",
+            "col_0275 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "No explicit foreign key relationships"
+        ]
+    },
+    "obf.T65": {
+        "description": "Unit of measure lookup table.",
+        "columns": [
+            "col_0276 (nchar) - (Primary key.)",
+            "col_0277 (Name) - (Unit of measure description.)",
+            "col_0278 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T53.col_0137 via col_0276",
+            "Referenced by obf.T30.col_0177 via col_0276",
+            "Referenced by obf.T30.col_0178 via col_0276",
+            "Referenced by obf.T63.col_0310 via col_0276"
+        ]
+    },
+    "obf.T70": {
+        "description": "The **Production.WorkOrder** table tracks details of manufacturing work orders, including identifiers, product information, quantities ordered and stocked or scrapped, timestamps for start, end, and due dates, scrap reasons, and modification history.",
+        "columns": [
+            "col_0279 (int) - (nan)",
+            "col_0280 (int) - (nan)",
+            "col_0281 (int) - (nan)",
+            "col_0282 (int) - (nan)",
+            "col_0283 (smallint) - (nan)",
+            "col_0284 (datetime) - (nan)",
+            "col_0285 (datetime) - (nan)",
+            "col_0286 (datetime) - (nan)",
+            "col_0287 (smallint) - (nan)",
+            "col_0288 (datetime) - (nan)"
+        ],
+        "relationships": [
+            "col_0280 -> obf.T30.col_0166",
+            "col_0287 -> obf.T32.col_0255",
+            "Referenced by obf.T03.col_0289 via col_0279"
+        ]
+    },
+    "obf.T03": {
+        "description": "The **Production.WorkOrderRouting** table records the routing details for each work order, including product and operation sequences, locations, scheduled and actual start/end dates, resource hours, and planned and actual costs for manufacturing operations.",
+        "columns": [
+            "col_0289 (int) - (nan)",
+            "col_0290 (int) - (nan)",
+            "col_0291 (smallint) - (nan)",
+            "col_0292 (smallint) - (nan)",
+            "col_0293 (datetime) - (nan)",
+            "col_0294 (datetime) - (nan)",
+            "col_0295 (datetime) - (nan)",
+            "col_0296 (datetime) - (nan)",
+            "col_0297 (decimal) - (nan)",
+            "col_0298 (money) - (nan)",
+            "col_0299 (money) - (nan)",
+            "col_0300 (datetime) - (nan)"
+        ],
+        "relationships": [
+            "col_0292 -> obf.T20.col_0161",
+            "col_0289 -> obf.T70.col_0279"
+        ]
+    },
+    "obf.T63": {
+        "description": "Cross-reference table mapping vendors with the products they supply.",
+        "columns": [
+            "col_0301 (int) - (Primary key. Foreign key to Product.ProductID.)",
+            "col_0302 (int) - (Primary key. Foreign key to Vendor.BusinessEntityID.)",
+            "col_0303 (int) - (The average span of time (in days) between placing an order with the vendor and receiving the purchased product.)",
+            "col_0304 (money) - (The vendor's usual selling price.)",
+            "col_0305 (money) - (The selling price when last purchased.)",
+            "col_0306 (datetime) - (Date the product was last received by the vendor.)",
+            "col_0307 (int) - (The maximum quantity that should be ordered.)",
+            "col_0308 (int) - (The minimum quantity that should be ordered.)",
+            "col_0309 (int) - (The quantity currently on order.)",
+            "col_0310 (nchar) - (The product's unit of measure.)",
+            "col_0311 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0301 -> obf.T30.col_0166",
+            "col_0302 -> obf.T66.col_0342",
+            "col_0310 -> obf.T65.col_0276"
+        ]
+    },
+    "obf.T71": {
+        "description": "Individual products associated with a specific purchase order. See PurchaseOrderHeader.",
+        "columns": [
+            "col_0312 (int) - (Primary key. Foreign key to PurchaseOrderHeader.PurchaseOrderID.)",
+            "col_0313 (int) - (Primary key. One line number per purchased product.)",
+            "col_0314 (datetime) - (Date the product is expected to be received.)",
+            "col_0315 (smallint) - (Quantity ordered.)",
+            "col_0316 (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "col_0317 (money) - (Vendor's selling price of a single product.)",
+            "col_0318 (money) - (Per product subtotal. Computed as OrderQty * UnitPrice.)",
+            "col_0319 (decimal) - (Quantity actually received from the vendor.)",
+            "col_0320 (decimal) - (Quantity rejected during inspection.)",
+            "col_0321 (decimal) - (Quantity accepted into inventory. Computed as ReceivedQty - RejectedQty.)",
+            "col_0322 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0312 -> obf.T05.col_0323",
+            "col_0316 -> obf.T30.col_0166"
+        ]
+    },
+    "obf.T05": {
+        "description": "General purchase order information. See PurchaseOrderDetail.",
+        "columns": [
+            "col_0323 (int) - (Primary key.)",
+            "col_0324 (tinyint) - (Incremental number to track changes to the purchase order over time.)",
+            "col_0325 (tinyint) - (Order current status. 1 = Pending; 2 = Approved; 3 = Rejected; 4 = Complete)",
+            "col_0326 (int) - (Employee who created the purchase order. Foreign key to Employee.BusinessEntityID.)",
+            "col_0327 (int) - (Vendor with whom the purchase order is placed. Foreign key to Vendor.BusinessEntityID.)",
+            "col_0328 (int) - (Shipping method. Foreign key to ShipMethod.ShipMethodID.)",
+            "col_0329 (datetime) - (Purchase order creation date.)",
+            "col_0330 (datetime) - (Estimated shipment date from the vendor.)",
+            "col_0331 (money) - (Purchase order subtotal. Computed as SUM(PurchaseOrderDetail.LineTotal)for the appropriate PurchaseOrderID.)",
+            "col_0332 (money) - (Tax amount.)",
+            "col_0333 (money) - (Shipping cost.)",
+            "col_0334 (money) - (Total due to vendor. Computed as Subtotal + TaxAmt + Freight.)",
+            "col_0335 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T71.col_0312 via col_0323",
+            "col_0328 -> obf.T35.col_0336",
+            "col_0327 -> obf.T66.col_0342",
+            "col_0326 -> obf.T12.col_0026"
+        ]
+    },
+    "obf.T35": {
+        "description": "Shipping company lookup table.",
+        "columns": [
+            "col_0336 (int) - (Primary key for ShipMethod records.)",
+            "col_0337 (Name) - (Shipping company name.)",
+            "col_0338 (money) - (Minimum shipping charge.)",
+            "col_0339 (money) - (Shipping charge per pound.)",
+            "col_0340 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0341 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T05.col_0328 via col_0336",
+            "Referenced by obf.T13.col_0405 via col_0336"
+        ]
+    },
+    "obf.T66": {
+        "description": "Companies from whom Adventure Works Cycles purchases parts or other goods.",
+        "columns": [
+            "col_0342 (int) - (Primary key for Vendor records.  Foreign key to BusinessEntity.BusinessEntityID)",
+            "col_0343 (AccountNumber) - (Vendor account (identification) number.)",
+            "col_0344 (Name) - (Company name.)",
+            "col_0345 (tinyint) - (1 = Superior, 2 = Excellent, 3 = Above average, 4 = Average, 5 = Below average)",
+            "col_0346 (Flag) - (0 = Do not use if another vendor is available. 1 = Preferred over other vendors supplying the same product.)",
+            "col_0347 (Flag) - (0 = Vendor no longer used. 1 = Vendor is actively used.)",
+            "col_0348 (nvarchar) - (nan)",
+            "col_0349 (datetime) - (nan)"
+        ],
+        "relationships": [
+            "Referenced by obf.T63.col_0302 via col_0342",
+            "Referenced by obf.T05.col_0327 via col_0342",
+            "col_0342 -> obf.T59.col_0075"
+        ]
+    },
+    "obf.T68": {
+        "description": "Cross-reference table mapping ISO currency codes to a country or region.",
+        "columns": [
+            "col_0350 (nvarchar) - (ISO code for countries and regions. Foreign key to CountryRegion.CountryRegionCode.)",
+            "col_0351 (nchar) - (ISO standard currency code. Foreign key to Currency.CurrencyCode.)",
+            "col_0352 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0350 -> obf.T69.col_0091",
+            "col_0351 -> obf.T04.col_0359"
+        ]
+    },
+    "obf.T01": {
+        "description": "Customer credit card information.",
+        "columns": [
+            "col_0353 (int) - (Primary key for CreditCard records.)",
+            "col_0354 (nvarchar) - (Credit card name.)",
+            "col_0355 (nvarchar) - (Credit card number.)",
+            "col_0356 (tinyint) - (Credit card expiration month.)",
+            "col_0357 (smallint) - (Credit card expiration year.)",
+            "col_0358 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T26.col_0377 via col_0353",
+            "Referenced by obf.T13.col_0406 via col_0353"
+        ]
+    },
+    "obf.T04": {
+        "description": "Lookup table containing standard ISO currencies.",
+        "columns": [
+            "col_0359 (nchar) - (The ISO code for the Currency.)",
+            "col_0360 (Name) - (Currency name.)",
+            "col_0361 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T68.col_0351 via col_0359",
+            "Referenced by obf.T06.col_0365 via col_0359",
+            "Referenced by obf.T06.col_0364 via col_0359"
+        ]
+    },
+    "obf.T06": {
+        "description": "Currency exchange rates.",
+        "columns": [
+            "col_0362 (int) - (Primary key for CurrencyRate records.)",
+            "col_0363 (datetime) - (Date and time the exchange rate was obtained.)",
+            "col_0364 (nchar) - (Exchange rate was converted from this currency code.)",
+            "col_0365 (nchar) - (Exchange rate was converted to this currency code.)",
+            "col_0366 (money) - (Average exchange rate for the day.)",
+            "col_0367 (money) - (Final exchange rate for the day.)",
+            "col_0368 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0365 -> obf.T04.col_0359",
+            "col_0364 -> obf.T04.col_0359",
+            "Referenced by obf.T13.col_0408 via col_0362"
+        ]
+    },
+    "obf.T07": {
+        "description": "Current customer information. Also see the Person and Store tables.",
+        "columns": [
+            "col_0369 (int) - (Primary key.)",
+            "col_0370 (int) - (Foreign key to Person.BusinessEntityID)",
+            "col_0371 (int) - (Foreign key to Store.BusinessEntityID)",
+            "col_0372 (int) - (ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.)",
+            "col_0373 (varchar) - (Unique number identifying the customer assigned by the accounting system.)",
+            "col_0374 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0375 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0372 -> obf.T28.col_0444",
+            "col_0371 -> obf.T54.col_0481",
+            "col_0370 -> obf.T23.col_0104",
+            "Referenced by obf.T13.col_0400 via col_0369"
+        ]
+    },
+    "obf.T26": {
+        "description": "Cross-reference table mapping people to their credit card information in the CreditCard table. ",
+        "columns": [
+            "col_0376 (int) - (Business entity identification number. Foreign key to Person.BusinessEntityID.)",
+            "col_0377 (int) - (Credit card identification number. Foreign key to CreditCard.CreditCardID.)",
+            "col_0378 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0376 -> obf.T23.col_0104",
+            "col_0377 -> obf.T01.col_0353"
+        ]
+    },
+    "obf.T10": {
+        "description": "Individual products associated with a specific sales order. See SalesOrderHeader.",
+        "columns": [
+            "col_0379 (int) - (Primary key. Foreign key to SalesOrderHeader.SalesOrderID.)",
+            "col_0380 (int) - (Primary key. One incremental unique number per product sold.)",
+            "col_0381 (nvarchar) - (Shipment tracking number supplied by the shipper.)",
+            "col_0382 (smallint) - (Quantity ordered per product.)",
+            "col_0383 (int) - (Product sold to customer. Foreign key to Product.ProductID.)",
+            "col_0384 (int) - (Promotional code. Foreign key to SpecialOffer.SpecialOfferID.)",
+            "col_0385 (money) - (Selling price of a single product.)",
+            "col_0386 (money) - (Discount amount.)",
+            "col_0387 (numeric) - (Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.)",
+            "col_0388 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0389 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0384 -> obf.T46.col_0477",
+            "col_0383 -> obf.T46.col_0478",
+            "col_0379 -> obf.T13.col_0390"
+        ]
+    },
+    "obf.T13": {
+        "description": "General sales order information.",
+        "columns": [
+            "col_0390 (int) - (Primary key.)",
+            "col_0391 (tinyint) - (Incremental number to track changes to the sales order over time.)",
+            "col_0392 (datetime) - (Dates the sales order was created.)",
+            "col_0393 (datetime) - (Date the order is due to the customer.)",
+            "col_0394 (datetime) - (Date the order was shipped to the customer.)",
+            "col_0395 (tinyint) - (Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled)",
+            "col_0396 (Flag) - (0 = Order placed by sales person. 1 = Order placed online by customer.)",
+            "col_0397 (nvarchar) - (Unique sales order identification number.)",
+            "col_0398 (OrderNumber) - (Customer purchase order number reference. )",
+            "col_0399 (AccountNumber) - (Financial accounting number reference.)",
+            "col_0400 (int) - (Customer identification number. Foreign key to Customer.BusinessEntityID.)",
+            "col_0401 (int) - (Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.)",
+            "col_0402 (int) - (Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.)",
+            "col_0403 (int) - (Customer billing address. Foreign key to Address.AddressID.)",
+            "col_0404 (int) - (Customer shipping address. Foreign key to Address.AddressID.)",
+            "col_0405 (int) - (Shipping method. Foreign key to ShipMethod.ShipMethodID.)",
+            "col_0406 (int) - (Credit card identification number. Foreign key to CreditCard.CreditCardID.)",
+            "col_0407 (varchar) - (Approval code provided by the credit card company.)",
+            "col_0408 (int) - (Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.)",
+            "col_0409 (money) - (Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.)",
+            "col_0410 (money) - (Tax amount.)",
+            "col_0411 (money) - (Shipping cost.)",
+            "col_0412 (money) - (Total due from customer. Computed as Subtotal + TaxAmt + Freight.)",
+            "col_0413 (nvarchar) - (Sales representative comments.)",
+            "col_0414 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0415 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T10.col_0379 via col_0390",
+            "col_0406 -> obf.T01.col_0353",
+            "col_0405 -> obf.T35.col_0336",
+            "col_0404 -> obf.T45.col_0062",
+            "col_0403 -> obf.T45.col_0062",
+            "col_0402 -> obf.T28.col_0444",
+            "col_0401 -> obf.T17.col_0419",
+            "col_0400 -> obf.T07.col_0369",
+            "col_0408 -> obf.T06.col_0362",
+            "Referenced by obf.T16.col_0416 via col_0390"
+        ]
+    },
+    "obf.T16": {
+        "description": "Cross-reference table mapping sales orders to sales reason codes.",
+        "columns": [
+            "col_0416 (int) - (Primary key. Foreign key to SalesOrderHeader.SalesOrderID.)",
+            "col_0417 (int) - (Primary key. Foreign key to SalesReason.SalesReasonID.)",
+            "col_0418 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0416 -> obf.T13.col_0390",
+            "col_0417 -> obf.T24.col_0433"
+        ]
+    },
+    "obf.T17": {
+        "description": "Sales representative current information.",
+        "columns": [
+            "col_0419 (int) - (Primary key for SalesPerson records. Foreign key to Employee.BusinessEntityID)",
+            "col_0420 (int) - (Territory currently assigned to. Foreign key to SalesTerritory.SalesTerritoryID.)",
+            "col_0421 (money) - (Projected yearly sales.)",
+            "col_0422 (money) - (Bonus due if quota is met.)",
+            "col_0423 (smallmoney) - (Commision percent received per sale.)",
+            "col_0424 (money) - (Sales total year to date.)",
+            "col_0425 (money) - (Sales total of previous year.)",
+            "col_0426 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0427 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T13.col_0401 via col_0419",
+            "col_0419 -> obf.T12.col_0026",
+            "col_0420 -> obf.T28.col_0444",
+            "Referenced by obf.T22.col_0428 via col_0419",
+            "Referenced by obf.T31.col_0454 via col_0419",
+            "Referenced by obf.T54.col_0483 via col_0419"
+        ]
+    },
+    "obf.T22": {
+        "description": "Sales performance tracking.",
+        "columns": [
+            "col_0428 (int) - (Sales person identification number. Foreign key to SalesPerson.BusinessEntityID.)",
+            "col_0429 (datetime) - (Sales quota date.)",
+            "col_0430 (money) - (Sales quota amount.)",
+            "col_0431 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0432 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0428 -> obf.T17.col_0419"
+        ]
+    },
+    "obf.T24": {
+        "description": "Lookup table of customer purchase reasons.",
+        "columns": [
+            "col_0433 (int) - (Primary key for SalesReason records.)",
+            "col_0434 (Name) - (Sales reason description.)",
+            "col_0435 (Name) - (Category the sales reason belongs to.)",
+            "col_0436 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T16.col_0417 via col_0433"
+        ]
+    },
+    "obf.T25": {
+        "description": "Tax rate lookup table.",
+        "columns": [
+            "col_0437 (int) - (Primary key for SalesTaxRate records.)",
+            "col_0438 (int) - (State, province, or country/region the sales tax applies to.)",
+            "col_0439 (tinyint) - (1 = Tax applied to retail transactions, 2 = Tax applied to wholesale transactions, 3 = Tax applied to all sales (retail and wholesale) transactions.)",
+            "col_0440 (smallmoney) - (Tax rate amount.)",
+            "col_0441 (Name) - (Tax rate description.)",
+            "col_0442 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0443 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0438 -> obf.T49.col_0124"
+        ]
+    },
+    "obf.T28": {
+        "description": "Sales territory lookup table.",
+        "columns": [
+            "col_0444 (int) - (Primary key for SalesTerritory records.)",
+            "col_0445 (Name) - (Sales territory description)",
+            "col_0446 (nvarchar) - (ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. )",
+            "col_0447 (nvarchar) - (Geographic area to which the sales territory belong.)",
+            "col_0448 (money) - (Sales in the territory year to date.)",
+            "col_0449 (money) - (Sales in the territory the previous year.)",
+            "col_0450 (money) - (Business costs in the territory year to date.)",
+            "col_0451 (money) - (Business costs in the territory the previous year.)",
+            "col_0452 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0453 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T49.col_0129 via col_0444",
+            "Referenced by obf.T07.col_0372 via col_0444",
+            "Referenced by obf.T13.col_0402 via col_0444",
+            "Referenced by obf.T17.col_0420 via col_0444",
+            "col_0446 -> obf.T69.col_0091",
+            "Referenced by obf.T31.col_0455 via col_0444"
+        ]
+    },
+    "obf.T31": {
+        "description": "Sales representative transfers to other sales territories.",
+        "columns": [
+            "col_0454 (int) - (Primary key. The sales rep.  Foreign key to SalesPerson.BusinessEntityID.)",
+            "col_0455 (int) - (Primary key. Territory identification number. Foreign key to SalesTerritory.SalesTerritoryID.)",
+            "col_0456 (datetime) - (Primary key. Date the sales representive started work in the territory.)",
+            "col_0457 (datetime) - (Date the sales representative left work in the territory.)",
+            "col_0458 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0459 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0454 -> obf.T17.col_0419",
+            "col_0455 -> obf.T28.col_0444"
+        ]
+    },
+    "obf.T38": {
+        "description": "Contains online customer orders until the order is submitted or cancelled.",
+        "columns": [
+            "col_0460 (int) - (Primary key for ShoppingCartItem records.)",
+            "col_0461 (nvarchar) - (Shopping cart identification number.)",
+            "col_0462 (int) - (Product quantity ordered.)",
+            "col_0463 (int) - (Product ordered. Foreign key to Product.ProductID.)",
+            "col_0464 (datetime) - (Date the time the record was created.)",
+            "col_0465 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "col_0463 -> obf.T30.col_0166"
+        ]
+    },
+    "obf.T42": {
+        "description": "Sale discounts lookup table.",
+        "columns": [
+            "col_0466 (int) - (Primary key for SpecialOffer records.)",
+            "col_0467 (nvarchar) - (Discount description.)",
+            "col_0468 (smallmoney) - (Discount precentage.)",
+            "col_0469 (nvarchar) - (Discount type category.)",
+            "col_0470 (nvarchar) - (Group the discount applies to such as Reseller or Customer.)",
+            "col_0471 (datetime) - (Discount start date.)",
+            "col_0472 (datetime) - (Discount end date.)",
+            "col_0473 (int) - (Minimum discount percent allowed.)",
+            "col_0474 (int) - (Maximum discount percent allowed.)",
+            "col_0475 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0476 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T46.col_0477 via col_0466"
+        ]
+    },
+    "obf.T46": {
+        "description": "Cross-reference table mapping products to special offer discounts.",
+        "columns": [
+            "col_0477 (int) - (Primary key for SpecialOfferProduct records.)",
+            "col_0478 (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "col_0479 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0480 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T10.col_0384 via col_0477",
+            "Referenced by obf.T10.col_0383 via col_0478",
+            "col_0477 -> obf.T42.col_0466",
+            "col_0478 -> obf.T30.col_0166"
+        ]
+    },
+    "obf.T54": {
+        "description": "Customers (resellers) of Adventure Works products.",
+        "columns": [
+            "col_0481 (int) - (Primary key. Foreign key to Customer.BusinessEntityID.)",
+            "col_0482 (Name) - (Name of the store.)",
+            "col_0483 (int) - (ID of the sales person assigned to the customer. Foreign key to SalesPerson.BusinessEntityID.)",
+            "col_0484 (xml) - (Demographic informationg about the store such as the number of employees, annual sales and store type.)",
+            "col_0485 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "col_0486 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by obf.T07.col_0371 via col_0481",
+            "col_0481 -> obf.T59.col_0075",
+            "col_0483 -> obf.T17.col_0419"
+        ]
+    },
+    "obf.T51": {
+        "description": "Current version number of the AdventureWorks 2025 sample database. ",
+        "columns": [
+            "col_0001 (tinyint) - (Primary key for AWBuildVersion records.)",
+            "col_0002 (nvarchar) - (Version number of the database in 9.yy.mm.dd.00 format.)",
+            "col_0003 (datetime) - (Date and time the record was last updated.)",
+            "col_0004 (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "No explicit foreign key relationships"
+        ]
+    },
+    "obf.T40": {
+        "description": "Audit table tracking all DDL changes made to the AdventureWorks database. Data is captured by the database trigger ddlDatabaseTriggerLog.",
+        "columns": [
+            "col_0005 (int) - (Primary key for DatabaseLog records.)",
+            "col_0006 (datetime) - (The date and time the DDL change occurred.)",
+            "col_0007 (sysname) - (The user who implemented the DDL change.)",
+            "col_0008 (sysname) - (The type of DDL statement that was executed.)",
+            "col_0009 (sysname) - (The schema to which the changed object belongs.)",
+            "col_0010 (sysname) - (The object that was changed by the DDL statment.)",
+            "col_0011 (nvarchar) - (The exact Transact-SQL statement that was executed.)",
+            "col_0012 (xml) - (The raw XML data generated by database trigger.)"
+        ],
+        "relationships": [
+            "No explicit foreign key relationships"
+        ]
+    },
+    "obf.T43": {
+        "description": "Audit table tracking errors in the the AdventureWorks database that are caught by the CATCH block of a TRY...CATCH construct. Data is inserted by stored procedure dbo.uspLogError when it is executed from inside the CATCH block of a TRY...CATCH construct.",
+        "columns": [
+            "col_0013 (int) - (Primary key for ErrorLog records.)",
+            "col_0014 (datetime) - (The date and time at which the error occurred.)",
+            "col_0015 (sysname) - (The user who executed the batch in which the error occurred.)",
+            "col_0016 (int) - (The error number of the error that occurred.)",
+            "col_0017 (int) - (The severity of the error that occurred.)",
+            "col_0018 (int) - (The state number of the error that occurred.)",
+            "col_0019 (nvarchar) - (The name of the stored procedure or trigger where the error occurred.)",
+            "col_0020 (int) - (The line number at which the error occurred.)",
+            "col_0021 (nvarchar) - (The message text of the error that occurred.)"
+        ],
+        "relationships": [
+            "No explicit foreign key relationships"
+        ]
+    }
+}

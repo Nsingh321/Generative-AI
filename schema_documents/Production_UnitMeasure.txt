@@ -1,0 +1,8 @@
+Table: Production.UnitMeasure
+Description: Unit of measure lookup table.
+Columns: UnitMeasureCode (nchar) - (Primary key.), Name (Name) - (Unit of measure description.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Production.BillOfMaterials.UnitMeasureCode via UnitMeasureCode
+Referenced by Production.Product.SizeUnitMeasureCode via UnitMeasureCode
+Referenced by Production.Product.WeightUnitMeasureCode via UnitMeasureCode
+Referenced by Purchasing.ProductVendor.UnitMeasureCode via UnitMeasureCode

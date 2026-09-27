@@ -1,0 +1,7 @@
+Table: Purchasing.ProductVendor
+Description: Cross-reference table mapping vendors with the products they supply.
+Columns: ProductID (int) - (Primary key. Foreign key to Product.ProductID.), BusinessEntityID (int) - (Primary key. Foreign key to Vendor.BusinessEntityID.), AverageLeadTime (int) - (The average span of time (in days) between placing an order with the vendor and receiving the purchased product.), StandardPrice (money) - (The vendor's usual selling price.), LastReceiptCost (money) - (The selling price when last purchased.), LastReceiptDate (datetime) - (Date the product was last received by the vendor.), MinOrderQty (int) - (The maximum quantity that should be ordered.), MaxOrderQty (int) - (The minimum quantity that should be ordered.), OnOrderQty (int) - (The quantity currently on order.), UnitMeasureCode (nchar) - (The product's unit of measure.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ProductID -> Production.Product.ProductID
+BusinessEntityID -> Purchasing.Vendor.BusinessEntityID
+UnitMeasureCode -> Production.UnitMeasure.UnitMeasureCode

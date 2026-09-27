@@ -1,0 +1,10 @@
+Table: obf.T17
+Description: Sales representative current information.
+Columns: col_0419 (int) - (Primary key for SalesPerson records. Foreign key to Employee.BusinessEntityID), col_0420 (int) - (Territory currently assigned to. Foreign key to SalesTerritory.SalesTerritoryID.), col_0421 (money) - (Projected yearly sales.), col_0422 (money) - (Bonus due if quota is met.), col_0423 (smallmoney) - (Commision percent received per sale.), col_0424 (money) - (Sales total year to date.), col_0425 (money) - (Sales total of previous year.), col_0426 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0427 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T13.col_0401 via col_0419
+col_0419 -> obf.T12.col_0026
+col_0420 -> obf.T28.col_0444
+Referenced by obf.T22.col_0428 via col_0419
+Referenced by obf.T31.col_0454 via col_0419
+Referenced by obf.T54.col_0483 via col_0419

@@ -1,0 +1,14 @@
+Table: obf.T13
+Description: General sales order information.
+Columns: col_0390 (int) - (Primary key.), col_0391 (tinyint) - (Incremental number to track changes to the sales order over time.), col_0392 (datetime) - (Dates the sales order was created.), col_0393 (datetime) - (Date the order is due to the customer.), col_0394 (datetime) - (Date the order was shipped to the customer.), col_0395 (tinyint) - (Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled), col_0396 (Flag) - (0 = Order placed by sales person. 1 = Order placed online by customer.), col_0397 (nvarchar) - (Unique sales order identification number.), col_0398 (OrderNumber) - (Customer purchase order number reference. ), col_0399 (AccountNumber) - (Financial accounting number reference.), col_0400 (int) - (Customer identification number. Foreign key to Customer.BusinessEntityID.), col_0401 (int) - (Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.), col_0402 (int) - (Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.), col_0403 (int) - (Customer billing address. Foreign key to Address.AddressID.), col_0404 (int) - (Customer shipping address. Foreign key to Address.AddressID.), col_0405 (int) - (Shipping method. Foreign key to ShipMethod.ShipMethodID.), col_0406 (int) - (Credit card identification number. Foreign key to CreditCard.CreditCardID.), col_0407 (varchar) - (Approval code provided by the credit card company.), col_0408 (int) - (Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.), col_0409 (money) - (Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.), col_0410 (money) - (Tax amount.), col_0411 (money) - (Shipping cost.), col_0412 (money) - (Total due from customer. Computed as Subtotal + TaxAmt + Freight.), col_0413 (nvarchar) - (Sales representative comments.), col_0414 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0415 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T10.col_0379 via col_0390
+col_0406 -> obf.T01.col_0353
+col_0405 -> obf.T35.col_0336
+col_0404 -> obf.T45.col_0062
+col_0403 -> obf.T45.col_0062
+col_0402 -> obf.T28.col_0444
+col_0401 -> obf.T17.col_0419
+col_0400 -> obf.T07.col_0369
+col_0408 -> obf.T06.col_0362
+Referenced by obf.T16.col_0416 via col_0390

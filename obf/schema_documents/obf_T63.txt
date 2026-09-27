@@ -1,0 +1,7 @@
+Table: obf.T63
+Description: Cross-reference table mapping vendors with the products they supply.
+Columns: col_0301 (int) - (Primary key. Foreign key to Product.ProductID.), col_0302 (int) - (Primary key. Foreign key to Vendor.BusinessEntityID.), col_0303 (int) - (The average span of time (in days) between placing an order with the vendor and receiving the purchased product.), col_0304 (money) - (The vendor's usual selling price.), col_0305 (money) - (The selling price when last purchased.), col_0306 (datetime) - (Date the product was last received by the vendor.), col_0307 (int) - (The maximum quantity that should be ordered.), col_0308 (int) - (The minimum quantity that should be ordered.), col_0309 (int) - (The quantity currently on order.), col_0310 (nchar) - (The product's unit of measure.), col_0311 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0301 -> obf.T30.col_0166
+col_0302 -> obf.T66.col_0342
+col_0310 -> obf.T65.col_0276

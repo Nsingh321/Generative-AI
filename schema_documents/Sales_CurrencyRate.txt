@@ -1,0 +1,7 @@
+Table: Sales.CurrencyRate
+Description: Currency exchange rates.
+Columns: CurrencyRateID (int) - (Primary key for CurrencyRate records.), CurrencyRateDate (datetime) - (Date and time the exchange rate was obtained.), FromCurrencyCode (nchar) - (Exchange rate was converted from this currency code.), ToCurrencyCode (nchar) - (Exchange rate was converted to this currency code.), AverageRate (money) - (Average exchange rate for the day.), EndOfDayRate (money) - (Final exchange rate for the day.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ToCurrencyCode -> Sales.Currency.CurrencyCode
+FromCurrencyCode -> Sales.Currency.CurrencyCode
+Referenced by Sales.SalesOrderHeader.CurrencyRateID via CurrencyRateID

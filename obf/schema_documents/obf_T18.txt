@@ -1,0 +1,5 @@
+Table: obf.T18
+Description: Bicycle assembly diagrams.
+Columns: col_0158 (int) - (Primary key for Illustration records.), col_0159 (xml) - (Illustrations used in manufacturing instructions. Stored as XML.), col_0160 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T50.col_0226 via col_0158

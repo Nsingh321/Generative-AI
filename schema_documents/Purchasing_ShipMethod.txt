@@ -1,0 +1,6 @@
+Table: Purchasing.ShipMethod
+Description: Shipping company lookup table.
+Columns: ShipMethodID (int) - (Primary key for ShipMethod records.), Name (Name) - (Shipping company name.), ShipBase (money) - (Minimum shipping charge.), ShipRate (money) - (Shipping charge per pound.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Purchasing.PurchaseOrderHeader.ShipMethodID via ShipMethodID
+Referenced by Sales.SalesOrderHeader.ShipMethodID via ShipMethodID

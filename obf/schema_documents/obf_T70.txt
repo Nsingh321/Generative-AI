@@ -1,0 +1,7 @@
+Table: obf.T70
+Description: The **Production.WorkOrder** table tracks details of manufacturing work orders, including identifiers, product information, quantities ordered and stocked or scrapped, timestamps for start, end, and due dates, scrap reasons, and modification history.
+Columns: col_0279 (int) - (nan), col_0280 (int) - (nan), col_0281 (int) - (nan), col_0282 (int) - (nan), col_0283 (smallint) - (nan), col_0284 (datetime) - (nan), col_0285 (datetime) - (nan), col_0286 (datetime) - (nan), col_0287 (smallint) - (nan), col_0288 (datetime) - (nan)
+Relationships:
+col_0280 -> obf.T30.col_0166
+col_0287 -> obf.T32.col_0255
+Referenced by obf.T03.col_0289 via col_0279

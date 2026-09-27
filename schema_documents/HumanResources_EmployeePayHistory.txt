@@ -1,0 +1,5 @@
+Table: HumanResources.EmployeePayHistory
+Description: Employee pay history.
+Columns: BusinessEntityID (int) - (Employee identification number. Foreign key to Employee.BusinessEntityID.), RateChangeDate (datetime) - (Date the change in pay is effective), Rate (money) - (Salary hourly rate.), PayFrequency (tinyint) - (1 = Salary received monthly, 2 = Salary received biweekly), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+BusinessEntityID -> HumanResources.Employee.BusinessEntityID

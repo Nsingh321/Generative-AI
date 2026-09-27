@@ -1,0 +1,7 @@
+Table: HumanResources.EmployeeDepartmentHistory
+Description: Employee department transfers.
+Columns: BusinessEntityID (int) - (Employee identification number. Foreign key to Employee.BusinessEntityID.), DepartmentID (smallint) - (Department in which the employee worked including currently. Foreign key to Department.DepartmentID.), ShiftID (tinyint) - (Identifies which 8-hour shift the employee works. Foreign key to Shift.Shift.ID.), StartDate (date) - (Date the employee started work in the department.), EndDate (date) - (Date the employee left the department. NULL = Current department.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+BusinessEntityID -> HumanResources.Employee.BusinessEntityID
+DepartmentID -> HumanResources.Department.DepartmentID
+ShiftID -> HumanResources.Shift.ShiftID

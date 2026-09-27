@@ -1,0 +1,7 @@
+Table: Production.ProductModelProductDescriptionCulture
+Description: Cross-reference table mapping product descriptions and the language the description is written in.
+Columns: ProductModelID (int) - (Primary key. Foreign key to ProductModel.ProductModelID.), ProductDescriptionID (int) - (Primary key. Foreign key to ProductDescription.ProductDescriptionID.), CultureID (nchar) - (Culture identification number. Foreign key to Culture.CultureID.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ProductModelID -> Production.ProductModel.ProductModelID
+ProductDescriptionID -> Production.ProductDescription.ProductDescriptionID
+CultureID -> Production.Culture.CultureID

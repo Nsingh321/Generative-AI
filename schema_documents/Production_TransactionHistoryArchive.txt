@@ -1,0 +1,5 @@
+Table: Production.TransactionHistoryArchive
+Description: Transactions for previous years.
+Columns: TransactionID (int) - (Primary key for TransactionHistoryArchive records.), ProductID (int) - (Product identification number. Foreign key to Product.ProductID.), ReferenceOrderID (int) - (Purchase order, sales order, or work order identification number.), ReferenceOrderLineID (int) - (Line number associated with the purchase order, sales order, or work order.), TransactionDate (datetime) - (Date and time of the transaction.), TransactionType (nchar) - (W = Work Order, S = Sales Order, P = Purchase Order), Quantity (int) - (Product quantity.), ActualCost (money) - (Product cost.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+No explicit foreign key relationships

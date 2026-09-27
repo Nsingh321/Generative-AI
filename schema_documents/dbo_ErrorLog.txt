@@ -1,0 +1,5 @@
+Table: dbo.ErrorLog
+Description: Audit table tracking errors in the the AdventureWorks database that are caught by the CATCH block of a TRY...CATCH construct. Data is inserted by stored procedure dbo.uspLogError when it is executed from inside the CATCH block of a TRY...CATCH construct.
+Columns: ErrorLogID (int) - (Primary key for ErrorLog records.), ErrorTime (datetime) - (The date and time at which the error occurred.), UserName (sysname) - (The user who executed the batch in which the error occurred.), ErrorNumber (int) - (The error number of the error that occurred.), ErrorSeverity (int) - (The severity of the error that occurred.), ErrorState (int) - (The state number of the error that occurred.), ErrorProcedure (nvarchar) - (The name of the stored procedure or trigger where the error occurred.), ErrorLine (int) - (The line number at which the error occurred.), ErrorMessage (nvarchar) - (The message text of the error that occurred.)
+Relationships:
+No explicit foreign key relationships

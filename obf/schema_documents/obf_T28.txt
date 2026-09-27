@@ -1,0 +1,10 @@
+Table: obf.T28
+Description: Sales territory lookup table.
+Columns: col_0444 (int) - (Primary key for SalesTerritory records.), col_0445 (Name) - (Sales territory description), col_0446 (nvarchar) - (ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. ), col_0447 (nvarchar) - (Geographic area to which the sales territory belong.), col_0448 (money) - (Sales in the territory year to date.), col_0449 (money) - (Sales in the territory the previous year.), col_0450 (money) - (Business costs in the territory year to date.), col_0451 (money) - (Business costs in the territory the previous year.), col_0452 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0453 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T49.col_0129 via col_0444
+Referenced by obf.T07.col_0372 via col_0444
+Referenced by obf.T13.col_0402 via col_0444
+Referenced by obf.T17.col_0420 via col_0444
+col_0446 -> obf.T69.col_0091
+Referenced by obf.T31.col_0455 via col_0444

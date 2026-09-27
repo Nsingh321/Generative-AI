@@ -1,0 +1,5 @@
+Table: Person.PhoneNumberType
+Description: Type of phone number of a person.
+Columns: PhoneNumberTypeID (int) - (Primary key for telephone number type records.), Name (Name) - (Name of the telephone number type), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Person.PersonPhone.PhoneNumberTypeID via PhoneNumberTypeID

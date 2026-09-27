@@ -1,0 +1,7 @@
+Table: Person.CountryRegion
+Description: Lookup table containing the ISO standard codes for countries and regions.
+Columns: CountryRegionCode (nvarchar) - (ISO standard code for countries and regions.), Name (Name) - (Country or region name.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Person.StateProvince.CountryRegionCode via CountryRegionCode
+Referenced by Sales.CountryRegionCurrency.CountryRegionCode via CountryRegionCode
+Referenced by Sales.SalesTerritory.CountryRegionCode via CountryRegionCode

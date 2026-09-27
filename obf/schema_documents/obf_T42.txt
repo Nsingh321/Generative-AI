@@ -1,0 +1,5 @@
+Table: obf.T42
+Description: Sale discounts lookup table.
+Columns: col_0466 (int) - (Primary key for SpecialOffer records.), col_0467 (nvarchar) - (Discount description.), col_0468 (smallmoney) - (Discount precentage.), col_0469 (nvarchar) - (Discount type category.), col_0470 (nvarchar) - (Group the discount applies to such as Reseller or Customer.), col_0471 (datetime) - (Discount start date.), col_0472 (datetime) - (Discount end date.), col_0473 (int) - (Minimum discount percent allowed.), col_0474 (int) - (Maximum discount percent allowed.), col_0475 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0476 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T46.col_0477 via col_0466

@@ -1,0 +1,8 @@
+Table: Purchasing.PurchaseOrderHeader
+Description: General purchase order information. See PurchaseOrderDetail.
+Columns: PurchaseOrderID (int) - (Primary key.), RevisionNumber (tinyint) - (Incremental number to track changes to the purchase order over time.), Status (tinyint) - (Order current status. 1 = Pending; 2 = Approved; 3 = Rejected; 4 = Complete), EmployeeID (int) - (Employee who created the purchase order. Foreign key to Employee.BusinessEntityID.), VendorID (int) - (Vendor with whom the purchase order is placed. Foreign key to Vendor.BusinessEntityID.), ShipMethodID (int) - (Shipping method. Foreign key to ShipMethod.ShipMethodID.), OrderDate (datetime) - (Purchase order creation date.), ShipDate (datetime) - (Estimated shipment date from the vendor.), SubTotal (money) - (Purchase order subtotal. Computed as SUM(PurchaseOrderDetail.LineTotal)for the appropriate PurchaseOrderID.), TaxAmt (money) - (Tax amount.), Freight (money) - (Shipping cost.), TotalDue (money) - (Total due to vendor. Computed as Subtotal + TaxAmt + Freight.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Purchasing.PurchaseOrderDetail.PurchaseOrderID via PurchaseOrderID
+ShipMethodID -> Purchasing.ShipMethod.ShipMethodID
+VendorID -> Purchasing.Vendor.BusinessEntityID
+EmployeeID -> HumanResources.Employee.BusinessEntityID

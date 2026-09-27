@@ -1,0 +1,5 @@
+Table: Production.ProductListPriceHistory
+Description: Changes in the list price of a product over time.
+Columns: ProductID (int) - (Product identification number. Foreign key to Product.ProductID), StartDate (datetime) - (List price start date.), EndDate (datetime) - (List price end date), ListPrice (money) - (Product list price.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ProductID -> Production.Product.ProductID

@@ -1,0 +1,5 @@
+Table: obf.T37
+Description: Product descriptions in several languages.
+Columns: col_0200 (int) - (Primary key for ProductDescription records.), col_0201 (nvarchar) - (Description of the product.), col_0202 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0203 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T52.col_0229 via col_0200

@@ -1,0 +1,5 @@
+Table: obf.T33
+Description: Work shift lookup table.
+Columns: col_0057 (tinyint) - (Primary key for Shift records.), col_0058 (Name) - (Shift description.), col_0059 (time) - (Shift start time.), col_0060 (time) - (Shift end time.), col_0061 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T14.col_0044 via col_0057

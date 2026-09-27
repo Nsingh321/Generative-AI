@@ -1,0 +1,9 @@
+Table: obf.T59
+Description: Source of the ID that connects vendors, customers, and employees with address and contact information.
+Columns: col_0075 (int) - (Primary key for all customers, vendors, and employees.), col_0076 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0077 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T62.col_0078 via col_0075
+Referenced by obf.T64.col_0083 via col_0075
+Referenced by obf.T23.col_0104 via col_0075
+Referenced by obf.T66.col_0342 via col_0075
+Referenced by obf.T54.col_0481 via col_0075

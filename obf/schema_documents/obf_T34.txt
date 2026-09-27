@@ -1,0 +1,5 @@
+Table: obf.T34
+Description: High-level product categorization.
+Columns: col_0191 (int) - (Primary key for ProductCategory records.), col_0192 (Name) - (Category description.), col_0193 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0194 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T61.col_0251 via col_0191

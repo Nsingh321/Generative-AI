@@ -1,0 +1,11 @@
+Table: obf.T12
+Description: Employee information such as salary, department, and title.
+Columns: col_0026 (int) - (Primary key for Employee records.  Foreign key to BusinessEntity.BusinessEntityID.), col_0027 (nvarchar) - (Unique national identification number such as a social security number.), col_0028 (nvarchar) - (Network login.), col_0029 (hierarchyid) - (Where the employee is located in corporate hierarchy.), col_0030 (smallint) - (The depth of the employee in the corporate hierarchy.), col_0031 (nvarchar) - (Work title such as Buyer or Sales Representative.), col_0032 (date) - (Date of birth.), col_0033 (nchar) - (M = Married, S = Single), col_0034 (nchar) - (M = Male, F = Female), col_0035 (date) - (Employee hired on this date.), col_0036 (Flag) - (Job classification. 0 = Hourly, not exempt from collective bargaining. 1 = Salaried, exempt from collective bargaining.), col_0037 (smallint) - (Number of available vacation hours.), col_0038 (smallint) - (Number of available sick leave hours.), col_0039 (Flag) - (0 = Inactive, 1 = Active), col_0040 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0041 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0026 -> obf.T23.col_0104
+Referenced by obf.T14.col_0042 via col_0026
+Referenced by obf.T15.col_0048 via col_0026
+Referenced by obf.T19.col_0054 via col_0026
+Referenced by obf.T09.col_0147 via col_0026
+Referenced by obf.T05.col_0326 via col_0026
+Referenced by obf.T17.col_0419 via col_0026

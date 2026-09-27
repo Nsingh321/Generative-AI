@@ -1,0 +1,6 @@
+Table: Production.ProductInventory
+Description: Product inventory information.
+Columns: ProductID (int) - (Product identification number. Foreign key to Product.ProductID.), LocationID (smallint) - (Inventory location identification number. Foreign key to Location.LocationID. ), Shelf (nvarchar) - (Storage compartment within an inventory location.), Bin (tinyint) - (Storage container on a shelf in an inventory location.), Quantity (smallint) - (Quantity of products in the inventory location.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ProductID -> Production.Product.ProductID
+LocationID -> Production.Location.LocationID

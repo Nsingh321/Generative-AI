@@ -1,0 +1,5 @@
+Table: Sales.ShoppingCartItem
+Description: Contains online customer orders until the order is submitted or cancelled.
+Columns: ShoppingCartItemID (int) - (Primary key for ShoppingCartItem records.), ShoppingCartID (nvarchar) - (Shopping cart identification number.), Quantity (int) - (Product quantity ordered.), ProductID (int) - (Product ordered. Foreign key to Product.ProductID.), DateCreated (datetime) - (Date the time the record was created.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ProductID -> Production.Product.ProductID

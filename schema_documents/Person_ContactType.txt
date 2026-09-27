@@ -1,0 +1,5 @@
+Table: Person.ContactType
+Description: Lookup table containing the types of business entity contacts.
+Columns: ContactTypeID (int) - (Primary key for ContactType records.), Name (Name) - (Contact type description.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Person.BusinessEntityContact.ContactTypeID via ContactTypeID

@@ -1,0 +1,10 @@
+Table: Sales.SalesPerson
+Description: Sales representative current information.
+Columns: BusinessEntityID (int) - (Primary key for SalesPerson records. Foreign key to Employee.BusinessEntityID), TerritoryID (int) - (Territory currently assigned to. Foreign key to SalesTerritory.SalesTerritoryID.), SalesQuota (money) - (Projected yearly sales.), Bonus (money) - (Bonus due if quota is met.), CommissionPct (smallmoney) - (Commision percent received per sale.), SalesYTD (money) - (Sales total year to date.), SalesLastYear (money) - (Sales total of previous year.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Sales.SalesOrderHeader.SalesPersonID via BusinessEntityID
+BusinessEntityID -> HumanResources.Employee.BusinessEntityID
+TerritoryID -> Sales.SalesTerritory.TerritoryID
+Referenced by Sales.SalesPersonQuotaHistory.BusinessEntityID via BusinessEntityID
+Referenced by Sales.SalesTerritoryHistory.BusinessEntityID via BusinessEntityID
+Referenced by Sales.Store.SalesPersonID via BusinessEntityID

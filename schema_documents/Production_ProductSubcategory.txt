@@ -1,0 +1,6 @@
+Table: Production.ProductSubcategory
+Description: Product subcategories. See ProductCategory table.
+Columns: ProductSubcategoryID (int) - (Primary key for ProductSubcategory records.), ProductCategoryID (int) - (Product category identification number. Foreign key to ProductCategory.ProductCategoryID.), Name (Name) - (Subcategory description.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Production.Product.ProductSubcategoryID via ProductSubcategoryID
+ProductCategoryID -> Production.ProductCategory.ProductCategoryID

@@ -1,0 +1,6 @@
+Table: obf.T61
+Description: Product subcategories. See ProductCategory table.
+Columns: col_0250 (int) - (Primary key for ProductSubcategory records.), col_0251 (int) - (Product category identification number. Foreign key to ProductCategory.ProductCategoryID.), col_0252 (Name) - (Subcategory description.), col_0253 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0254 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T30.col_0184 via col_0250
+col_0251 -> obf.T34.col_0191

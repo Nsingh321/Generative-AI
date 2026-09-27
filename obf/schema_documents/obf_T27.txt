@@ -1,0 +1,6 @@
+Table: obf.T27
+Description: Telephone number and type of a person.
+Columns: col_0117 (int) - (Business entity identification number. Foreign key to Person.BusinessEntityID.), col_0118 (Phone) - (Telephone number identification number.), col_0119 (int) - (Kind of phone number. Foreign key to PhoneNumberType.PhoneNumberTypeID.), col_0120 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0117 -> obf.T23.col_0104
+col_0119 -> obf.T29.col_0121

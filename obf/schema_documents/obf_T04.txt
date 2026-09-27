@@ -1,0 +1,7 @@
+Table: obf.T04
+Description: Lookup table containing standard ISO currencies.
+Columns: col_0359 (nchar) - (The ISO code for the Currency.), col_0360 (Name) - (Currency name.), col_0361 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T68.col_0351 via col_0359
+Referenced by obf.T06.col_0365 via col_0359
+Referenced by obf.T06.col_0364 via col_0359

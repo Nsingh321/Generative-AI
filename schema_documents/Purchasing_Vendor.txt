@@ -1,0 +1,7 @@
+Table: Purchasing.Vendor
+Description: Companies from whom Adventure Works Cycles purchases parts or other goods.
+Columns: BusinessEntityID (int) - (Primary key for Vendor records.  Foreign key to BusinessEntity.BusinessEntityID), AccountNumber (AccountNumber) - (Vendor account (identification) number.), Name (Name) - (Company name.), CreditRating (tinyint) - (1 = Superior, 2 = Excellent, 3 = Above average, 4 = Average, 5 = Below average), PreferredVendorStatus (Flag) - (0 = Do not use if another vendor is available. 1 = Preferred over other vendors supplying the same product.), ActiveFlag (Flag) - (0 = Vendor no longer used. 1 = Vendor is actively used.), PurchasingWebServiceURL (nvarchar) - (nan), ModifiedDate (datetime) - (nan)
+Relationships:
+Referenced by Purchasing.ProductVendor.BusinessEntityID via BusinessEntityID
+Referenced by Purchasing.PurchaseOrderHeader.VendorID via BusinessEntityID
+BusinessEntityID -> Person.BusinessEntity.BusinessEntityID

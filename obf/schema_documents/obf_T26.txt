@@ -1,0 +1,6 @@
+Table: obf.T26
+Description: Cross-reference table mapping people to their credit card information in the CreditCard table. 
+Columns: col_0376 (int) - (Business entity identification number. Foreign key to Person.BusinessEntityID.), col_0377 (int) - (Credit card identification number. Foreign key to CreditCard.CreditCardID.), col_0378 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0376 -> obf.T23.col_0104
+col_0377 -> obf.T01.col_0353

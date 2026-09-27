@@ -1,0 +1,6 @@
+Table: obf.T35
+Description: Shipping company lookup table.
+Columns: col_0336 (int) - (Primary key for ShipMethod records.), col_0337 (Name) - (Shipping company name.), col_0338 (money) - (Minimum shipping charge.), col_0339 (money) - (Shipping charge per pound.), col_0340 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0341 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T05.col_0328 via col_0336
+Referenced by obf.T13.col_0405 via col_0336

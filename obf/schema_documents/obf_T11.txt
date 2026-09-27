@@ -1,0 +1,5 @@
+Table: obf.T11
+Description: Where to send a person email.
+Columns: col_0094 (int) - (Primary key. Person associated with this email address.  Foreign key to Person.BusinessEntityID), col_0095 (int) - (Primary key. ID of this email address.), col_0096 (nvarchar) - (E-mail address for the person.), col_0097 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0098 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0094 -> obf.T23.col_0104

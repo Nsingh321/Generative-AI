@@ -1,0 +1,12 @@
+Table: Person.Person
+Description: Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.
+Columns: BusinessEntityID (int) - (Primary key for Person records.), PersonType (nchar) - (Primary type of person: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact), NameStyle (NameStyle) - (0 = The data in FirstName and LastName are stored in western style (first name, last name) order.  1 = Eastern style (last name, first name) order.), Title (nvarchar) - (A courtesy title. For example, Mr. or Ms.), FirstName (Name) - (First name of the person.), MiddleName (Name) - (Middle name or middle initial of the person.), LastName (Name) - (Last name of the person.), Suffix (nvarchar) - (Surname suffix. For example, Sr. or Jr.), EmailPromotion (int) - (0 = Contact does not wish to receive e-mail promotions, 1 = Contact does wish to receive e-mail promotions from AdventureWorks, 2 = Contact does wish to receive e-mail promotions from AdventureWorks and selected partners. ), AdditionalContactInfo (xml) - (Additional contact information about the person stored in xml format. ), Demographics (xml) - (Personal information such as hobbies, and income collected from online shoppers. Used for sales analysis.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by HumanResources.Employee.BusinessEntityID via BusinessEntityID
+Referenced by Person.BusinessEntityContact.PersonID via BusinessEntityID
+Referenced by Person.EmailAddress.BusinessEntityID via BusinessEntityID
+Referenced by Person.Password.BusinessEntityID via BusinessEntityID
+BusinessEntityID -> Person.BusinessEntity.BusinessEntityID
+Referenced by Person.PersonPhone.BusinessEntityID via BusinessEntityID
+Referenced by Sales.Customer.PersonID via BusinessEntityID
+Referenced by Sales.PersonCreditCard.BusinessEntityID via BusinessEntityID

@@ -1,0 +1,6 @@
+Table: obf.T71
+Description: Individual products associated with a specific purchase order. See PurchaseOrderHeader.
+Columns: col_0312 (int) - (Primary key. Foreign key to PurchaseOrderHeader.PurchaseOrderID.), col_0313 (int) - (Primary key. One line number per purchased product.), col_0314 (datetime) - (Date the product is expected to be received.), col_0315 (smallint) - (Quantity ordered.), col_0316 (int) - (Product identification number. Foreign key to Product.ProductID.), col_0317 (money) - (Vendor's selling price of a single product.), col_0318 (money) - (Per product subtotal. Computed as OrderQty * UnitPrice.), col_0319 (decimal) - (Quantity actually received from the vendor.), col_0320 (decimal) - (Quantity rejected during inspection.), col_0321 (decimal) - (Quantity accepted into inventory. Computed as ReceivedQty - RejectedQty.), col_0322 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0312 -> obf.T05.col_0323
+col_0316 -> obf.T30.col_0166

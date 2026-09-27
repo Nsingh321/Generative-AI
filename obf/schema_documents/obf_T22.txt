@@ -1,0 +1,5 @@
+Table: obf.T22
+Description: Sales performance tracking.
+Columns: col_0428 (int) - (Sales person identification number. Foreign key to SalesPerson.BusinessEntityID.), col_0429 (datetime) - (Sales quota date.), col_0430 (money) - (Sales quota amount.), col_0431 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0432 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0428 -> obf.T17.col_0419

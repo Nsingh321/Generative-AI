@@ -1,0 +1,5 @@
+Table: HumanResources.Department
+Description: Lookup table containing the departments within the Adventure Works Cycles company.
+Columns: DepartmentID (smallint) - (Primary key for Department records.), Name (Name) - (Name of the department.), GroupName (Name) - (Name of the group to which the department belongs.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by HumanResources.EmployeeDepartmentHistory.DepartmentID via DepartmentID

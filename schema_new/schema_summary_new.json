@@ -1,0 +1,1171 @@
+{
+    "HumanResources.Department": {
+        "description": "Lookup table containing the departments within the Adventure Works Cycles company.",
+        "columns": [
+            "DepartmentID (smallint) - (Primary key for Department records.)",
+            "Name (Name) - (Name of the department.)",
+            "GroupName (Name) - (Name of the group to which the department belongs.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by HumanResources.EmployeeDepartmentHistory.DepartmentID via DepartmentID"
+        ]
+    },
+    "HumanResources.Employee": {
+        "description": "Employee information such as salary, department, and title.",
+        "columns": [
+            "BusinessEntityID (int) - (Primary key for Employee records.  Foreign key to BusinessEntity.BusinessEntityID.)",
+            "NationalIDNumber (nvarchar) - (Unique national identification number such as a social security number.)",
+            "LoginID (nvarchar) - (Network login.)",
+            "OrganizationNode (hierarchyid) - (Where the employee is located in corporate hierarchy.)",
+            "OrganizationLevel (smallint) - (The depth of the employee in the corporate hierarchy.)",
+            "JobTitle (nvarchar) - (Work title such as Buyer or Sales Representative.)",
+            "BirthDate (date) - (Date of birth.)",
+            "MaritalStatus (nchar) - (M = Married, S = Single)",
+            "Gender (nchar) - (M = Male, F = Female)",
+            "HireDate (date) - (Employee hired on this date.)",
+            "SalariedFlag (Flag) - (Job classification. 0 = Hourly, not exempt from collective bargaining. 1 = Salaried, exempt from collective bargaining.)",
+            "VacationHours (smallint) - (Number of available vacation hours.)",
+            "SickLeaveHours (smallint) - (Number of available sick leave hours.)",
+            "CurrentFlag (Flag) - (0 = Inactive, 1 = Active)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> Person.Person.BusinessEntityID",
+            "Referenced by HumanResources.EmployeeDepartmentHistory.BusinessEntityID via BusinessEntityID",
+            "Referenced by HumanResources.EmployeePayHistory.BusinessEntityID via BusinessEntityID",
+            "Referenced by HumanResources.JobCandidate.BusinessEntityID via BusinessEntityID",
+            "Referenced by Production.Document.Owner via BusinessEntityID",
+            "Referenced by Purchasing.PurchaseOrderHeader.EmployeeID via BusinessEntityID",
+            "Referenced by Sales.SalesPerson.BusinessEntityID via BusinessEntityID"
+        ]
+    },
+    "HumanResources.EmployeeDepartmentHistory": {
+        "description": "Employee department transfers.",
+        "columns": [
+            "BusinessEntityID (int) - (Employee identification number. Foreign key to Employee.BusinessEntityID.)",
+            "DepartmentID (smallint) - (Department in which the employee worked including currently. Foreign key to Department.DepartmentID.)",
+            "ShiftID (tinyint) - (Identifies which 8-hour shift the employee works. Foreign key to Shift.Shift.ID.)",
+            "StartDate (date) - (Date the employee started work in the department.)",
+            "EndDate (date) - (Date the employee left the department. NULL = Current department.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> HumanResources.Employee.BusinessEntityID",
+            "DepartmentID -> HumanResources.Department.DepartmentID",
+            "ShiftID -> HumanResources.Shift.ShiftID"
+        ]
+    },
+    "HumanResources.EmployeePayHistory": {
+        "description": "Employee pay history.",
+        "columns": [
+            "BusinessEntityID (int) - (Employee identification number. Foreign key to Employee.BusinessEntityID.)",
+            "RateChangeDate (datetime) - (Date the change in pay is effective)",
+            "Rate (money) - (Salary hourly rate.)",
+            "PayFrequency (tinyint) - (1 = Salary received monthly, 2 = Salary received biweekly)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> HumanResources.Employee.BusinessEntityID"
+        ]
+    },
+    "HumanResources.JobCandidate": {
+        "description": "R\u00e9sum\u00e9s submitted to Human Resources by job applicants.",
+        "columns": [
+            "JobCandidateID (int) - (Primary key for JobCandidate records.)",
+            "BusinessEntityID (int) - (Employee identification number if applicant was hired. Foreign key to Employee.BusinessEntityID.)",
+            "Resume (xml) - (R\u00e9sum\u00e9 in XML format.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> HumanResources.Employee.BusinessEntityID"
+        ]
+    },
+    "HumanResources.Shift": {
+        "description": "Work shift lookup table.",
+        "columns": [
+            "ShiftID (tinyint) - (Primary key for Shift records.)",
+            "Name (Name) - (Shift description.)",
+            "StartTime (time) - (Shift start time.)",
+            "EndTime (time) - (Shift end time.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by HumanResources.EmployeeDepartmentHistory.ShiftID via ShiftID"
+        ]
+    },
+    "Person.Address": {
+        "description": "Street address information for customers, employees, and vendors.",
+        "columns": [
+            "AddressID (int) - (Primary key for Address records.)",
+            "AddressLine1 (nvarchar) - (First street address line.)",
+            "AddressLine2 (nvarchar) - (Second street address line.)",
+            "City (nvarchar) - (Name of the city.)",
+            "StateProvinceID (int) - (Unique identification number for the state or province. Foreign key to StateProvince table.)",
+            "PostalCode (nvarchar) - (Postal code for the street address.)",
+            "SpatialLocation (geography) - (Latitude and longitude of this address.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "StateProvinceID -> Person.StateProvince.StateProvinceID",
+            "Referenced by Person.BusinessEntityAddress.AddressID via AddressID",
+            "Referenced by Sales.SalesOrderHeader.ShipToAddressID via AddressID",
+            "Referenced by Sales.SalesOrderHeader.BillToAddressID via AddressID"
+        ]
+    },
+    "Person.AddressType": {
+        "description": "Types of addresses stored in the Address table. ",
+        "columns": [
+            "AddressTypeID (int) - (Primary key for AddressType records.)",
+            "Name (Name) - (Address type description. For example, Billing, Home, or Shipping.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Person.BusinessEntityAddress.AddressTypeID via AddressTypeID"
+        ]
+    },
+    "Person.BusinessEntity": {
+        "description": "Source of the ID that connects vendors, customers, and employees with address and contact information.",
+        "columns": [
+            "BusinessEntityID (int) - (Primary key for all customers, vendors, and employees.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Person.BusinessEntityAddress.BusinessEntityID via BusinessEntityID",
+            "Referenced by Person.BusinessEntityContact.BusinessEntityID via BusinessEntityID",
+            "Referenced by Person.Person.BusinessEntityID via BusinessEntityID",
+            "Referenced by Purchasing.Vendor.BusinessEntityID via BusinessEntityID",
+            "Referenced by Sales.Store.BusinessEntityID via BusinessEntityID"
+        ]
+    },
+    "Person.BusinessEntityAddress": {
+        "description": "Cross-reference table mapping customers, vendors, and employees to their addresses.",
+        "columns": [
+            "BusinessEntityID (int) - (Primary key. Foreign key to BusinessEntity.BusinessEntityID.)",
+            "AddressID (int) - (Primary key. Foreign key to Address.AddressID.)",
+            "AddressTypeID (int) - (Primary key. Foreign key to AddressType.AddressTypeID.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> Person.BusinessEntity.BusinessEntityID",
+            "AddressID -> Person.Address.AddressID",
+            "AddressTypeID -> Person.AddressType.AddressTypeID"
+        ]
+    },
+    "Person.BusinessEntityContact": {
+        "description": "Cross-reference table mapping stores, vendors, and employees to people",
+        "columns": [
+            "BusinessEntityID (int) - (Primary key. Foreign key to BusinessEntity.BusinessEntityID.)",
+            "PersonID (int) - (Primary key. Foreign key to Person.BusinessEntityID.)",
+            "ContactTypeID (int) - (Primary key.  Foreign key to ContactType.ContactTypeID.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> Person.BusinessEntity.BusinessEntityID",
+            "PersonID -> Person.Person.BusinessEntityID",
+            "ContactTypeID -> Person.ContactType.ContactTypeID"
+        ]
+    },
+    "Person.ContactType": {
+        "description": "Lookup table containing the types of business entity contacts.",
+        "columns": [
+            "ContactTypeID (int) - (Primary key for ContactType records.)",
+            "Name (Name) - (Contact type description.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Person.BusinessEntityContact.ContactTypeID via ContactTypeID"
+        ]
+    },
+    "Person.CountryRegion": {
+        "description": "Lookup table containing the ISO standard codes for countries and regions.",
+        "columns": [
+            "CountryRegionCode (nvarchar) - (ISO standard code for countries and regions.)",
+            "Name (Name) - (Country or region name.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Person.StateProvince.CountryRegionCode via CountryRegionCode",
+            "Referenced by Sales.CountryRegionCurrency.CountryRegionCode via CountryRegionCode",
+            "Referenced by Sales.SalesTerritory.CountryRegionCode via CountryRegionCode"
+        ]
+    },
+    "Person.EmailAddress": {
+        "description": "Where to send a person email.",
+        "columns": [
+            "BusinessEntityID (int) - (Primary key. Person associated with this email address.  Foreign key to Person.BusinessEntityID)",
+            "EmailAddressID (int) - (Primary key. ID of this email address.)",
+            "EmailAddress (nvarchar) - (E-mail address for the person.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> Person.Person.BusinessEntityID"
+        ]
+    },
+    "Person.Password": {
+        "description": "One way hashed authentication information",
+        "columns": [
+            "BusinessEntityID (int) - (nan)",
+            "PasswordHash (varchar) - (Password for the e-mail account.)",
+            "PasswordSalt (varchar) - (Random value concatenated with the password string before the password is hashed.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> Person.Person.BusinessEntityID"
+        ]
+    },
+    "Person.Person": {
+        "description": "Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.",
+        "columns": [
+            "BusinessEntityID (int) - (Primary key for Person records.)",
+            "PersonType (nchar) - (Primary type of person: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact)",
+            "NameStyle (NameStyle) - (0 = The data in FirstName and LastName are stored in western style (first name, last name) order.  1 = Eastern style (last name, first name) order.)",
+            "Title (nvarchar) - (A courtesy title. For example, Mr. or Ms.)",
+            "FirstName (Name) - (First name of the person.)",
+            "MiddleName (Name) - (Middle name or middle initial of the person.)",
+            "LastName (Name) - (Last name of the person.)",
+            "Suffix (nvarchar) - (Surname suffix. For example, Sr. or Jr.)",
+            "EmailPromotion (int) - (0 = Contact does not wish to receive e-mail promotions, 1 = Contact does wish to receive e-mail promotions from AdventureWorks, 2 = Contact does wish to receive e-mail promotions from AdventureWorks and selected partners. )",
+            "AdditionalContactInfo (xml) - (Additional contact information about the person stored in xml format. )",
+            "Demographics (xml) - (Personal information such as hobbies, and income collected from online shoppers. Used for sales analysis.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by HumanResources.Employee.BusinessEntityID via BusinessEntityID",
+            "Referenced by Person.BusinessEntityContact.PersonID via BusinessEntityID",
+            "Referenced by Person.EmailAddress.BusinessEntityID via BusinessEntityID",
+            "Referenced by Person.Password.BusinessEntityID via BusinessEntityID",
+            "BusinessEntityID -> Person.BusinessEntity.BusinessEntityID",
+            "Referenced by Person.PersonPhone.BusinessEntityID via BusinessEntityID",
+            "Referenced by Sales.Customer.PersonID via BusinessEntityID",
+            "Referenced by Sales.PersonCreditCard.BusinessEntityID via BusinessEntityID"
+        ]
+    },
+    "Person.PersonPhone": {
+        "description": "Telephone number and type of a person.",
+        "columns": [
+            "BusinessEntityID (int) - (Business entity identification number. Foreign key to Person.BusinessEntityID.)",
+            "PhoneNumber (Phone) - (Telephone number identification number.)",
+            "PhoneNumberTypeID (int) - (Kind of phone number. Foreign key to PhoneNumberType.PhoneNumberTypeID.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> Person.Person.BusinessEntityID",
+            "PhoneNumberTypeID -> Person.PhoneNumberType.PhoneNumberTypeID"
+        ]
+    },
+    "Person.PhoneNumberType": {
+        "description": "Type of phone number of a person.",
+        "columns": [
+            "PhoneNumberTypeID (int) - (Primary key for telephone number type records.)",
+            "Name (Name) - (Name of the telephone number type)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Person.PersonPhone.PhoneNumberTypeID via PhoneNumberTypeID"
+        ]
+    },
+    "Person.StateProvince": {
+        "description": "State and province lookup table.",
+        "columns": [
+            "StateProvinceID (int) - (Primary key for StateProvince records.)",
+            "StateProvinceCode (nchar) - (ISO standard state or province code.)",
+            "CountryRegionCode (nvarchar) - (ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. )",
+            "IsOnlyStateProvinceFlag (Flag) - (0 = StateProvinceCode exists. 1 = StateProvinceCode unavailable, using CountryRegionCode.)",
+            "Name (Name) - (State or province description.)",
+            "TerritoryID (int) - (ID of the territory in which the state or province is located. Foreign key to SalesTerritory.SalesTerritoryID.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Person.Address.StateProvinceID via StateProvinceID",
+            "CountryRegionCode -> Person.CountryRegion.CountryRegionCode",
+            "TerritoryID -> Sales.SalesTerritory.TerritoryID",
+            "Referenced by Sales.SalesTaxRate.StateProvinceID via StateProvinceID"
+        ]
+    },
+    "Production.BillOfMaterials": {
+        "description": "Items required to make bicycles and bicycle subassemblies. It identifies the heirarchical relationship between a parent product and its components.",
+        "columns": [
+            "BillOfMaterialsID (int) - (Primary key for BillOfMaterials records.)",
+            "ProductAssemblyID (int) - (Parent product identification number. Foreign key to Product.ProductID.)",
+            "ComponentID (int) - (Component identification number. Foreign key to Product.ProductID.)",
+            "StartDate (datetime) - (Date the component started being used in the assembly item.)",
+            "EndDate (datetime) - (Date the component stopped being used in the assembly item.)",
+            "UnitMeasureCode (nchar) - (Standard code identifying the unit of measure for the quantity.)",
+            "BOMLevel (smallint) - (Indicates the depth the component is from its parent (AssemblyID).)",
+            "PerAssemblyQty (decimal) - (Quantity of the component needed to create the assembly.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ComponentID -> Production.Product.ProductID",
+            "UnitMeasureCode -> Production.UnitMeasure.UnitMeasureCode",
+            "ProductAssemblyID -> Production.Product.ProductID"
+        ]
+    },
+    "Production.Culture": {
+        "description": "Lookup table containing the languages in which some AdventureWorks data is stored.",
+        "columns": [
+            "CultureID (nchar) - (Primary key for Culture records.)",
+            "Name (Name) - (Culture description.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Production.ProductModelProductDescriptionCulture.CultureID via CultureID"
+        ]
+    },
+    "Production.Document": {
+        "description": "Product maintenance documents.",
+        "columns": [
+            "DocumentNode (hierarchyid) - (Primary key for Document records.)",
+            "DocumentLevel (smallint) - (Depth in the document hierarchy.)",
+            "Title (nvarchar) - (Title of the document.)",
+            "Owner (int) - (Employee who controls the document.  Foreign key to Employee.BusinessEntityID)",
+            "FolderFlag (bit) - (0 = This is a folder, 1 = This is a document.)",
+            "FileName (nvarchar) - (File name of the document)",
+            "FileExtension (nvarchar) - (File extension indicating the document type. For example, .doc or .txt.)",
+            "Revision (nchar) - (Revision number of the document. )",
+            "ChangeNumber (int) - (Engineering change approval number.)",
+            "Status (tinyint) - (1 = Pending approval, 2 = Approved, 3 = Obsolete)",
+            "DocumentSummary (nvarchar) - (Document abstract.)",
+            "Document (varbinary) - (Complete document.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Required for FileStream.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Owner -> HumanResources.Employee.BusinessEntityID",
+            "Referenced by Production.ProductDocument.DocumentNode via DocumentNode"
+        ]
+    },
+    "Production.Illustration": {
+        "description": "Bicycle assembly diagrams.",
+        "columns": [
+            "IllustrationID (int) - (Primary key for Illustration records.)",
+            "Diagram (xml) - (Illustrations used in manufacturing instructions. Stored as XML.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Production.ProductModelIllustration.IllustrationID via IllustrationID"
+        ]
+    },
+    "Production.Location": {
+        "description": "Product inventory and manufacturing locations.",
+        "columns": [
+            "LocationID (smallint) - (Primary key for Location records.)",
+            "Name (Name) - (Location description.)",
+            "CostRate (smallmoney) - (Standard hourly cost of the manufacturing location.)",
+            "Availability (decimal) - (Work capacity (in hours) of the manufacturing location.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Production.ProductInventory.LocationID via LocationID",
+            "Referenced by Production.WorkOrderRouting.LocationID via LocationID"
+        ]
+    },
+    "Production.Product": {
+        "description": "Products sold or used in the manfacturing of sold products.",
+        "columns": [
+            "ProductID (int) - (Primary key for Product records.)",
+            "Name (Name) - (Name of the product.)",
+            "ProductNumber (nvarchar) - (Unique product identification number.)",
+            "MakeFlag (Flag) - (0 = Product is purchased, 1 = Product is manufactured in-house.)",
+            "FinishedGoodsFlag (Flag) - (0 = Product is not a salable item. 1 = Product is salable.)",
+            "Color (nvarchar) - (Product color.)",
+            "SafetyStockLevel (smallint) - (Minimum inventory quantity. )",
+            "ReorderPoint (smallint) - (Inventory level that triggers a purchase order or work order. )",
+            "StandardCost (money) - (Standard cost of the product.)",
+            "ListPrice (money) - (Selling price.)",
+            "Size (nvarchar) - (Product size.)",
+            "SizeUnitMeasureCode (nchar) - (Unit of measure for Size column.)",
+            "WeightUnitMeasureCode (nchar) - (Unit of measure for Weight column.)",
+            "Weight (decimal) - (Product weight.)",
+            "DaysToManufacture (int) - (Number of days required to manufacture the product.)",
+            "ProductLine (nchar) - (R = Road, M = Mountain, T = Touring, S = Standard)",
+            "Class (nchar) - (H = High, M = Medium, L = Low)",
+            "Style (nchar) - (W = Womens, M = Mens, U = Universal)",
+            "ProductSubcategoryID (int) - (Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID. )",
+            "ProductModelID (int) - (Product is a member of this product model. Foreign key to ProductModel.ProductModelID.)",
+            "SellStartDate (datetime) - (Date the product was available for sale.)",
+            "SellEndDate (datetime) - (Date the product was no longer available for sale.)",
+            "DiscontinuedDate (datetime) - (Date the product was discontinued.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Production.BillOfMaterials.ComponentID via ProductID",
+            "Referenced by Production.BillOfMaterials.ProductAssemblyID via ProductID",
+            "SizeUnitMeasureCode -> Production.UnitMeasure.UnitMeasureCode",
+            "WeightUnitMeasureCode -> Production.UnitMeasure.UnitMeasureCode",
+            "ProductSubcategoryID -> Production.ProductSubcategory.ProductSubcategoryID",
+            "ProductModelID -> Production.ProductModel.ProductModelID",
+            "Referenced by Production.ProductCostHistory.ProductID via ProductID",
+            "Referenced by Production.ProductDocument.ProductID via ProductID",
+            "Referenced by Production.ProductInventory.ProductID via ProductID",
+            "Referenced by Production.ProductListPriceHistory.ProductID via ProductID",
+            "Referenced by Production.ProductProductPhoto.ProductID via ProductID",
+            "Referenced by Production.ProductReview.ProductID via ProductID",
+            "Referenced by Production.TransactionHistory.ProductID via ProductID",
+            "Referenced by Production.WorkOrder.ProductID via ProductID",
+            "Referenced by Purchasing.ProductVendor.ProductID via ProductID",
+            "Referenced by Purchasing.PurchaseOrderDetail.ProductID via ProductID",
+            "Referenced by Sales.ShoppingCartItem.ProductID via ProductID",
+            "Referenced by Sales.SpecialOfferProduct.ProductID via ProductID"
+        ]
+    },
+    "Production.ProductCategory": {
+        "description": "High-level product categorization.",
+        "columns": [
+            "ProductCategoryID (int) - (Primary key for ProductCategory records.)",
+            "Name (Name) - (Category description.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Production.ProductSubcategory.ProductCategoryID via ProductCategoryID"
+        ]
+    },
+    "Production.ProductCostHistory": {
+        "description": "Changes in the cost of a product over time.",
+        "columns": [
+            "ProductID (int) - (Product identification number. Foreign key to Product.ProductID)",
+            "StartDate (datetime) - (Product cost start date.)",
+            "EndDate (datetime) - (Product cost end date.)",
+            "StandardCost (money) - (Standard cost of the product.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ProductID -> Production.Product.ProductID"
+        ]
+    },
+    "Production.ProductDescription": {
+        "description": "Product descriptions in several languages.",
+        "columns": [
+            "ProductDescriptionID (int) - (Primary key for ProductDescription records.)",
+            "Description (nvarchar) - (Description of the product.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Production.ProductModelProductDescriptionCulture.ProductDescriptionID via ProductDescriptionID"
+        ]
+    },
+    "Production.ProductDocument": {
+        "description": "Cross-reference table mapping products to related product documents.",
+        "columns": [
+            "ProductID (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "DocumentNode (hierarchyid) - (Document identification number. Foreign key to Document.DocumentNode.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ProductID -> Production.Product.ProductID",
+            "DocumentNode -> Production.Document.DocumentNode"
+        ]
+    },
+    "Production.ProductInventory": {
+        "description": "Product inventory information.",
+        "columns": [
+            "ProductID (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "LocationID (smallint) - (Inventory location identification number. Foreign key to Location.LocationID. )",
+            "Shelf (nvarchar) - (Storage compartment within an inventory location.)",
+            "Bin (tinyint) - (Storage container on a shelf in an inventory location.)",
+            "Quantity (smallint) - (Quantity of products in the inventory location.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ProductID -> Production.Product.ProductID",
+            "LocationID -> Production.Location.LocationID"
+        ]
+    },
+    "Production.ProductListPriceHistory": {
+        "description": "Changes in the list price of a product over time.",
+        "columns": [
+            "ProductID (int) - (Product identification number. Foreign key to Product.ProductID)",
+            "StartDate (datetime) - (List price start date.)",
+            "EndDate (datetime) - (List price end date)",
+            "ListPrice (money) - (Product list price.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ProductID -> Production.Product.ProductID"
+        ]
+    },
+    "Production.ProductModel": {
+        "description": "Product model classification.",
+        "columns": [
+            "ProductModelID (int) - (Primary key for ProductModel records.)",
+            "Name (Name) - (Product model description.)",
+            "CatalogDescription (xml) - (Detailed product catalog information in xml format.)",
+            "Instructions (xml) - (Manufacturing instructions in xml format.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Production.Product.ProductModelID via ProductModelID",
+            "Referenced by Production.ProductModelIllustration.ProductModelID via ProductModelID",
+            "Referenced by Production.ProductModelProductDescriptionCulture.ProductModelID via ProductModelID"
+        ]
+    },
+    "Production.ProductModelIllustration": {
+        "description": "Cross-reference table mapping product models and illustrations.",
+        "columns": [
+            "ProductModelID (int) - (Primary key. Foreign key to ProductModel.ProductModelID.)",
+            "IllustrationID (int) - (Primary key. Foreign key to Illustration.IllustrationID.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ProductModelID -> Production.ProductModel.ProductModelID",
+            "IllustrationID -> Production.Illustration.IllustrationID"
+        ]
+    },
+    "Production.ProductModelProductDescriptionCulture": {
+        "description": "Cross-reference table mapping product descriptions and the language the description is written in.",
+        "columns": [
+            "ProductModelID (int) - (Primary key. Foreign key to ProductModel.ProductModelID.)",
+            "ProductDescriptionID (int) - (Primary key. Foreign key to ProductDescription.ProductDescriptionID.)",
+            "CultureID (nchar) - (Culture identification number. Foreign key to Culture.CultureID.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ProductModelID -> Production.ProductModel.ProductModelID",
+            "ProductDescriptionID -> Production.ProductDescription.ProductDescriptionID",
+            "CultureID -> Production.Culture.CultureID"
+        ]
+    },
+    "Production.ProductPhoto": {
+        "description": "Product images.",
+        "columns": [
+            "ProductPhotoID (int) - (Primary key for ProductPhoto records.)",
+            "ThumbNailPhoto (varbinary) - (Small image of the product.)",
+            "ThumbnailPhotoFileName (nvarchar) - (Small image file name.)",
+            "LargePhoto (varbinary) - (Large image of the product.)",
+            "LargePhotoFileName (nvarchar) - (Large image file name.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Production.ProductProductPhoto.ProductPhotoID via ProductPhotoID"
+        ]
+    },
+    "Production.ProductProductPhoto": {
+        "description": "Cross-reference table mapping products and product photos.",
+        "columns": [
+            "ProductID (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "ProductPhotoID (int) - (Product photo identification number. Foreign key to ProductPhoto.ProductPhotoID.)",
+            "Primary (Flag) - (0 = Photo is not the principal image. 1 = Photo is the principal image.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ProductID -> Production.Product.ProductID",
+            "ProductPhotoID -> Production.ProductPhoto.ProductPhotoID"
+        ]
+    },
+    "Production.ProductReview": {
+        "description": "Customer reviews of products they have purchased.",
+        "columns": [
+            "ProductReviewID (int) - (Primary key for ProductReview records.)",
+            "ProductID (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "ReviewerName (Name) - (Name of the reviewer.)",
+            "ReviewDate (datetime) - (Date review was submitted.)",
+            "EmailAddress (nvarchar) - (Reviewer's e-mail address.)",
+            "Rating (int) - (Product rating given by the reviewer. Scale is 1 to 5 with 5 as the highest rating.)",
+            "Comments (nvarchar) - (Reviewer's comments)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ProductID -> Production.Product.ProductID"
+        ]
+    },
+    "Production.ProductSubcategory": {
+        "description": "Product subcategories. See ProductCategory table.",
+        "columns": [
+            "ProductSubcategoryID (int) - (Primary key for ProductSubcategory records.)",
+            "ProductCategoryID (int) - (Product category identification number. Foreign key to ProductCategory.ProductCategoryID.)",
+            "Name (Name) - (Subcategory description.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Production.Product.ProductSubcategoryID via ProductSubcategoryID",
+            "ProductCategoryID -> Production.ProductCategory.ProductCategoryID"
+        ]
+    },
+    "Production.ScrapReason": {
+        "description": "Manufacturing failure reasons lookup table.",
+        "columns": [
+            "ScrapReasonID (smallint) - (Primary key for ScrapReason records.)",
+            "Name (Name) - (Failure description.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Production.WorkOrder.ScrapReasonID via ScrapReasonID"
+        ]
+    },
+    "Production.TransactionHistory": {
+        "description": "Record of each purchase order, sales order, or work order transaction year to date.",
+        "columns": [
+            "TransactionID (int) - (Primary key for TransactionHistory records.)",
+            "ProductID (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "ReferenceOrderID (int) - (Purchase order, sales order, or work order identification number.)",
+            "ReferenceOrderLineID (int) - (Line number associated with the purchase order, sales order, or work order.)",
+            "TransactionDate (datetime) - (Date and time of the transaction.)",
+            "TransactionType (nchar) - (W = WorkOrder, S = SalesOrder, P = PurchaseOrder)",
+            "Quantity (int) - (Product quantity.)",
+            "ActualCost (money) - (Product cost.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ProductID -> Production.Product.ProductID"
+        ]
+    },
+    "Production.TransactionHistoryArchive": {
+        "description": "Transactions for previous years.",
+        "columns": [
+            "TransactionID (int) - (Primary key for TransactionHistoryArchive records.)",
+            "ProductID (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "ReferenceOrderID (int) - (Purchase order, sales order, or work order identification number.)",
+            "ReferenceOrderLineID (int) - (Line number associated with the purchase order, sales order, or work order.)",
+            "TransactionDate (datetime) - (Date and time of the transaction.)",
+            "TransactionType (nchar) - (W = Work Order, S = Sales Order, P = Purchase Order)",
+            "Quantity (int) - (Product quantity.)",
+            "ActualCost (money) - (Product cost.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "No explicit foreign key relationships"
+        ]
+    },
+    "Production.UnitMeasure": {
+        "description": "Unit of measure lookup table.",
+        "columns": [
+            "UnitMeasureCode (nchar) - (Primary key.)",
+            "Name (Name) - (Unit of measure description.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Production.BillOfMaterials.UnitMeasureCode via UnitMeasureCode",
+            "Referenced by Production.Product.SizeUnitMeasureCode via UnitMeasureCode",
+            "Referenced by Production.Product.WeightUnitMeasureCode via UnitMeasureCode",
+            "Referenced by Purchasing.ProductVendor.UnitMeasureCode via UnitMeasureCode"
+        ]
+    },
+    "Production.WorkOrder": {
+        "description": "The **Production.WorkOrder** table tracks details of manufacturing work orders, including identifiers, product information, quantities ordered and stocked or scrapped, timestamps for start, end, and due dates, scrap reasons, and modification history.",
+        "columns": [
+            "WorkOrderID (int) - (nan)",
+            "ProductID (int) - (nan)",
+            "OrderQty (int) - (nan)",
+            "StockedQty (int) - (nan)",
+            "ScrappedQty (smallint) - (nan)",
+            "StartDate (datetime) - (nan)",
+            "EndDate (datetime) - (nan)",
+            "DueDate (datetime) - (nan)",
+            "ScrapReasonID (smallint) - (nan)",
+            "ModifiedDate (datetime) - (nan)"
+        ],
+        "relationships": [
+            "ProductID -> Production.Product.ProductID",
+            "ScrapReasonID -> Production.ScrapReason.ScrapReasonID",
+            "Referenced by Production.WorkOrderRouting.WorkOrderID via WorkOrderID"
+        ]
+    },
+    "Production.WorkOrderRouting": {
+        "description": "The **Production.WorkOrderRouting** table records the routing details for each work order, including product and operation sequences, locations, scheduled and actual start/end dates, resource hours, and planned and actual costs for manufacturing operations.",
+        "columns": [
+            "WorkOrderID (int) - (nan)",
+            "ProductID (int) - (nan)",
+            "OperationSequence (smallint) - (nan)",
+            "LocationID (smallint) - (nan)",
+            "ScheduledStartDate (datetime) - (nan)",
+            "ScheduledEndDate (datetime) - (nan)",
+            "ActualStartDate (datetime) - (nan)",
+            "ActualEndDate (datetime) - (nan)",
+            "ActualResourceHrs (decimal) - (nan)",
+            "PlannedCost (money) - (nan)",
+            "ActualCost (money) - (nan)",
+            "ModifiedDate (datetime) - (nan)"
+        ],
+        "relationships": [
+            "LocationID -> Production.Location.LocationID",
+            "WorkOrderID -> Production.WorkOrder.WorkOrderID"
+        ]
+    },
+    "Purchasing.ProductVendor": {
+        "description": "Cross-reference table mapping vendors with the products they supply.",
+        "columns": [
+            "ProductID (int) - (Primary key. Foreign key to Product.ProductID.)",
+            "BusinessEntityID (int) - (Primary key. Foreign key to Vendor.BusinessEntityID.)",
+            "AverageLeadTime (int) - (The average span of time (in days) between placing an order with the vendor and receiving the purchased product.)",
+            "StandardPrice (money) - (The vendor's usual selling price.)",
+            "LastReceiptCost (money) - (The selling price when last purchased.)",
+            "LastReceiptDate (datetime) - (Date the product was last received by the vendor.)",
+            "MinOrderQty (int) - (The maximum quantity that should be ordered.)",
+            "MaxOrderQty (int) - (The minimum quantity that should be ordered.)",
+            "OnOrderQty (int) - (The quantity currently on order.)",
+            "UnitMeasureCode (nchar) - (The product's unit of measure.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ProductID -> Production.Product.ProductID",
+            "BusinessEntityID -> Purchasing.Vendor.BusinessEntityID",
+            "UnitMeasureCode -> Production.UnitMeasure.UnitMeasureCode"
+        ]
+    },
+    "Purchasing.PurchaseOrderDetail": {
+        "description": "Individual products associated with a specific purchase order. See PurchaseOrderHeader.",
+        "columns": [
+            "PurchaseOrderID (int) - (Primary key. Foreign key to PurchaseOrderHeader.PurchaseOrderID.)",
+            "PurchaseOrderDetailID (int) - (Primary key. One line number per purchased product.)",
+            "DueDate (datetime) - (Date the product is expected to be received.)",
+            "OrderQty (smallint) - (Quantity ordered.)",
+            "ProductID (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "UnitPrice (money) - (Vendor's selling price of a single product.)",
+            "LineTotal (money) - (Per product subtotal. Computed as OrderQty * UnitPrice.)",
+            "ReceivedQty (decimal) - (Quantity actually received from the vendor.)",
+            "RejectedQty (decimal) - (Quantity rejected during inspection.)",
+            "StockedQty (decimal) - (Quantity accepted into inventory. Computed as ReceivedQty - RejectedQty.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "PurchaseOrderID -> Purchasing.PurchaseOrderHeader.PurchaseOrderID",
+            "ProductID -> Production.Product.ProductID"
+        ]
+    },
+    "Purchasing.PurchaseOrderHeader": {
+        "description": "General purchase order information. See PurchaseOrderDetail.",
+        "columns": [
+            "PurchaseOrderID (int) - (Primary key.)",
+            "RevisionNumber (tinyint) - (Incremental number to track changes to the purchase order over time.)",
+            "Status (tinyint) - (Order current status. 1 = Pending; 2 = Approved; 3 = Rejected; 4 = Complete)",
+            "EmployeeID (int) - (Employee who created the purchase order. Foreign key to Employee.BusinessEntityID.)",
+            "VendorID (int) - (Vendor with whom the purchase order is placed. Foreign key to Vendor.BusinessEntityID.)",
+            "ShipMethodID (int) - (Shipping method. Foreign key to ShipMethod.ShipMethodID.)",
+            "OrderDate (datetime) - (Purchase order creation date.)",
+            "ShipDate (datetime) - (Estimated shipment date from the vendor.)",
+            "SubTotal (money) - (Purchase order subtotal. Computed as SUM(PurchaseOrderDetail.LineTotal)for the appropriate PurchaseOrderID.)",
+            "TaxAmt (money) - (Tax amount.)",
+            "Freight (money) - (Shipping cost.)",
+            "TotalDue (money) - (Total due to vendor. Computed as Subtotal + TaxAmt + Freight.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Purchasing.PurchaseOrderDetail.PurchaseOrderID via PurchaseOrderID",
+            "ShipMethodID -> Purchasing.ShipMethod.ShipMethodID",
+            "VendorID -> Purchasing.Vendor.BusinessEntityID",
+            "EmployeeID -> HumanResources.Employee.BusinessEntityID"
+        ]
+    },
+    "Purchasing.ShipMethod": {
+        "description": "Shipping company lookup table.",
+        "columns": [
+            "ShipMethodID (int) - (Primary key for ShipMethod records.)",
+            "Name (Name) - (Shipping company name.)",
+            "ShipBase (money) - (Minimum shipping charge.)",
+            "ShipRate (money) - (Shipping charge per pound.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Purchasing.PurchaseOrderHeader.ShipMethodID via ShipMethodID",
+            "Referenced by Sales.SalesOrderHeader.ShipMethodID via ShipMethodID"
+        ]
+    },
+    "Purchasing.Vendor": {
+        "description": "Companies from whom Adventure Works Cycles purchases parts or other goods.",
+        "columns": [
+            "BusinessEntityID (int) - (Primary key for Vendor records.  Foreign key to BusinessEntity.BusinessEntityID)",
+            "AccountNumber (AccountNumber) - (Vendor account (identification) number.)",
+            "Name (Name) - (Company name.)",
+            "CreditRating (tinyint) - (1 = Superior, 2 = Excellent, 3 = Above average, 4 = Average, 5 = Below average)",
+            "PreferredVendorStatus (Flag) - (0 = Do not use if another vendor is available. 1 = Preferred over other vendors supplying the same product.)",
+            "ActiveFlag (Flag) - (0 = Vendor no longer used. 1 = Vendor is actively used.)",
+            "PurchasingWebServiceURL (nvarchar) - (nan)",
+            "ModifiedDate (datetime) - (nan)"
+        ],
+        "relationships": [
+            "Referenced by Purchasing.ProductVendor.BusinessEntityID via BusinessEntityID",
+            "Referenced by Purchasing.PurchaseOrderHeader.VendorID via BusinessEntityID",
+            "BusinessEntityID -> Person.BusinessEntity.BusinessEntityID"
+        ]
+    },
+    "Sales.CountryRegionCurrency": {
+        "description": "Cross-reference table mapping ISO currency codes to a country or region.",
+        "columns": [
+            "CountryRegionCode (nvarchar) - (ISO code for countries and regions. Foreign key to CountryRegion.CountryRegionCode.)",
+            "CurrencyCode (nchar) - (ISO standard currency code. Foreign key to Currency.CurrencyCode.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "CountryRegionCode -> Person.CountryRegion.CountryRegionCode",
+            "CurrencyCode -> Sales.Currency.CurrencyCode"
+        ]
+    },
+    "Sales.CreditCard": {
+        "description": "Customer credit card information.",
+        "columns": [
+            "CreditCardID (int) - (Primary key for CreditCard records.)",
+            "CardType (nvarchar) - (Credit card name.)",
+            "CardNumber (nvarchar) - (Credit card number.)",
+            "ExpMonth (tinyint) - (Credit card expiration month.)",
+            "ExpYear (smallint) - (Credit card expiration year.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Sales.PersonCreditCard.CreditCardID via CreditCardID",
+            "Referenced by Sales.SalesOrderHeader.CreditCardID via CreditCardID"
+        ]
+    },
+    "Sales.Currency": {
+        "description": "Lookup table containing standard ISO currencies.",
+        "columns": [
+            "CurrencyCode (nchar) - (The ISO code for the Currency.)",
+            "Name (Name) - (Currency name.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Sales.CountryRegionCurrency.CurrencyCode via CurrencyCode",
+            "Referenced by Sales.CurrencyRate.ToCurrencyCode via CurrencyCode",
+            "Referenced by Sales.CurrencyRate.FromCurrencyCode via CurrencyCode"
+        ]
+    },
+    "Sales.CurrencyRate": {
+        "description": "Currency exchange rates.",
+        "columns": [
+            "CurrencyRateID (int) - (Primary key for CurrencyRate records.)",
+            "CurrencyRateDate (datetime) - (Date and time the exchange rate was obtained.)",
+            "FromCurrencyCode (nchar) - (Exchange rate was converted from this currency code.)",
+            "ToCurrencyCode (nchar) - (Exchange rate was converted to this currency code.)",
+            "AverageRate (money) - (Average exchange rate for the day.)",
+            "EndOfDayRate (money) - (Final exchange rate for the day.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ToCurrencyCode -> Sales.Currency.CurrencyCode",
+            "FromCurrencyCode -> Sales.Currency.CurrencyCode",
+            "Referenced by Sales.SalesOrderHeader.CurrencyRateID via CurrencyRateID"
+        ]
+    },
+    "Sales.Customer": {
+        "description": "Current customer information. Also see the Person and Store tables.",
+        "columns": [
+            "CustomerID (int) - (Primary key.)",
+            "PersonID (int) - (Foreign key to Person.BusinessEntityID)",
+            "StoreID (int) - (Foreign key to Store.BusinessEntityID)",
+            "TerritoryID (int) - (ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.)",
+            "AccountNumber (varchar) - (Unique number identifying the customer assigned by the accounting system.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "TerritoryID -> Sales.SalesTerritory.TerritoryID",
+            "StoreID -> Sales.Store.BusinessEntityID",
+            "PersonID -> Person.Person.BusinessEntityID",
+            "Referenced by Sales.SalesOrderHeader.CustomerID via CustomerID"
+        ]
+    },
+    "Sales.PersonCreditCard": {
+        "description": "Cross-reference table mapping people to their credit card information in the CreditCard table. ",
+        "columns": [
+            "BusinessEntityID (int) - (Business entity identification number. Foreign key to Person.BusinessEntityID.)",
+            "CreditCardID (int) - (Credit card identification number. Foreign key to CreditCard.CreditCardID.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> Person.Person.BusinessEntityID",
+            "CreditCardID -> Sales.CreditCard.CreditCardID"
+        ]
+    },
+    "Sales.SalesOrderDetail": {
+        "description": "Individual products associated with a specific sales order. See SalesOrderHeader.",
+        "columns": [
+            "SalesOrderID (int) - (Primary key. Foreign key to SalesOrderHeader.SalesOrderID.)",
+            "SalesOrderDetailID (int) - (Primary key. One incremental unique number per product sold.)",
+            "CarrierTrackingNumber (nvarchar) - (Shipment tracking number supplied by the shipper.)",
+            "OrderQty (smallint) - (Quantity ordered per product.)",
+            "ProductID (int) - (Product sold to customer. Foreign key to Product.ProductID.)",
+            "SpecialOfferID (int) - (Promotional code. Foreign key to SpecialOffer.SpecialOfferID.)",
+            "UnitPrice (money) - (Selling price of a single product.)",
+            "UnitPriceDiscount (money) - (Discount amount.)",
+            "LineTotal (numeric) - (Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "SpecialOfferID -> Sales.SpecialOfferProduct.SpecialOfferID",
+            "ProductID -> Sales.SpecialOfferProduct.ProductID",
+            "SalesOrderID -> Sales.SalesOrderHeader.SalesOrderID"
+        ]
+    },
+    "Sales.SalesOrderHeader": {
+        "description": "General sales order information.",
+        "columns": [
+            "SalesOrderID (int) - (Primary key.)",
+            "RevisionNumber (tinyint) - (Incremental number to track changes to the sales order over time.)",
+            "OrderDate (datetime) - (Dates the sales order was created.)",
+            "DueDate (datetime) - (Date the order is due to the customer.)",
+            "ShipDate (datetime) - (Date the order was shipped to the customer.)",
+            "Status (tinyint) - (Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled)",
+            "OnlineOrderFlag (Flag) - (0 = Order placed by sales person. 1 = Order placed online by customer.)",
+            "SalesOrderNumber (nvarchar) - (Unique sales order identification number.)",
+            "PurchaseOrderNumber (OrderNumber) - (Customer purchase order number reference. )",
+            "AccountNumber (AccountNumber) - (Financial accounting number reference.)",
+            "CustomerID (int) - (Customer identification number. Foreign key to Customer.BusinessEntityID.)",
+            "SalesPersonID (int) - (Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.)",
+            "TerritoryID (int) - (Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.)",
+            "BillToAddressID (int) - (Customer billing address. Foreign key to Address.AddressID.)",
+            "ShipToAddressID (int) - (Customer shipping address. Foreign key to Address.AddressID.)",
+            "ShipMethodID (int) - (Shipping method. Foreign key to ShipMethod.ShipMethodID.)",
+            "CreditCardID (int) - (Credit card identification number. Foreign key to CreditCard.CreditCardID.)",
+            "CreditCardApprovalCode (varchar) - (Approval code provided by the credit card company.)",
+            "CurrencyRateID (int) - (Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.)",
+            "SubTotal (money) - (Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.)",
+            "TaxAmt (money) - (Tax amount.)",
+            "Freight (money) - (Shipping cost.)",
+            "TotalDue (money) - (Total due from customer. Computed as Subtotal + TaxAmt + Freight.)",
+            "Comment (nvarchar) - (Sales representative comments.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Sales.SalesOrderDetail.SalesOrderID via SalesOrderID",
+            "CreditCardID -> Sales.CreditCard.CreditCardID",
+            "ShipMethodID -> Purchasing.ShipMethod.ShipMethodID",
+            "ShipToAddressID -> Person.Address.AddressID",
+            "BillToAddressID -> Person.Address.AddressID",
+            "TerritoryID -> Sales.SalesTerritory.TerritoryID",
+            "SalesPersonID -> Sales.SalesPerson.BusinessEntityID",
+            "CustomerID -> Sales.Customer.CustomerID",
+            "CurrencyRateID -> Sales.CurrencyRate.CurrencyRateID",
+            "Referenced by Sales.SalesOrderHeaderSalesReason.SalesOrderID via SalesOrderID"
+        ]
+    },
+    "Sales.SalesOrderHeaderSalesReason": {
+        "description": "Cross-reference table mapping sales orders to sales reason codes.",
+        "columns": [
+            "SalesOrderID (int) - (Primary key. Foreign key to SalesOrderHeader.SalesOrderID.)",
+            "SalesReasonID (int) - (Primary key. Foreign key to SalesReason.SalesReasonID.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "SalesOrderID -> Sales.SalesOrderHeader.SalesOrderID",
+            "SalesReasonID -> Sales.SalesReason.SalesReasonID"
+        ]
+    },
+    "Sales.SalesPerson": {
+        "description": "Sales representative current information.",
+        "columns": [
+            "BusinessEntityID (int) - (Primary key for SalesPerson records. Foreign key to Employee.BusinessEntityID)",
+            "TerritoryID (int) - (Territory currently assigned to. Foreign key to SalesTerritory.SalesTerritoryID.)",
+            "SalesQuota (money) - (Projected yearly sales.)",
+            "Bonus (money) - (Bonus due if quota is met.)",
+            "CommissionPct (smallmoney) - (Commision percent received per sale.)",
+            "SalesYTD (money) - (Sales total year to date.)",
+            "SalesLastYear (money) - (Sales total of previous year.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Sales.SalesOrderHeader.SalesPersonID via BusinessEntityID",
+            "BusinessEntityID -> HumanResources.Employee.BusinessEntityID",
+            "TerritoryID -> Sales.SalesTerritory.TerritoryID",
+            "Referenced by Sales.SalesPersonQuotaHistory.BusinessEntityID via BusinessEntityID",
+            "Referenced by Sales.SalesTerritoryHistory.BusinessEntityID via BusinessEntityID",
+            "Referenced by Sales.Store.SalesPersonID via BusinessEntityID"
+        ]
+    },
+    "Sales.SalesPersonQuotaHistory": {
+        "description": "Sales performance tracking.",
+        "columns": [
+            "BusinessEntityID (int) - (Sales person identification number. Foreign key to SalesPerson.BusinessEntityID.)",
+            "QuotaDate (datetime) - (Sales quota date.)",
+            "SalesQuota (money) - (Sales quota amount.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> Sales.SalesPerson.BusinessEntityID"
+        ]
+    },
+    "Sales.SalesReason": {
+        "description": "Lookup table of customer purchase reasons.",
+        "columns": [
+            "SalesReasonID (int) - (Primary key for SalesReason records.)",
+            "Name (Name) - (Sales reason description.)",
+            "ReasonType (Name) - (Category the sales reason belongs to.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Sales.SalesOrderHeaderSalesReason.SalesReasonID via SalesReasonID"
+        ]
+    },
+    "Sales.SalesTaxRate": {
+        "description": "Tax rate lookup table.",
+        "columns": [
+            "SalesTaxRateID (int) - (Primary key for SalesTaxRate records.)",
+            "StateProvinceID (int) - (State, province, or country/region the sales tax applies to.)",
+            "TaxType (tinyint) - (1 = Tax applied to retail transactions, 2 = Tax applied to wholesale transactions, 3 = Tax applied to all sales (retail and wholesale) transactions.)",
+            "TaxRate (smallmoney) - (Tax rate amount.)",
+            "Name (Name) - (Tax rate description.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "StateProvinceID -> Person.StateProvince.StateProvinceID"
+        ]
+    },
+    "Sales.SalesTerritory": {
+        "description": "Sales territory lookup table.",
+        "columns": [
+            "TerritoryID (int) - (Primary key for SalesTerritory records.)",
+            "Name (Name) - (Sales territory description)",
+            "CountryRegionCode (nvarchar) - (ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. )",
+            "Group (nvarchar) - (Geographic area to which the sales territory belong.)",
+            "SalesYTD (money) - (Sales in the territory year to date.)",
+            "SalesLastYear (money) - (Sales in the territory the previous year.)",
+            "CostYTD (money) - (Business costs in the territory year to date.)",
+            "CostLastYear (money) - (Business costs in the territory the previous year.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Person.StateProvince.TerritoryID via TerritoryID",
+            "Referenced by Sales.Customer.TerritoryID via TerritoryID",
+            "Referenced by Sales.SalesOrderHeader.TerritoryID via TerritoryID",
+            "Referenced by Sales.SalesPerson.TerritoryID via TerritoryID",
+            "CountryRegionCode -> Person.CountryRegion.CountryRegionCode",
+            "Referenced by Sales.SalesTerritoryHistory.TerritoryID via TerritoryID"
+        ]
+    },
+    "Sales.SalesTerritoryHistory": {
+        "description": "Sales representative transfers to other sales territories.",
+        "columns": [
+            "BusinessEntityID (int) - (Primary key. The sales rep.  Foreign key to SalesPerson.BusinessEntityID.)",
+            "TerritoryID (int) - (Primary key. Territory identification number. Foreign key to SalesTerritory.SalesTerritoryID.)",
+            "StartDate (datetime) - (Primary key. Date the sales representive started work in the territory.)",
+            "EndDate (datetime) - (Date the sales representative left work in the territory.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "BusinessEntityID -> Sales.SalesPerson.BusinessEntityID",
+            "TerritoryID -> Sales.SalesTerritory.TerritoryID"
+        ]
+    },
+    "Sales.ShoppingCartItem": {
+        "description": "Contains online customer orders until the order is submitted or cancelled.",
+        "columns": [
+            "ShoppingCartItemID (int) - (Primary key for ShoppingCartItem records.)",
+            "ShoppingCartID (nvarchar) - (Shopping cart identification number.)",
+            "Quantity (int) - (Product quantity ordered.)",
+            "ProductID (int) - (Product ordered. Foreign key to Product.ProductID.)",
+            "DateCreated (datetime) - (Date the time the record was created.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "ProductID -> Production.Product.ProductID"
+        ]
+    },
+    "Sales.SpecialOffer": {
+        "description": "Sale discounts lookup table.",
+        "columns": [
+            "SpecialOfferID (int) - (Primary key for SpecialOffer records.)",
+            "Description (nvarchar) - (Discount description.)",
+            "DiscountPct (smallmoney) - (Discount precentage.)",
+            "Type (nvarchar) - (Discount type category.)",
+            "Category (nvarchar) - (Group the discount applies to such as Reseller or Customer.)",
+            "StartDate (datetime) - (Discount start date.)",
+            "EndDate (datetime) - (Discount end date.)",
+            "MinQty (int) - (Minimum discount percent allowed.)",
+            "MaxQty (int) - (Maximum discount percent allowed.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Sales.SpecialOfferProduct.SpecialOfferID via SpecialOfferID"
+        ]
+    },
+    "Sales.SpecialOfferProduct": {
+        "description": "Cross-reference table mapping products to special offer discounts.",
+        "columns": [
+            "SpecialOfferID (int) - (Primary key for SpecialOfferProduct records.)",
+            "ProductID (int) - (Product identification number. Foreign key to Product.ProductID.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Sales.SalesOrderDetail.SpecialOfferID via SpecialOfferID",
+            "Referenced by Sales.SalesOrderDetail.ProductID via ProductID",
+            "SpecialOfferID -> Sales.SpecialOffer.SpecialOfferID",
+            "ProductID -> Production.Product.ProductID"
+        ]
+    },
+    "Sales.Store": {
+        "description": "Customers (resellers) of Adventure Works products.",
+        "columns": [
+            "BusinessEntityID (int) - (Primary key. Foreign key to Customer.BusinessEntityID.)",
+            "Name (Name) - (Name of the store.)",
+            "SalesPersonID (int) - (ID of the sales person assigned to the customer. Foreign key to SalesPerson.BusinessEntityID.)",
+            "Demographics (xml) - (Demographic informationg about the store such as the number of employees, annual sales and store type.)",
+            "rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "Referenced by Sales.Customer.StoreID via BusinessEntityID",
+            "BusinessEntityID -> Person.BusinessEntity.BusinessEntityID",
+            "SalesPersonID -> Sales.SalesPerson.BusinessEntityID"
+        ]
+    },
+    "dbo.AWBuildVersion": {
+        "description": "Current version number of the AdventureWorks 2025 sample database. ",
+        "columns": [
+            "SystemInformationID (tinyint) - (Primary key for AWBuildVersion records.)",
+            "Database Version (nvarchar) - (Version number of the database in 9.yy.mm.dd.00 format.)",
+            "VersionDate (datetime) - (Date and time the record was last updated.)",
+            "ModifiedDate (datetime) - (Date and time the record was last updated.)"
+        ],
+        "relationships": [
+            "No explicit foreign key relationships"
+        ]
+    },
+    "dbo.DatabaseLog": {
+        "description": "Audit table tracking all DDL changes made to the AdventureWorks database. Data is captured by the database trigger ddlDatabaseTriggerLog.",
+        "columns": [
+            "DatabaseLogID (int) - (Primary key for DatabaseLog records.)",
+            "PostTime (datetime) - (The date and time the DDL change occurred.)",
+            "DatabaseUser (sysname) - (The user who implemented the DDL change.)",
+            "Event (sysname) - (The type of DDL statement that was executed.)",
+            "Schema (sysname) - (The schema to which the changed object belongs.)",
+            "Object (sysname) - (The object that was changed by the DDL statment.)",
+            "TSQL (nvarchar) - (The exact Transact-SQL statement that was executed.)",
+            "XmlEvent (xml) - (The raw XML data generated by database trigger.)"
+        ],
+        "relationships": [
+            "No explicit foreign key relationships"
+        ]
+    },
+    "dbo.ErrorLog": {
+        "description": "Audit table tracking errors in the the AdventureWorks database that are caught by the CATCH block of a TRY...CATCH construct. Data is inserted by stored procedure dbo.uspLogError when it is executed from inside the CATCH block of a TRY...CATCH construct.",
+        "columns": [
+            "ErrorLogID (int) - (Primary key for ErrorLog records.)",
+            "ErrorTime (datetime) - (The date and time at which the error occurred.)",
+            "UserName (sysname) - (The user who executed the batch in which the error occurred.)",
+            "ErrorNumber (int) - (The error number of the error that occurred.)",
+            "ErrorSeverity (int) - (The severity of the error that occurred.)",
+            "ErrorState (int) - (The state number of the error that occurred.)",
+            "ErrorProcedure (nvarchar) - (The name of the stored procedure or trigger where the error occurred.)",
+            "ErrorLine (int) - (The line number at which the error occurred.)",
+            "ErrorMessage (nvarchar) - (The message text of the error that occurred.)"
+        ],
+        "relationships": [
+            "No explicit foreign key relationships"
+        ]
+    }
+}

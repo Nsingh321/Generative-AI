@@ -1,0 +1,5 @@
+Table: obf.T21
+Description: One way hashed authentication information
+Columns: col_0099 (int) - (nan), col_0100 (varchar) - (Password for the e-mail account.), col_0101 (varchar) - (Random value concatenated with the password string before the password is hashed.), col_0102 (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), col_0103 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0099 -> obf.T23.col_0104

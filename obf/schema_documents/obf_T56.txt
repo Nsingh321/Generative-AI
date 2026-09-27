@@ -1,0 +1,6 @@
+Table: obf.T56
+Description: Cross-reference table mapping products and product photos.
+Columns: col_0238 (int) - (Product identification number. Foreign key to Product.ProductID.), col_0239 (int) - (Product photo identification number. Foreign key to ProductPhoto.ProductPhotoID.), col_0240 (Flag) - (0 = Photo is not the principal image. 1 = Photo is the principal image.), col_0241 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0238 -> obf.T30.col_0166
+col_0239 -> obf.T55.col_0232

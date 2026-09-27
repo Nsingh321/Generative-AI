@@ -1,0 +1,5 @@
+Table: obf.T57
+Description: Record of each purchase order, sales order, or work order transaction year to date.
+Columns: col_0258 (int) - (Primary key for TransactionHistory records.), col_0259 (int) - (Product identification number. Foreign key to Product.ProductID.), col_0260 (int) - (Purchase order, sales order, or work order identification number.), col_0261 (int) - (Line number associated with the purchase order, sales order, or work order.), col_0262 (datetime) - (Date and time of the transaction.), col_0263 (nchar) - (W = WorkOrder, S = SalesOrder, P = PurchaseOrder), col_0264 (int) - (Product quantity.), col_0265 (money) - (Product cost.), col_0266 (datetime) - (Date and time the record was last updated.)
+Relationships:
+col_0259 -> obf.T30.col_0166

@@ -1,0 +1,6 @@
+Table: Sales.PersonCreditCard
+Description: Cross-reference table mapping people to their credit card information in the CreditCard table. 
+Columns: BusinessEntityID (int) - (Business entity identification number. Foreign key to Person.BusinessEntityID.), CreditCardID (int) - (Credit card identification number. Foreign key to CreditCard.CreditCardID.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+BusinessEntityID -> Person.Person.BusinessEntityID
+CreditCardID -> Sales.CreditCard.CreditCardID

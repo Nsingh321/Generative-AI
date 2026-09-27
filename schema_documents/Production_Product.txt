@@ -1,0 +1,22 @@
+Table: Production.Product
+Description: Products sold or used in the manfacturing of sold products.
+Columns: ProductID (int) - (Primary key for Product records.), Name (Name) - (Name of the product.), ProductNumber (nvarchar) - (Unique product identification number.), MakeFlag (Flag) - (0 = Product is purchased, 1 = Product is manufactured in-house.), FinishedGoodsFlag (Flag) - (0 = Product is not a salable item. 1 = Product is salable.), Color (nvarchar) - (Product color.), SafetyStockLevel (smallint) - (Minimum inventory quantity. ), ReorderPoint (smallint) - (Inventory level that triggers a purchase order or work order. ), StandardCost (money) - (Standard cost of the product.), ListPrice (money) - (Selling price.), Size (nvarchar) - (Product size.), SizeUnitMeasureCode (nchar) - (Unit of measure for Size column.), WeightUnitMeasureCode (nchar) - (Unit of measure for Weight column.), Weight (decimal) - (Product weight.), DaysToManufacture (int) - (Number of days required to manufacture the product.), ProductLine (nchar) - (R = Road, M = Mountain, T = Touring, S = Standard), Class (nchar) - (H = High, M = Medium, L = Low), Style (nchar) - (W = Womens, M = Mens, U = Universal), ProductSubcategoryID (int) - (Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID. ), ProductModelID (int) - (Product is a member of this product model. Foreign key to ProductModel.ProductModelID.), SellStartDate (datetime) - (Date the product was available for sale.), SellEndDate (datetime) - (Date the product was no longer available for sale.), DiscontinuedDate (datetime) - (Date the product was discontinued.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Production.BillOfMaterials.ComponentID via ProductID
+Referenced by Production.BillOfMaterials.ProductAssemblyID via ProductID
+SizeUnitMeasureCode -> Production.UnitMeasure.UnitMeasureCode
+WeightUnitMeasureCode -> Production.UnitMeasure.UnitMeasureCode
+ProductSubcategoryID -> Production.ProductSubcategory.ProductSubcategoryID
+ProductModelID -> Production.ProductModel.ProductModelID
+Referenced by Production.ProductCostHistory.ProductID via ProductID
+Referenced by Production.ProductDocument.ProductID via ProductID
+Referenced by Production.ProductInventory.ProductID via ProductID
+Referenced by Production.ProductListPriceHistory.ProductID via ProductID
+Referenced by Production.ProductProductPhoto.ProductID via ProductID
+Referenced by Production.ProductReview.ProductID via ProductID
+Referenced by Production.TransactionHistory.ProductID via ProductID
+Referenced by Production.WorkOrder.ProductID via ProductID
+Referenced by Purchasing.ProductVendor.ProductID via ProductID
+Referenced by Purchasing.PurchaseOrderDetail.ProductID via ProductID
+Referenced by Sales.ShoppingCartItem.ProductID via ProductID
+Referenced by Sales.SpecialOfferProduct.ProductID via ProductID

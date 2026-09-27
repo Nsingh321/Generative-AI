@@ -1,0 +1,7 @@
+Table: Person.BusinessEntityAddress
+Description: Cross-reference table mapping customers, vendors, and employees to their addresses.
+Columns: BusinessEntityID (int) - (Primary key. Foreign key to BusinessEntity.BusinessEntityID.), AddressID (int) - (Primary key. Foreign key to Address.AddressID.), AddressTypeID (int) - (Primary key. Foreign key to AddressType.AddressTypeID.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+BusinessEntityID -> Person.BusinessEntity.BusinessEntityID
+AddressID -> Person.Address.AddressID
+AddressTypeID -> Person.AddressType.AddressTypeID

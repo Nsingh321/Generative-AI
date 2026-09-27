@@ -1,0 +1,7 @@
+Table: Production.ProductModel
+Description: Product model classification.
+Columns: ProductModelID (int) - (Primary key for ProductModel records.), Name (Name) - (Product model description.), CatalogDescription (xml) - (Detailed product catalog information in xml format.), Instructions (xml) - (Manufacturing instructions in xml format.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Production.Product.ProductModelID via ProductModelID
+Referenced by Production.ProductModelIllustration.ProductModelID via ProductModelID
+Referenced by Production.ProductModelProductDescriptionCulture.ProductModelID via ProductModelID

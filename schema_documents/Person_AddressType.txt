@@ -1,0 +1,5 @@
+Table: Person.AddressType
+Description: Types of addresses stored in the Address table. 
+Columns: AddressTypeID (int) - (Primary key for AddressType records.), Name (Name) - (Address type description. For example, Billing, Home, or Shipping.), rowguid (uniqueidentifier) - (ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by Person.BusinessEntityAddress.AddressTypeID via AddressTypeID

@@ -1,0 +1,5 @@
+Table: obf.T32
+Description: Manufacturing failure reasons lookup table.
+Columns: col_0255 (smallint) - (Primary key for ScrapReason records.), col_0256 (Name) - (Failure description.), col_0257 (datetime) - (Date and time the record was last updated.)
+Relationships:
+Referenced by obf.T70.col_0287 via col_0255

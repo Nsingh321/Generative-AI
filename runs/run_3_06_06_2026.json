@@ -1,0 +1,574 @@
+[
+    {
+        "status": "judge_invalid_json",
+        "generated_sql": "SELECT name FROM track;",
+        "syntax_retries": 0,
+        "judge_score": null,
+        "judge_feedback": "Failed to generate valid JSON for Judge.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 635,
+            "completion_tokens": 250,
+            "total_tokens": 885
+        },
+        "logical_sql_retries": null,
+        "tables_discovered": 3,
+        "user_question": "Show me all the tracks.",
+        "sql_category": "Basic",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT name FROM artist;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query accurately selects the names column from the artist table, fulfilling the user's request to list all artist names.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 409,
+            "completion_tokens": 149,
+            "total_tokens": 558
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 1,
+        "user_question": "List the names of all artists.",
+        "sql_category": "Basic",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "vague_request",
+        "generated_sql": null,
+        "syntax_retries": null,
+        "judge_score": null,
+        "judge_feedback": "User request is vague for generator.",
+        "judge_tokens_usage": null,
+        "logical_sql_retries": null,
+        "tables_discovered": null,
+        "user_question": "Who are the customers from Brazil?",
+        "sql_category": "Basic",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT COUNT(*) AS total_albums FROM album;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly counts all rows in the album table, directly answering the user's request. No unnecessary complexity.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 490,
+            "completion_tokens": 162,
+            "total_tokens": 652
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 3,
+        "user_question": "Find the total number of albums.",
+        "sql_category": "Basic",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT t.name AS track_name, a.title AS album_title FROM track t JOIN album a ON t.album_id = a.album_id;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly lists all tracks with their album titles using a proper join.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 551,
+            "completion_tokens": 147,
+            "total_tokens": 698
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 2,
+        "user_question": "List all tracks along with their album titles.",
+        "sql_category": "Basic",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT c.first_name, c.last_name, COALESCE(SUM(i.total), 0) AS total_spent FROM customer AS c LEFT JOIN invoice AS i ON c.customer_id = i.customer_id GROUP BY c.customer_id, c.first_name, c.last_name;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly retrieves all customers and their total invoice amounts, handling customers with no invoices via LEFT JOIN and COALESCE. It is accurate and efficient.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 761,
+            "completion_tokens": 222,
+            "total_tokens": 983
+        },
+        "logical_sql_retries": 1,
+        "tables_discovered": 6,
+        "user_question": "Show all customers with their invoice totals",
+        "sql_category": "Basic",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT t.track_id, t.name AS track_name, t.unit_price FROM track t ORDER BY t.unit_price DESC LIMIT 5;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly selects the top 5 tracks by unit price in descending order using the track table, which contains the necessary pricing information. It is accurate and optimized without unnecessary complexity.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 595,
+            "completion_tokens": 144,
+            "total_tokens": 739
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 3,
+        "user_question": "Find the top 5 most expensive tracks.",
+        "sql_category": "Basic",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "acceptable_sql",
+        "generated_sql": "SELECT c.customer_id, c.first_name, c.last_name, SUM(il.unit_price * il.quantity) AS total_spending FROM customer AS c JOIN invoice AS i ON c.customer_id = i.customer_id JOIN invoice_line AS il ON i.invoice_id = il.invoice_id JOIN track AS t ON il.track_id = t.track_id GROUP BY c.customer_id, c.first_name, c.last_name ORDER BY total_spending DESC LIMIT 3;",
+        "syntax_retries": 0,
+        "judge_score": 4,
+        "judge_feedback": "The query correctly identifies the top 3 customers by total spending, but it unnecessarily joins the track table, which is not needed for the calculation. This adds redundancy but does not affect correctness.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 894,
+            "completion_tokens": 183,
+            "total_tokens": 1077
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 4,
+        "user_question": "Find top 3 customers by total spending.",
+        "sql_category": "Basic",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT EXTRACT(YEAR FROM i.invoice_date) AS sale_year,\n       SUM(i.total) AS total_sales\nFROM invoice i\nGROUP BY sale_year\nORDER BY sale_year;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The SQL query correctly extracts the year from invoice_date and sums totals per year, fulfilling the user's request accurately and efficiently.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 595,
+            "completion_tokens": 131,
+            "total_tokens": 726
+        },
+        "logical_sql_retries": 1,
+        "tables_discovered": 3,
+        "user_question": "Total sales per year",
+        "sql_category": "Basic",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT e.first_name AS employee_first_name, e.last_name   AS employee_last_name, m.first_name  AS manager_first_name, m.last_name   AS manager_last_name FROM employee e LEFT JOIN employee m ON e.reports_to = m.employee_id;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly uses a self-join on the employee table to retrieve each employee and their manager, and handles employees without a manager via LEFT JOIN.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 714,
+            "completion_tokens": 179,
+            "total_tokens": 893
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 6,
+        "user_question": "List all employees and their managers.",
+        "sql_category": "Medium",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT g.name AS genre, COUNT(t.track_id) AS track_count FROM track t JOIN genre g ON t.genre_id = g.genre_id GROUP BY g.name ORDER BY track_count DESC;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query accurately counts tracks per genre using a join on genre_id and proper grouping.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 558,
+            "completion_tokens": 140,
+            "total_tokens": 698
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 3,
+        "user_question": "Count number of tracks per genre.",
+        "sql_category": "Medium",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "judge_invalid_json",
+        "generated_sql": "SELECT c.country, COUNT(*) AS customer_count FROM customer AS c JOIN invoice AS i ON c.customer_id = i.customer_id GROUP BY c.country ORDER BY customer_count DESC LIMIT 1;",
+        "syntax_retries": 0,
+        "judge_score": null,
+        "judge_feedback": "Failed to generate valid JSON for Judge.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 783,
+            "completion_tokens": 250,
+            "total_tokens": 1033
+        },
+        "logical_sql_retries": null,
+        "tables_discovered": 3,
+        "user_question": "Which country has the most customers?",
+        "sql_category": "Medium",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT t.name AS track_name, a.title AS album_title, ar.name AS artist_name FROM track t JOIN album a ON t.album_id = a.album_id JOIN artist ar ON a.artist_id = ar.artist_id;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly joins the track, album, and artist tables to retrieve the requested columns with no redundancy.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 588,
+            "completion_tokens": 208,
+            "total_tokens": 796
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 3,
+        "user_question": "List track name, album title, and artist name.",
+        "sql_category": "Medium",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT i.invoice_id,\n       c.first_name,\n       c.last_name,\n       i.total\nFROM   invoice AS i\nJOIN   customer AS c\n       ON i.customer_id = c.customer_id;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly joins invoice and customer tables to retrieve customer name and total for all invoices, exactly matching the user's request.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 718,
+            "completion_tokens": 126,
+            "total_tokens": 844
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 6,
+        "user_question": "Find all invoices with customer name and total.",
+        "sql_category": "Medium",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT g.name AS genre,\n       COUNT(*) AS tracks_sold\nFROM   invoice_line il\nJOIN   track t          ON il.track_id = t.track_id\nJOIN   genre g          ON t.genre_id = g.genre_id\nGROUP BY g.name\nORDER BY tracks_sold DESC\nLIMIT 1;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The SQL query correctly identifies the most popular genre by counting tracks sold via invoice_line, with proper joins and aggregation. It is accurate and optimized.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 745,
+            "completion_tokens": 130,
+            "total_tokens": 875
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 6,
+        "user_question": "Find the most popular genre (by number of tracks sold).",
+        "sql_category": "Medium",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "acceptable_sql",
+        "generated_sql": "SELECT \n    EXTRACT(YEAR FROM invoice.invoice_date) AS sale_year,\n    SUM(invoice_line.unit_price * invoice_line.quantity) AS total_sales\nFROM \n    invoice\nJOIN \n    invoice_line ON invoice.invoice_id = invoice_line.invoice_id\nJOIN \n    track       ON invoice_line.track_id = track.track_id\nGROUP BY \n    sale_year\nORDER BY \n    sale_year;",
+        "syntax_retries": 0,
+        "judge_score": 4,
+        "judge_feedback": "The query correctly calculates total sales per year, but includes an unnecessary JOIN to the track table, adding complexity without affecting accuracy.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 745,
+            "completion_tokens": 214,
+            "total_tokens": 959
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 5,
+        "user_question": "Find total sales per year.",
+        "sql_category": "Medium",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "\nSELECT\n    c.country,\n    SUM(i.total) AS total_sales\nFROM\n    invoice i\nJOIN\n    customer c\n    ON i.customer_id = c.customer_id\nGROUP BY\n    c.country\nHAVING\n    SUM(i.total) > 100;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly uses JOIN to get country and GROUP BY with HAVING to filter totals > 100.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 731,
+            "completion_tokens": 234,
+            "total_tokens": 965
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 6,
+        "user_question": "Find total sales per country where sales > 100.",
+        "sql_category": "Medium",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT employee_id, first_name, last_name\nFROM   employee\nWHERE  reports_to IS NULL;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly identifies employees who do not report to anyone by checking for NULL in the reports_to column. It selects appropriate columns and uses the correct table without unnecessary joins.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 684,
+            "completion_tokens": 152,
+            "total_tokens": 836
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 6,
+        "user_question": "List employees who do not report to anyone.",
+        "sql_category": "Medium",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT c.customer_id, c.first_name, c.last_name FROM customer AS c WHERE NOT EXISTS ( SELECT 1 FROM invoice i WHERE i.customer_id = c.customer_id );",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly finds customers who never made a purchase by using NOT EXISTS to exclude those with invoices. It is accurate and efficient.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 518,
+            "completion_tokens": 212,
+            "total_tokens": 730
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 5,
+        "user_question": "Find customers who never made a purchase",
+        "sql_category": "Medium",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "vague_request",
+        "generated_sql": null,
+        "syntax_retries": null,
+        "judge_score": null,
+        "judge_feedback": "User request is vague for generator.",
+        "judge_tokens_usage": null,
+        "logical_sql_retries": null,
+        "tables_discovered": null,
+        "user_question": "Find customers who spent more than average.",
+        "sql_category": "Hard",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT c.customer_id, c.first_name, c.last_name FROM invoice i JOIN invoice_line il ON i.invoice_id = il.invoice_id JOIN track t ON il.track_id = t.track_id JOIN genre g ON t.genre_id = g.genre_id JOIN customer c ON i.customer_id = c.customer_id GROUP BY c.customer_id, c.first_name, c.last_name HAVING COUNT(DISTINCT g.genre_id) > 3;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly joins all necessary tables, groups by customer, and uses HAVING COUNT(DISTINCT genre_id) > 3 to find customers who purchased tracks from more than 3 different genres.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 904,
+            "completion_tokens": 146,
+            "total_tokens": 1050
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 4,
+        "user_question": "Find customers who purchased tracks from more than 3 different genres.",
+        "sql_category": "Hard",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT first_name, last_name, total_spent FROM (\n    SELECT c.first_name,\n           c.last_name,\n           SUM(i.total) AS total_spent,\n           DENSE_RANK() OVER (ORDER BY SUM(i.total) DESC) AS rnk\n    FROM customer c\n    JOIN invoice i ON c.customer_id = i.customer_id\n    GROUP BY c.customer_id, c.first_name, c.last_name\n) ranked\nWHERE rnk = 2;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly identifies the second highest spending customer by using DENSE_RANK on SUM of invoice totals, with no unnecessary joins or complexity.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 745,
+            "completion_tokens": 203,
+            "total_tokens": 948
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 4,
+        "user_question": "Find the second highest spending customer.",
+        "sql_category": "Hard",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT DISTINCT a.name AS artist_name\nFROM track t\nJOIN album al ON t.album_id = al.album_id\nJOIN artist a ON al.artist_id = a.artist_id\nWHERE NOT EXISTS (\n    SELECT 1 FROM invoice_line il WHERE il.track_id = t.track_id\n);",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly identifies artists with no purchased tracks using NOT EXISTS and proper joins. It is semantically accurate and efficient.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 793,
+            "completion_tokens": 154,
+            "total_tokens": 947
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 4,
+        "user_question": "List artists whose tracks have never been purchased.",
+        "sql_category": "Hard",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT a.name AS artist_name,\n       SUM(il.quantity) AS total_tracks_sold\nFROM invoice_line il\nJOIN track t      ON il.track_id = t.track_id\nJOIN album al    ON t.album_id = al.album_id\nJOIN artist a    ON al.artist_id = a.artist_id\nGROUP BY a.artist_id, a.name\nORDER BY total_tracks_sold DESC\nLIMIT 1;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly identifies the artist with the highest total tracks sold by joining relevant tables and aggregating quantity. It is accurate and well-optimized.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 746,
+            "completion_tokens": 147,
+            "total_tokens": 893
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 5,
+        "user_question": "Find the most popular artist (by number of tracks sold)",
+        "sql_category": "Hard",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT a.title AS album_title,\n       SUM(il.unit_price * il.quantity) AS total_sales\nFROM invoice_line il\nJOIN track t      ON il.track_id = t.track_id\nJOIN album a     ON t.album_id = a.album_id\nGROUP BY a.album_id, a.title\nORDER BY total_sales DESC\nLIMIT 5;",
+        "syntax_retries": 1,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly joins invoice_line, track, and album to compute total sales per album, groups by album, orders by sales descending, and limits to top 5. It accurately fulfills the user's request with proper logic and no unnecessary complexity.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 695,
+            "completion_tokens": 172,
+            "total_tokens": 867
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 3,
+        "user_question": "Find top 5 albums with highest sales.",
+        "sql_category": "Hard",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT g.name AS genre,\n       SUM(il.quantity * il.unit_price) AS total_revenue\nFROM invoice_line il\nJOIN invoice i          ON il.invoice_id = i.invoice_id\nJOIN track t            ON il.track_id = t.track_id\nJOIN genre g            ON t.genre_id = g.genre_id\nGROUP BY g.name\nORDER BY total_revenue DESC\nLIMIT 1;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly computes total revenue per genre and returns the top genre.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 776,
+            "completion_tokens": 116,
+            "total_tokens": 892
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 4,
+        "user_question": "Find the genre with highest revenue.",
+        "sql_category": "Hard",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT c.first_name, c.last_name, SUM(i.total) AS total_spending FROM invoice i JOIN customer c ON i.customer_id = c.customer_id GROUP BY c.customer_id, c.first_name, c.last_name ORDER BY total_spending DESC;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly ranks customers by total spending using SUM of invoice totals, with proper joins and grouping. No issues found.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 716,
+            "completion_tokens": 154,
+            "total_tokens": 870
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 6,
+        "user_question": "Rank customers by total spending.",
+        "sql_category": "Hard",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT p.name AS playlist_name, COUNT(pt.track_id) AS track_count FROM playlist p JOIN playlist_track pt ON p.playlist_id = pt.playlist_id GROUP BY p.playlist_id, p.name ORDER BY track_count DESC;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "Accurate and optimized. The query correctly joins playlist and playlist_track, groups by playlist, and counts tracks.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 663,
+            "completion_tokens": 243,
+            "total_tokens": 906
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 4,
+        "user_question": "List all playlists with number of tracks.",
+        "sql_category": "Hard",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    },
+    {
+        "status": "perfect_sql",
+        "generated_sql": "SELECT c.customer_id, c.first_name, c.last_name FROM invoice i JOIN invoice_line il ON i.invoice_id = il.invoice_id JOIN track t ON il.track_id = t.track_id JOIN genre g ON t.genre_id = g.genre_id JOIN customer c ON i.customer_id = c.customer_id GROUP BY c.customer_id, c.first_name, c.last_name HAVING COUNT(DISTINCT g.genre_id) > 3;",
+        "syntax_retries": 0,
+        "judge_score": 5,
+        "judge_feedback": "The query correctly joins necessary tables, groups by customer, and filters correctly using HAVING COUNT(DISTINCT g.genre_id) > 3. It accurately returns customers who purchased tracks from more than 3 different genres.",
+        "judge_tokens_usage": {
+            "prompt_tokens": 922,
+            "completion_tokens": 194,
+            "total_tokens": 1116
+        },
+        "logical_sql_retries": 0,
+        "tables_discovered": 4,
+        "user_question": "Find customers who purchased tracks from more than 3 different genres.",
+        "sql_category": "Hard",
+        "evaluation_model": "deepseek-v4-flash",
+        "generator_model": "granite4.1:3b",
+        "sys_prompt_version": 1,
+        "current_sys_prompt": "\nYou are an expert evaluator for SQL. \nYou have access to following :\n\n#### SCHEMAS EXPLORED DURING GENERATION: \n{tables_discovered}\n\n#### SCHEMAS USED IN FINAL SQL:\n{query_tables}\n\nYou will be provided with a user's natural language request for a sql query and a SQL query fulfilling that request.\n\nRELEVANCY_SCORE_CRITERIA = \nRelevance (1-5) - A measure of how accurately the SQL query fulfills the user's intent.\n- PRIMARY METRIC: Semantic Accuracy. Does the SQL return the exact data requested?\n- SECONDARY METRIC: Optimization. Once accuracy is confirmed, penalize queries with redundant joins or unnecessary complexity.\n\nSCORING RUBRIC:\n5: Perfect. Accurate logic, correct tables, and optimized code.\n4: Accurate, but uses slightly inefficient logic (e.g., unnecessary joins).\n3: Partially accurate, but misses a secondary filter or uses a slightly wrong aggregation.\n2: Inaccurate. The SQL runs, but returns data that doesn't answer the user's core question.\n1: Completely irrelevant or logically broken.\n\nOUTPUT FORMAT: \nReturn a JSON object. \nis_acceptable : Set to True if the SQL query is fulfilling the user's objective otherwise set to False.\nfeedback: Keep your feedback on point and provide your explanation in 1-2 bullet points at max. of how the SQL query failed to satify user's intent.\"\nscore: Score between (1-5) depending upon how much the sql query is relevant to the user's question by using the above scoring method.\n"
+    }
+]

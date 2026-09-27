@@ -1,0 +1,7 @@
+Table: Production.BillOfMaterials
+Description: Items required to make bicycles and bicycle subassemblies. It identifies the heirarchical relationship between a parent product and its components.
+Columns: BillOfMaterialsID (int) - (Primary key for BillOfMaterials records.), ProductAssemblyID (int) - (Parent product identification number. Foreign key to Product.ProductID.), ComponentID (int) - (Component identification number. Foreign key to Product.ProductID.), StartDate (datetime) - (Date the component started being used in the assembly item.), EndDate (datetime) - (Date the component stopped being used in the assembly item.), UnitMeasureCode (nchar) - (Standard code identifying the unit of measure for the quantity.), BOMLevel (smallint) - (Indicates the depth the component is from its parent (AssemblyID).), PerAssemblyQty (decimal) - (Quantity of the component needed to create the assembly.), ModifiedDate (datetime) - (Date and time the record was last updated.)
+Relationships:
+ComponentID -> Production.Product.ProductID
+UnitMeasureCode -> Production.UnitMeasure.UnitMeasureCode
+ProductAssemblyID -> Production.Product.ProductID
